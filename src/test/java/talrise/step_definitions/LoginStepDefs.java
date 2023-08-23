@@ -25,7 +25,7 @@ public class LoginStepDefs extends CommonSteps {
     @Then("the user should be able to logged in successfully")
     public void theUserShouldBeAbleToLoggedInSuccessfully() {
         String expectedUrl= "http://azure.talrise.com/dashboard";
-        waitForPageToLoad(10);
+        waitFor(2);
         String actualUrl = driver.getCurrentUrl();
         Assert.assertEquals(expectedUrl,actualUrl);
     }
