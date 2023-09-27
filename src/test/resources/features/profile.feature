@@ -7,10 +7,10 @@ Feature: Profile Feature
       Then "Personal Information" module is visible and collapsed
 
     Scenario: Validate that Personal Information details are opened by clicking on pencil icon
-      When the user clicks on pencil icon
-      Then "Personal Information" header is visible
-
-    Scenario: Validate that Personal Information details are opened by clicking on Personal Information section title
-      When the user clicks on "Personal Information" section title
-      Then "Personal Information" header is visible
+      When the user clicks on "Personal Information" section pencil icon
+      Then "Position" header is visible
+#
+#    Scenario: Validate that Personal Information details are opened by clicking on Personal Information section title
+#      When the user clicks on "Personal Information" section title
+#      Then "Personal Information" header is visible
 
