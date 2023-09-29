@@ -1,5 +1,6 @@
 package talrise.step_definitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -21,40 +22,43 @@ public class RegisterStepDefs extends CommonSteps {
 
         registerPage.signUp.click();
     }
-
-    @And("the user enters valid {string},{string},{string},{string},{string}")
-    public void theUserEntersValid(String firstName, String lasttName, String linkedin, String email, String password) {
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
+    @And("the User enterss valid {string},{string},{string},{string},{string},{string}")
+    public void theUserEnterssValid(String firstName,String lastName,String linkedin,String email,String password,String confirmPassword) {
+        registerPage.firstNameBox.sendKeys(firstName);
+        registerPage.lastNameBox.sendKeys(lastName);
+        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/"+Faker.instance().name().firstName()+Faker.instance().name().lastName());
+        registerPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
+        registerPage.passwordBox.sendKeys(password);
+        registerPage.confirmPasswordBox.sendKeys(confirmPassword);
     }
 
-    @And("the user clicks on button that {string}")
-    public void theUserClicksOnButtonThat(String arg0) {
+    @And("the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.")
+    public void theUserClicksOnCheckboxThatIHaveReadAndAgreeToThePrivacyPolicyAndGDPR() {
         registerPage.registerCheckBox.click();
     }
 
 
-    @And("the clicks on button that {string}")
-    public void theClicksOnButtonThat(String arg0) {
+    @And("the clicks on button that CREATE MY ACCOUNT button")
+    public void theClicksOnButtonThatCREATEMYACCOUNTButton(){
         clickWithJS(registerPage.createNewAcountButton);
-        //registerPage.createNewAcountButton.click();
     }
 
     @Then("the user should be able to see Registered successfully! message")
     public void theUserShouldBeAbleToSeeRegisteredSuccessfullyMessage() {
-        waitForVisibility(registerPage.resgisteredSucc,10);
-        Assert.assertEquals("Registered successfully!",registerPage.resgisteredSucc.getText());
+        waitForVisibility(registerPage.resgisteredSuccAlertMessage,10);
+        Assert.assertEquals("Registered successfully!",registerPage.resgisteredSuccAlertMessage.getText());
     }
 
     @And("the user enters empty {string},{string},{string},{string},{string}")
     public void theUserEntersEmpty(String firstName, String lasttName, String linkedin, String email, String password) {
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
+        registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
     }
 
 
     @And("the user enters invalid {string},{string},{string},{string},{string}")
     public void theUserEntersInvalid(String firstName, String lasttName, String linkedin, String email, String password) {
 
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
+        registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
 
     }
     @Then("the user should be able to see {string} message")
@@ -67,10 +71,7 @@ public class RegisterStepDefs extends CommonSteps {
     public void theUserShouldBeAbleToSeeMessages(String message) {
 
         registerPage.createNewAcountButton.click();
-
         Assert.assertEquals(message,registerPage.firstNameNegativeEmpty.getText());
-
-
 
     }
 
@@ -88,21 +89,15 @@ public class RegisterStepDefs extends CommonSteps {
         Assert.assertTrue(registerPage.popupNegative.isDisplayed());
     }
 
-    @And("the user enters valid {string},{string},{string},{string},{string},{string}")
-    public void theUserEntersValid(String firstName, String lastName, String linkedin, String email, String password, String confirmPassword) {
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
-
-    }
-
     @And("the user enters invalid {string},{string},{string},{string},{string},{string}")
     public void theUserEntersInvalid(String firstName, String lastName, String linkedin, String email, String password, String confirmPassword) {
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
+        registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
 
     }
 
     @And("the user enters empty {string},{string},{string},{string},{string},{string}")
     public void theUserEntersEmpty(String firstName, String lastName, String linkedin, String email, String password, String confirmPassword) {
-        registerPage.firstName.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
+        registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
     }
 
 
@@ -116,7 +111,7 @@ public class RegisterStepDefs extends CommonSteps {
     @And("The user enter password")
     public void theUserEnterPassword() {
 
-        registerPage.passwordField.sendKeys("Test1234!");
+        registerPage.passwordBox.sendKeys("Test1234!");
     }
 
 
@@ -129,17 +124,17 @@ public class RegisterStepDefs extends CommonSteps {
 
     @When("The user clicks checkBox")
     public void theUserClicksCheckBox() {
-        registerPage.checkBox.click();
+        registerPage.registerCheckBox.click();
     }
 
     @And("The user should be able to select check box")
     public void theUserShouldBeAbleToSelectCheckBox() {
-        Assert.assertTrue(registerPage.checkBox.isSelected());
+        Assert.assertTrue(registerPage.registerCheckBox.isSelected());
     }
 
     @And("The user deselect checkBox")
     public void theUserDeselectCheckBox() {
-        registerPage.checkBox.click();
+        registerPage.registerCheckBox.click();
     }
 
     @And("The user clicks create my account")
