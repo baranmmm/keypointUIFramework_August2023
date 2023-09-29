@@ -57,7 +57,7 @@ public class Driver {
                 break;
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
         PageInitializer.initialize();
         actions = new Actions(driver);

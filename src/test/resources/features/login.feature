@@ -1,3 +1,5 @@
+@regression
+@login
 Feature: Login Feature
 
   @wip
