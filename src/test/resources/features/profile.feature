@@ -1,3 +1,5 @@
+@regression
+@profile
 Feature: Profile Feature
   Background:
     Given the "candidate" logs in successfully
@@ -8,7 +10,7 @@ Feature: Profile Feature
 
     Scenario: Validate that Personal Information details are opened by clicking on pencil icon
       When the user clicks on "Personal Information" section pencil icon
-      Then "Position" header is visible
+      Then "Personal Information" header is visible
 #
 #    Scenario: Validate that Personal Information details are opened by clicking on Personal Information section title
 #      When the user clicks on "Personal Information" section title
