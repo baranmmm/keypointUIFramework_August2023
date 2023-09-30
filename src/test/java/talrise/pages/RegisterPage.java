@@ -10,7 +10,22 @@ public class RegisterPage extends CommonPageElements{
     public WebElement signUp;
 
     @FindBy(xpath="//input[@name='firstName']")
-    public WebElement firstName;
+    public WebElement firstNameBox;
+
+    @FindBy(xpath="//input[@name='lastName']")
+    public WebElement lastNameBox;
+
+    @FindBy(xpath="//input[@name='linkedIn']")
+    public WebElement linkedinBox;
+
+    @FindBy(xpath="//input[@name='email']")
+    public WebElement emailBox;
+
+    @FindBy(xpath="//input[@name='password']")
+    public WebElement passwordBox;
+
+    @FindBy(xpath="//input[@name='confirmPassword']")
+    public WebElement confirmPasswordBox;
 
     @FindBy(xpath="//input[@name='checkbox']")
     public WebElement registerCheckBox;
@@ -19,7 +34,7 @@ public class RegisterPage extends CommonPageElements{
     public WebElement createNewAcountButton;
 
     @FindBy(xpath = "//div[text()='Registered successfully!']")
-    public WebElement resgisteredSucc;
+    public WebElement resgisteredSuccAlertMessage;
 
     @FindBy(xpath = "(//p[@class='MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-v7esy'])[1]")
     public WebElement firstNameNegativeEmpty;
@@ -38,11 +53,6 @@ public class RegisterPage extends CommonPageElements{
 
     @FindBy(xpath = "(//input[@type='text'])[4]")
     public WebElement activeEyeIcon;
-
-    @FindBy( xpath= "(//input[@class='MuiInputBase-input MuiOutlinedInput-input MuiInputBase-inputAdornedEnd css-1uvydh2'])[1]")
-    public WebElement passwordField;
-    @FindBy(xpath = "//input[@type='checkbox']")
-    public WebElement checkBox;
 
     @FindBy(xpath = "//p[@class='MuiFormHelperText-root Mui-error css-j7o63n']")
     public WebElement privacyText;

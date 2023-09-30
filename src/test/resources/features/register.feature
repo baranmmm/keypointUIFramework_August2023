@@ -9,53 +9,49 @@ Feature: Register
   @ValidCredentials
   Scenario Outline: Register With Valid Credentials
 
-    And the user enters valid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
+    And the User enterss valid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<Confirm Password>"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see Registered successfully! message
-#maili ve linkedini her defasinda degistirmek gerekir
     Examples:
-      | First Name                                         | Last Name                                          | LinkedIn                  | Email                                              | Password    |
-      | as                                                 | asdas                                              | https://linkedin.com/in/c | h@yo.cc                                            | Test123456! |
-      | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvb | as                                                 | www.linkedin.com/in/co    | g1@yopmais.coc                                     | Test123456! |
-      | asdas                                              | fwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvx | www.linkedin.com/in/ch01  | g_@yopmail.clc                                     | Test123456! |
-      | a w                                                | Aaa aa and As ss ss                                | www.linkedin.com/in/H05   | gf.a@yopmail.cla                                   | Test123456! |
-      | Mr Adem                                            | asdas                                              | www.linkedin.com/in/hh05  | g@yopmail.cla                                      | Test123456! |
-      | bedriye                                            | antalyali                                          | www.linkedin.com/in/hd01  | gwertyuiopsslfyhjklzxcvbnmqwertyuiopasdfghjk@yo.co | Test123456! |
+      | First Name                                         | Last Name                                          | LinkedIn                  | Email                                              | Password    | Confirm Password |
+      | as                                                 | asdas                                              | https://linkedin.com/in/c | h@yo.cc                                            | Test123456! | Test123456!      |
+      | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvb | as                                                 | www.linkedin.com/in/co    | g1@yopmais.coc                                     | Test123456! | Test123456!      |
+      | asdas                                              | fwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvx | www.linkedin.com/in/ch01  | g_@yopmail.clc                                     | Test123456! | Test123456!      |
+      | a w                                                | Aaa aa and As ss ss                                | www.linkedin.com/in/H05   | gf.a@yopmail.cla                                   | Test123456! | Test123456!      |
+      | Mr Adem                                            | asdas                                              | www.linkedin.com/in/hh05  | g@yopmail.cla                                      | Test123456! | Test123456!      |
+      | bedriye                                            | antalyali                                          | www.linkedin.com/in/hd01  | gwertyuiopsslfyhjklzxcvbnmqwertyuiopasdfghjk@yo.co | Test123456! | Test123456!      |
 
 
   @EmptyCredentials
   Scenario Outline: As a user, I should not be able to create an account with empty credentials
   and should have an error message
 
-    And the user enters empty "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<ConfirmPassword>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
+    And the user enters empty "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<Confirm Password>"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see "<Message>" messages
     Examples:
-      | First Name | Last Name | LinkedIn                         | Email           | Password    | ConfirmPassword | Message                           |
-      |            | as        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456! | Test123456!     | Please enter your first name.     |
-      | yyy        |           | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456! | Test123456!     | Please enter your last name.      |
-      | yyy        | as        |                                  | f1@yopmais.col  | Test123456! | Test123456!     | Please enter your LinkedIn URL.   |
-      | yyy        | as        | www.linkedin.com/in/uo           |                 | Test123456! | Test123456!     | Please enter your e-mail address. |
-      | yyy        | as        | www.linkedin.com/in/uo           | f1@yopmais.col  |             |                 | Please enter your password.       |
-      | as         | asdas     | https://linkedin.com/in/occccccc | dxxxxxxcx@yo.cl | Test123456! |                 | Please confirm your password.     |
+      | First Name | Last Name | LinkedIn                         | Email           | Password    | Confirm Password | Message                           |
+      |            | as        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456! | Test123456!      | Please enter your first name.     |
+      | yyy        |           | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456! | Test123456!      | Please enter your last name.      |
+      | yyy        | as        |                                  | f1@yopmais.col  | Test123456! | Test123456!      | Please enter your LinkedIn URL.   |
+      | yyy        | as        | www.linkedin.com/in/uo           |                 | Test123456! | Test123456!      | Please enter your e-mail address. |
+      | yyy        | as        | www.linkedin.com/in/uo           | f1@yopmais.col  |             |                  | Please enter your password.       |
+      | as         | asdas     | https://linkedin.com/in/occccccc | dxxxxxxcx@yo.cl | Test123456! |                  | Please confirm your password.     |
 
 
   @InvalidCredentials
   Scenario Outline: As a user, I should not be able to create an account with invalid credentials
   and should have an error message
 
-    And the user enters invalid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<ConfirmPassword>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
+    And the user enters invalid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<Confirm Password>"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see "<Message>" message
 
-    # Linkedin alanina format disi deger girildiginde kabul ediyor linkedin.com/in/ 10.ornek
-    # Linkedin name alanina _ yi kabul ederken baska girilen ozel karakterleri kabul etmiyor
-
     Examples:
-      | First Name | Last Name | LinkedIn                         | Email           | Password     | ConfirmPassword | Message                                                                                                  |
+      | First Name | Last Name | LinkedIn                         | Email           | Password     | Confirm Password | Message                                                                                                  |
       | a          | as        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!     | First name should be 2 characters minimum.                                                               |
       | q_         | as        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!     | Not a valid name! (Only letters)                                                                         |
       | 1_         | as        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!     | Not a valid name! (Only letters)                                                                         |
@@ -82,15 +78,15 @@ Feature: Register
   and should have an alert error message
 
     And the user enters invalid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see alert "<Message>" message
 
     Examples:
       | First Name                                          | Last Name                                           | LinkedIn               | Email                                               | Password              | Message                                                                                                                                                                                                                                                                                             |
-      | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbd | as                                                  | www.linkedin.com/in/uo | f1@yopmais.col                                      | Test123456!           | size must be between 2 and 50                                                                                                                                                                                                                                                                  |
-      | yyy                                                 | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbd | www.linkedin.com/in/uo | f1@yopmais.col                                      | Test123456!           | size must be between 1 and 50                                                                                                                                                                                                                                                                  |
-      | yyy                                                 | as                                                  | www.linkedin.com/in/uo | fwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjaa@yo.cl | Test123456!           | size must be between 6 and 50                                                                                                                                                                                                                                                                |
+      | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbd | as                                                  | www.linkedin.com/in/uo | f1@yopmais.col                                      | Test123456!           | boyut '2' ile '50' arasında olmalı                                                                                                                                                                                                                                                                       |
+      | yyy                                                 | qwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjklzxcvbd | www.linkedin.com/in/uo | f1@yopmais.col                                      | Test123456!           | boyut '2' ile '50' arasında olmalı                                                                                                                                                                                                                                                                       |
+      | yyy                                                 | as                                                  | www.linkedin.com/in/uo | fwertyuiopasdfghjklzxcvbnmqwertyuiopasdfghjaa@yo.cl | Test123456!           | boyut '6' ile '50' arasında olmalı                                                                                                                                                                                                                                                                       |
       | yyy                                                 | as                                                  | www.linkedin.com/in/uo | f1@yopmais.col                                      | Test1234567890123456! | Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:(!@#&()–[{}]:;',?/*~$^+=<>.) & Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character:(!@#&()–[{}]:;',?/*~$^+=<>.) |
 
   @InvalidCredentialsPopUp
@@ -98,8 +94,8 @@ Feature: Register
   and should have an popup error message
 
     And the user enters invalid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see popup "<Message>" message
 
     Examples:
@@ -109,17 +105,6 @@ Feature: Register
       | yyy        | as        | www.linkedin.com/in/uo | f1yopmais.col | Test123456! | Email must be a valid email (example@mail.com) |
       | yyy        | as        | www.linkedin.com/in/uo | f1@.col       | Test123456! | Email must be a valid email (example@mail.com) |
       | yyy        | as        | www.linkedin.com/in/uo | f1@yopmais.   | Test123456! | Email must be a valid email (example@mail.com) |
-
-  @validPassword
-  Scenario Outline: Register With Valid Confirm Password
-#maili ve linkedini her defasinda degistirmek gerekir
-    And the user enters valid "<First Name>","<Last Name>","<LinkedIn>","<Email>","<Password>","<ConfirmPassword>"
-    And the user clicks on button that "I have read and agree to the privacy policy and GDPR."
-    And the clicks on button that "CREATE MY ACCOUNT"
-    Then the user should be able to see Registered successfully! message
-    Examples:
-      | First Name | Last Name | LinkedIn                        | Email          | Password    | ConfirmPassword |
-      | as         | asdas     | https://linkedin.com/in/ocdcfccc | dxxxxxxx@yo.kl | Test123456! | Test123456!     |
 
 
   @visibiltyOfPassword
