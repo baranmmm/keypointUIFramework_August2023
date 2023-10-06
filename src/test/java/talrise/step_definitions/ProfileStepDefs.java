@@ -37,7 +37,6 @@ public class ProfileStepDefs extends CommonSteps {
 
     @When("the user clicks on {string} section pencil icon")
     public void theUserClicksOnSectionPencilIcon(String profileSection) {
-
         profilePage.clickOnProfileSectionPencilIcon(profileSection);
     }
 
