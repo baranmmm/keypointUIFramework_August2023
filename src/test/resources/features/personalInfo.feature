@@ -26,7 +26,6 @@ Feature:As a user, I should be able to update "Country", "City",
   Scenario: When user opens "Personal Information" page "First Name", "Last Name", "LinkedIn" and "E-mail"
   input boxes(titles) should be given in input box and these input boxes don't accept another input.
     When User clicks on "Personal Information" menu expands again
-  #And User sees "firstName","lastName","LinkedIn" and "E_mail" information already given
     And User sees firstName,lastName,LinkedIn and E_mail information already given
       | firstName | Maizie                            |
       | lastName  | Garza                             |
@@ -46,10 +45,10 @@ Feature:As a user, I should be able to update "Country", "City",
       And User clicks the Wales option "None" and 6 cities should be available to select in "City"dropdown.
       And User clicks the Northern Ireland option "None" and 6 cities should be available to select in "City"dropdown.
       And User clicks the Scotland option "None" and 8 cities should be available to select in "City"dropdown.
-#     And User  clicks the UK option "None" and 75 cities should be available to select in "City"dropdown.
+#     And User  clicks the UK option "None" and 75 cities should be available to select in "City"dropdown.(This is a suggestion but not included in swagger)
       And User  clicks the UK option "None" and 1 cities should be available to select in "City"dropdown.
 
-
+#this file is still under progress
 
 
 

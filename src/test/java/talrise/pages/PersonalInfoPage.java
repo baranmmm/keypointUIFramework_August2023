@@ -25,7 +25,7 @@ public class PersonalInfoPage extends CommonPageElements{
     public WebElement personalInfoDropdown;
 
 
-    @FindBy(css = "[class=\"sc-gsFSXq kwEtzg headline\"]")
+    @FindBy(xpath = "//h2[text()=\"Personal Information\"]")
     public WebElement personalInfoText;
 
 
@@ -63,10 +63,7 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(css = "input[id=':r6:']")
     public  WebElement email;
 
-//    public List<WebElement> getRegisteredInfo() {
-      public   List <WebElement> registeredInfo =Arrays.asList(firstName,lastName,linkedIn,email);
-//        return registeredInfo;
-//    }
+    public   List <WebElement> registeredInfo =Arrays.asList(firstName,lastName,linkedIn,email);
 
     @FindBy(id = "countryId-select-input-id")
     public WebElement countryInputBox;
@@ -102,7 +99,7 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
     public List<WebElement>cityOfNorthernIcelandDropdowns;
 
-    //ul[@class="MuiList-root MuiList-padding MuiMenu-list css-r8u8y9"]//li
+
     @FindBy(xpath = "//li[.=\"Scotland\"]")
     public WebElement scotlandOption;
 

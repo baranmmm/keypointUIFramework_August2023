@@ -7,7 +7,10 @@ import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import talrise.utilities.CommonSteps;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 public class PersonalInfoStepDef extends CommonSteps {
 
@@ -18,7 +21,6 @@ public class PersonalInfoStepDef extends CommonSteps {
      waitForPageToLoad(3);
 
      for (WebElement menu : personalInfoPage.menus) {
-            System.out.println("menu = " + menu.getText());
 
             if(menu.getText().equals("Personal Information")){
                 Assert.assertEquals(menu.getText(),"Personal Information");
@@ -32,11 +34,10 @@ public class PersonalInfoStepDef extends CommonSteps {
 
 waitForPageToLoad(3);
         int size1 = personalInfoPage.profileMenuPenIcons.size();
-        System.out.println("size1 = " + size1);
         waitFor(3);
         personalInfoPage.personalInfoPenIcon.click();
         int size2 = personalInfoPage.profileMenuPenIcons.size();
-        System.out.println("size2 = " + size2);
+
         Assert.assertTrue(size1==(size2+1));
 
 
@@ -44,7 +45,6 @@ waitForPageToLoad(3);
     @When("User clicks on arrow,the menu collapse")
     public void user_clicks_on_arrow_the_menu_collapse() {
         int size3 = personalInfoPage.profileMenuPenIcons.size();
-        System.out.println("size3 = " + size3);
         personalInfoPage.personalInfoSideArrow.click();
         waitFor(3);
         int size4 = personalInfoPage.profileMenuPenIcons.size();
@@ -58,7 +58,7 @@ waitForPageToLoad(3);
     public void user_clicks_on_menu_expands_again(String PersonalInformation) {
 
         personalInfoPage.personalInfoDropdown.click();
-
+         waitFor(1);
         Assert.assertEquals(PersonalInformation, personalInfoPage.personalInfoText.getText());
     }
 
@@ -73,10 +73,8 @@ waitForPageToLoad(3);
         for (int i = 0; i < personalInfoPage.personalInfoInputLabels.size(); i++) {
             String actualElement=personalInfoPage.personalInfoInputLabels.get(i).getText();
             waitFor(1);
-            System.out.println("personalInfoPage.personalInfoInputLabels = " + personalInfoPage.personalInfoInputLabels.
-                    get(i).getText());
             String expectedElement=args.get(i);
-            System.out.println("expectedElement = " + expectedElement);
+
             Assert.assertEquals(expectedElement,actualElement);
 
         }
@@ -87,23 +85,15 @@ waitForPageToLoad(3);
     @Then("User sees {string},{string}and {string} elements dropdowns")
     public void userSeesAndElementsDropdowns(String arg0, String arg1, String arg2) {
         waitFor(2);
-       // System.out.println(personalInfoPage.countryDropdown.getText());
-
-       List<String>personalInfoDropdowns=Arrays.asList(personalInfoPage.countryDropdown.getText(),
+        List<String>personalInfoDropdowns=Arrays.asList(personalInfoPage.countryDropdown.getText(),
               personalInfoPage.city.getText(),personalInfoPage.countryCode.getText());
-
-        System.out.println("personalInfoDropdowns = " + personalInfoDropdowns);
 
         List<String>parameters=Arrays.asList(arg0,arg1,arg2);
 
-        System.out.println("parameters = " + parameters);
-
-       for (int i = 0; i < personalInfoDropdowns.size(); i++) {
+        for (int i = 0; i < personalInfoDropdowns.size(); i++) {
             String actualElement=personalInfoDropdowns.get(i);
-            System.out.println("actualElement = " + actualElement);
             waitFor(1);
             String expectedElement=parameters.get(i);
-            System.out.println("expectedElement = " + expectedElement);
 
            Assert.assertEquals(expectedElement,actualElement);
 
@@ -119,15 +109,10 @@ waitForPageToLoad(3);
 
         scrollToElement(personalInfoPage.linkedIn);
 
-        System.out.println("personalInfoPage.registeredInfo.get(1).getAttribute() = " +
-                "" + personalInfoPage.registeredInfo.get(1).getAttribute("value"));
-
         List<String> userDatass = new ArrayList<>(userDatas.values());
-        System.out.println("userDatass = " + userDatass);
-
 
         for (int i = 0; i < personalInfoPage.registeredInfo.size(); i++) {
-         //  String actualValue= personalInfoPage.registeredInfo.get(i).getAttribute("value");
+
                     waitFor(1);
         Assert.assertEquals(userDatass.get(i),personalInfoPage.registeredInfo.get(i).getAttribute("value"));
 
@@ -159,8 +144,7 @@ waitForPageToLoad(3);
         Assert.assertTrue(personalInfoPage.linkedIn.getAttribute("readonly"),true);
         Assert.assertTrue(personalInfoPage.email.getAttribute("readonly"),true);
 
-        System.out.println("personalInfoPage.linkedIn.getAttribute(\"readonly\") = "
-                + personalInfoPage.linkedIn.getAttribute("readonly"));
+
 
 
     }
@@ -201,7 +185,7 @@ waitForPageToLoad(3);
         @And("User  leaves {string} input box  empty {string} input box is not clickable")
         public void userLeavesInputBoxEmptyInputBoxIsNotClickable (String arg0, String arg1){
         personalInfoPage.countryInputBox.click();
-        //personalInfoPage.countryInputBox.click(); see the warning element is not intractable
+
         Assert.assertTrue(personalInfoPage.cityInput.getAttribute("disabled"),true);
 
 
@@ -219,7 +203,7 @@ waitForPageToLoad(3);
 
         Assert.assertEquals(expectedCitySize,actualCitySize);
 
-            System.out.println("personalInfoPage.cityDropdowns.size() = " + personalInfoPage.cityOfEnglandDropdowns.size());
+
 
 
         }
@@ -229,14 +213,11 @@ waitForPageToLoad(3);
         arg2){
         personalInfoPage.noneOption.click();
         waitFor(1);
-
-        doubleClickWithActions(personalInfoPage.countryDropDownArrow);
-
+        personalInfoPage.countryInputBox.click();
         waitFor(1);
         personalInfoPage.walesOption.click();
         personalInfoPage.cityInput.click();
             int actualSizeOfWalesCity = personalInfoPage.cityOfWalesDropdowns.size();
-            System.out.println("actualSizeOfWalesCity = " + actualSizeOfWalesCity);
 
             int expectedSizeOfWalesCity=arg1+1;
             Assert.assertEquals(expectedSizeOfWalesCity,actualSizeOfWalesCity);
@@ -255,9 +236,8 @@ waitForPageToLoad(3);
         personalInfoPage.northernIrelandOption.click();
         personalInfoPage.cityInput.click();
        int actualSizeOfNorthernIrelandCity = personalInfoPage.cityOfNorthernIcelandDropdowns.size();
-        System.out.println("actualSizeOfNorthernIcelandCity = " + actualSizeOfNorthernIrelandCity);
 
-        int expectedSizeOfNorthernIcelandCity=arg1+1;
+       int expectedSizeOfNorthernIcelandCity=arg1+1;
        Assert.assertEquals(expectedSizeOfNorthernIcelandCity,actualSizeOfNorthernIrelandCity);
 
 
@@ -276,7 +256,6 @@ waitForPageToLoad(3);
             personalInfoPage.scotlandOption.click();
             personalInfoPage.cityInput.click();
             int actualSizeOfScotlandCity = personalInfoPage.scotlandDropdowns.size();
-            System.out.println(actualSizeOfScotlandCity);
 
             int expectedSizeOfScotlandCity =arg1+1;
             Assert.assertEquals(expectedSizeOfScotlandCity,actualSizeOfScotlandCity);
@@ -298,7 +277,7 @@ waitForPageToLoad(3);
         personalInfoPage.uKOption.click();
         personalInfoPage.cityInput.click();
         int actualSizeOfUKCity = personalInfoPage.uKDropdowns.size();
-        System.out.println(actualSizeOfUKCity);
+
 
         int expectedSizeOfUkCity = arg1 + 1;
         Assert.assertEquals(expectedSizeOfUkCity, actualSizeOfUKCity);
