@@ -11,7 +11,6 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(xpath ="//span[.=\"Profile\"]" )
     public WebElement profileSideMenu;
 
-
     @FindBy(css = "[class=\"MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAccordion-root MuiAccordion-rounded css-pcn5tp\"]")
     public List<WebElement>menus;
 
@@ -24,10 +23,8 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(xpath ="//span[.='Personal Information']")
     public WebElement personalInfoDropdown;
 
-
     @FindBy(xpath = "//h2[text()=\"Personal Information\"]")
     public WebElement personalInfoText;
-
 
     @FindBy(xpath ="(//div[@class=\"collapseIconWrapper\"])[1]")
     public WebElement personalInfoSideArrow;
@@ -35,7 +32,7 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(css ="[class=\"MuiFormControl-root MuiTextField-root sc-kdBSHD fwoIiI css-i44wyl\"]")
     public List<WebElement> personalInfoInputs;
 
-    @FindBy(xpath ="//div[@class=\"MuiFormControl-root MuiTextField-root sc-kdBSHD fwoIiI css-i44wyl\"]//label")
+    @FindBy(xpath = "//h2[.='Personal Information']//..//label[contains(@id,':-label')]")
     public List<WebElement> personalInfoInputLabels;
 
     @FindBy(xpath ="")
@@ -59,11 +56,8 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(css = "input[id=':r5:']")
     public  WebElement linkedIn;
 
-
     @FindBy(css = "input[id=':r6:']")
     public  WebElement email;
-
-    public   List <WebElement> registeredInfo =Arrays.asList(firstName,lastName,linkedIn,email);
 
     @FindBy(id = "countryId-select-input-id")
     public WebElement countryInputBox;
@@ -89,16 +83,14 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
     public List<WebElement>cityOfWalesDropdowns;
 
-
     @FindBy(xpath = "(//*[@class=\"MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiSelect-icon MuiSelect-iconOutlined css-1636szt\"])[1]")
-   public WebElement countryDropDownArrow;
+    public WebElement countryDropDownArrow;
 
     @FindBy(xpath = "//li[.=\"Northern Ireland\"]")
     public WebElement northernIrelandOption;
 
     @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
     public List<WebElement>cityOfNorthernIcelandDropdowns;
-
 
     @FindBy(xpath = "//li[.=\"Scotland\"]")
     public WebElement scotlandOption;
@@ -109,10 +101,10 @@ public class PersonalInfoPage extends CommonPageElements{
     @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
     public List<WebElement>scotlandDropdowns;
 
-   @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
+    @FindBy(xpath = "//ul[@class=\"MuiList-root MuiList-padding MuiMenu-list css-r8u8y9\"]//li")
     public List<WebElement>uKDropdowns;
 
-
+    public   List <WebElement> registeredInfo =Arrays.asList(firstName,lastName,linkedIn,email);
 
 
 

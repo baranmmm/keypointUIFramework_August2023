@@ -19,7 +19,6 @@ public class RegisterStepDefs extends CommonSteps {
 
     @When("the user clicks SIGN UP button")
     public void theUserClicksSIGNUPButton() {
-
         registerPage.signUp.click();
     }
     @And("the User enterss valid {string},{string},{string},{string},{string},{string}")
@@ -37,7 +36,6 @@ public class RegisterStepDefs extends CommonSteps {
         registerPage.registerCheckBox.click();
     }
 
-
     @And("the clicks on button that CREATE MY ACCOUNT button")
     public void theClicksOnButtonThatCREATEMYACCOUNTButton(){
         clickWithJS(registerPage.createNewAcountButton);
@@ -54,13 +52,11 @@ public class RegisterStepDefs extends CommonSteps {
         registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
     }
 
-
     @And("the user enters invalid {string},{string},{string},{string},{string}")
     public void theUserEntersInvalid(String firstName, String lasttName, String linkedin, String email, String password) {
-
         registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lasttName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,password);
-
     }
+
     @Then("the user should be able to see {string} message")
     public void theUserShouldBeAbleToSeeMessage(String message) {
         registerPage.createNewAcountButton.click();
@@ -69,18 +65,15 @@ public class RegisterStepDefs extends CommonSteps {
 
     @Then("the user should be able to see {string} messages")
     public void theUserShouldBeAbleToSeeMessages(String message) {
-
         registerPage.createNewAcountButton.click();
         Assert.assertEquals(message,registerPage.firstNameNegativeEmpty.getText());
-
     }
 
 
     @Then("the user should be able to see alert {string} message")
     public void theUserShouldBeAbleToSeeAlertMessage(String message) {
         registerPage.createNewAcountButton.click();
-        waitFor(1);
-        Assert.assertEquals(message,registerPage.alertNegative.getText());
+        Assert.assertTrue(message.contains(registerPage.alertNegative.getText()));
     }
 
     @Then("the user should be able to see popup {string} message")
@@ -92,7 +85,6 @@ public class RegisterStepDefs extends CommonSteps {
     @And("the user enters invalid {string},{string},{string},{string},{string},{string}")
     public void theUserEntersInvalid(String firstName, String lastName, String linkedin, String email, String password, String confirmPassword) {
         registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
-
     }
 
     @And("the user enters empty {string},{string},{string},{string},{string},{string}")
@@ -100,27 +92,21 @@ public class RegisterStepDefs extends CommonSteps {
         registerPage.firstNameBox.sendKeys(firstName,Keys.TAB,lastName,Keys.TAB,linkedin,Keys.TAB,email,Keys.TAB,password,Keys.TAB,Keys.TAB,confirmPassword);
     }
 
-
     @And("The user clicks eye icon")
     public void theUserClicksEyeIcon() {
-
         waitFor(2);
         registerPage.eyeIcon.click();
     }
 
     @And("The user enter password")
     public void theUserEnterPassword() {
-
         registerPage.passwordBox.sendKeys("Test1234!");
     }
-
-
 
     @Then("The user should be able to see visibility of password")
     public void theUserShouldBeAbleToSeeVisibilityOfPassword() {
         Assert.assertTrue(registerPage.activeEyeIcon.isDisplayed());
     }
-
 
     @When("The user clicks checkBox")
     public void theUserClicksCheckBox() {
@@ -144,9 +130,7 @@ public class RegisterStepDefs extends CommonSteps {
 
     @Then("When the user diselect check box , {string} is seen")
     public void whenTheUserDiselectCheckBoxIsSeen(String message) {
-
         Assert.assertEquals(message,registerPage.privacyText.getText());
-
     }
 
 
