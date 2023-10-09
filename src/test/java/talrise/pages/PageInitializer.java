@@ -8,6 +8,7 @@ public class PageInitializer extends Driver {
     public static DashboardPage dashboardPage;
     public static ProfilePage profilePage;
     public static RegisterPage registerPage;
+    public static PersonalInfoPage personalInfoPage;
 
 
 
@@ -16,5 +17,6 @@ public class PageInitializer extends Driver {
         dashboardPage = new DashboardPage();
         profilePage = new ProfilePage();
         registerPage=new RegisterPage();
+        personalInfoPage=new PersonalInfoPage();
     }
 }

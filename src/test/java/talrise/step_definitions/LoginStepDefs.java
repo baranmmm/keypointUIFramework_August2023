@@ -32,8 +32,6 @@ public class LoginStepDefs extends CommonSteps {
         Assert.assertEquals(expectedUrl,actualUrl);
     }
 
-    // ----------------------negative scenario-------------------
-
     @Given("the user enters invalid {string},{string}")
     public void the_user_enters_invalid(String Email, String Password) {
         driver.get(ConfigurationReader.get("url"));
@@ -88,7 +86,6 @@ public class LoginStepDefs extends CommonSteps {
         boolean forgotPasswordDisplayed = loginPage.forgotPassword.isDisplayed();
         Assert.assertTrue(forgotPasswordDisplayed);
     }
-
 
     @When("the user clicks SIGN UP link")
     public void theUserClicksSIGNUPLink() {
