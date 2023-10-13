@@ -445,22 +445,42 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @When("The user selects the {string} option from the Workplace dropdown")
     public void theUserSelectsTheOptionFromTheWorkplaceDropdown(String arg0) {
+        experiencePage.workplaceDropDown.click();
+        waitFor(2);
+        experiencePage.workplaceList.get(0).click();
+        waitFor(2);
+
     }
 
     @Then("Verify that the Workplace dropdown should be empty")
     public void verifyThatTheWorkplaceDropdownShouldBeEmpty() {
+        assert experiencePage.workplaceDropDown.getText().isEmpty();
     }
 
     @When("The user clicks to the Contract Type dropdown menu")
     public void theUserClicksToTheContractTypeDropdownMenu() {
+        experiencePage.contractTypeDropDown.click();
     }
 
     @And("The user clicks on one option randomly from the Contract Type dropdown menu")
     public void theUserClicksOnOneOptionRandomlyFromTheContractTypeDropdownMenu() {
+        getRandomId(experiencePage.contractTypeList).click();
+        waitFor(2);
     }
 
     @Then("Verify that user sees all the Contract Type dropdown menu")
-    public void verifyThatUserSeesAllTheContractTypeDropdownMenu() {
+    public void verifyThatUserSeesAllTheContractTypeDropdownMenu(DataTable contractType) {
+        actions.sendKeys(Keys.PAGE_DOWN).click().perform();
+        experiencePage.contractTypeDropDown.click();
+        List<String> contractTypeDataTable = contractType.column(0);
+        for (int i = 0; i <contractTypeDataTable.size() ; i++) {
+            waitFor(2);
+            WebElement contractTypeElement= driver.findElement(By.xpath("//li[text()='"+contractTypeDataTable.get(i)+"']"));
+            waitFor(2);
+            assert contractTypeElement.isDisplayed();
+
+        }
+
     }
 
     @When("The user clicks to the Notice Period dropdown menu")

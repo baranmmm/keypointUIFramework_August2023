@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         glue = "talrise/step_definitions",
         dryRun = false,
 
-        tags = "@exp"
+        tags = ""
 
 
 )

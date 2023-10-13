@@ -107,7 +107,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
     Then Verify that "Delete" button should not be visible
 
   Scenario: Users should be able to delete added experience fields using the "delete" button at the top right of the Experience module
-    Given  The user on the "Experience" module
     When   The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","12.2000",and "13.2005"
     And    The user clicks to the "<Please choose all the skill sets you used while working in this experience module.>" module and select an option
     And   The user clicks the "Delete" button at the top right of the Experience module
@@ -115,7 +114,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @workplacePositive
   Scenario: Users should be able to select one option of the workplace among "Hybrid, Remote, Onsite" options from the "Workplace" dropdown and verify them
-    Given  The user on the "Experience" module
     Then Verify that user sees all the Workplace dropdown options
       | Hybrid |
       | Remote |
@@ -126,17 +124,14 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @workplaceNegative
   Scenario: If the user selects the "none" option, the Workplace dropdown should be empty
-    Given  The user on the "Experience" module
     When The user selects the "none" option from the Workplace dropdown
     Then Verify that the Workplace dropdown should be empty
 
   @ContractTypes
   Scenario: "Permanent, "Contract", "Part time", "Freelance", "Axios", "Any", "Temporary", "Contract (Inside IR35)" and "Contract (Outside IR35)" options should be visible and clickable in the "Contract Type" dropdown menu
-    Given  The user on the "Experience" module
+
     When The user clicks to the Contract Type dropdown menu
-    And The user clicks on one option randomly from the Contract Type dropdown menu
     Then Verify that user sees all the Contract Type dropdown menu
-      | None                    |
       | Permanent               |
       | Contract                |
       | Part time               |
@@ -146,10 +141,11 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
       | Temporary               |
       | Contract (Inside IR35)  |
       | Contract (Outside IR35) |
+    And The user clicks on one option randomly from the Contract Type dropdown menu
 
   @noticePeriod
   Scenario: "1 week", "2 weeks", "3 weeks", "4 weeks", "5 weeks", "6 weeks", "2 months" and "3+ months" options should be visible and clickable in the "Notice Period" dropdown
-    Given  The user on the "Experience" module
+
     When The user clicks to the Notice Period dropdown menu
     And The user clicks on one option randomly from the Notice Period dropdown menu
     Then Verify that user sees all the Notice Period dropdown menu
@@ -164,7 +160,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @informationTextBox
   Scenario: The user clicks "Type to add more information." textbox, user should be able to see, type and enter Max 500 Characters in the textbox
-    Given  The user on the "Experience" module
     When The user cliks the "Type to add more information." textbox
     And The user types "This is a test string." in the Type to add more information textbox
     And The user types "This is another test string." in the Type to add more information textbox
@@ -173,14 +168,14 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @infoTextBoxNegative1
   Scenario: Max 500 characters
-    Given  The user on the "Experience" module
+
     When The user cliks the "Type to add more information." textbox
     And The user enters 500 characters in the text box
     Then Verify that user sees to type Max 500 characters
 
   @infoTextBoxNegative2
   Scenario: Max 501 characters
-    Given  The user on the "Experience" module
+
     When The user cliks the "Type to add more information." textbox
     And The user enters 501 characters in the text box
     Then Verify that user sees not to type 501 characters
