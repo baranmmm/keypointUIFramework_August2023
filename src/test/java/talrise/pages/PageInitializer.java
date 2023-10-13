@@ -13,6 +13,7 @@ public class PageInitializer extends Driver {
     public static PreferencesPage preferencesPage;
 
 
+    public static ExperiencePage experiencePage;
 
 
     public static void initialize(){
@@ -22,5 +23,6 @@ public class PageInitializer extends Driver {
         registerPage=new RegisterPage();
         personalInfoPage=new PersonalInfoPage();
         preferencesPage=new PreferencesPage();
+        experiencePage=new ExperiencePage();
     }
 }
