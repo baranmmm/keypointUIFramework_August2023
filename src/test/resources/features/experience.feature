@@ -1,21 +1,13 @@
+
 Feature:Verify visibility and click ability of "Experience" module subtitles on the "Profile" page
 
   Background:
     Given the "candidate" logs in successfully
     And the user navigates "Profile" left menu option
-
-
-
-
-  Scenario: All modules in the Profile section should be collapsed when the page first opened.
-    Then verify that all module items are collapsed when the page first opened
-    And the Experience module should be visible among other Profile modules
-    When the user clicks on the Experience module
-    Then the Experience module should be expanded
+    And The user on the "Experience" module
 
   @exp
   Scenario Outline: Verify Input Box Titles and Dropdowns on Experience Module
-    Given The user on the "Experience" module
     When The user verifies that should see the "Title*" input box
     And The user clicks to the "<Title>" and type text
     Then The user verifies that should see the "Company*" input box
@@ -37,8 +29,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @exphappypath
   Scenario Outline: Verify Input Boxes and Dropdowns are mandatory on the Experience Module-Happy Path
-
-    Given The user on the "Experience" module
     When The user clicks to the "<Title>" and type text
     And The user clicks to the "<Company>" and type company
     And The user clicks to the "<Start Date>" and type startDate
@@ -52,8 +42,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @expnegative
   Scenario Outline:Verify Input Boxes and Dropdowns are mandatory fields to fill on the Experience Module and Warning Messages-Negative
-
-    Given The user on the "Experience" module
     When The user clicks to the "<Title>" and type text
     And The user clicks to the "<Company>" and type company
     And The user clicks to the "<Start Date>" and type startDate
@@ -73,9 +61,8 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
       | Software Test Engineer | ABC     | 09.1980    | 09.2023  | Random Skill                                                                       | Request failed with status code 406          |
       | Software Test Engineer | ABC     | 10.1980    | 10.2023  | Random Skill                                                                       | Request failed with status code 406          |
 
-
+@skillSetNegative
   Scenario: Verify that SkillSet Options are mandatory field to fill and getting warning message
-    Given The user on the "Experience" module
     When The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","12.2000",and "13.2005"
     And The user clicks to the Skill Set dropdown in the experience module and not select any options
     And The user clicks to the save button
@@ -83,7 +70,6 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @checkbox1
   Scenario: Verify that the Notice Period dropdown is visible and mandatory when the checkbox is selected
-    Given The user on the "Experience" module
     When The user clicks "I am currently working in this position." checkbox
     And The user verifies that should see the "I am currently working in this position." checkbox.
     And  The user should see "Notice Period*" dropdown  menu
@@ -92,55 +78,50 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
   @checkbox2
   Scenario: Verify User should not see or select the "End Date" input box when "I am currently working in this position" checkbox is checked
-
-    Given  The user on the "Experience" module
     When  The user clicks the "I am currently working in this position" checkbox
     Then The user should not see the "End Date" input box
     And The user should not be able to select the "End Date" input box
 
   @buttons
   Scenario: ADD MORE EXPERIENCE, CANCEL and SAVE buttons should be visible and clickable
-
-    Given  The user on the "Experience" module
     Then  the ADD MORE EXPERIENCE, CANCEL and SAVE buttons should be visible
     And the ADD MORE EXPERIENCE, CANCEL and SAVE buttons should be clickable
 
   @moreExpBtn
   Scenario: Verify the user clicks the ADD MORE EXPERIENCE button, the user should add more experiences
-
-    Given  The user on the "Experience" module
     When The user clicks the ADD MORE EXPERIENCE button
     Then Verify that user should add more experiences
 
-  @deletepositive
+  @deletePositive
   Scenario: The "Delete" button should be visible and clickable only if the user selects items from the dropdowns and types the text into the input boxes
-    Given  The user on the "Experience" module
-    When  The user selects items from the dropdowns and typed text into the input boxes
-    And   The user clicks "Delete" button
-    Then  Verify that Delete button should be clickable
-    Then Verify that Delete button shoud be visible
+    When   The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","12.2000",and "13.2005"
+    And    The user clicks to the "<Please choose all the skill sets you used while working in this experience module.>" module and select an option
+    Then   Verify that Delete button should be visible
+    Then   Verify that Delete button should be clickable
+
 
   @deleteNegative
   Scenario: The "Delete" button should not be visible if the user not selects items from the dropdowns and types the text into the input boxes
-    Given  The user on the "Experience" module
+
     When The user has not selected any items from the dropdowns or typed any text into the input boxes
     Then Verify that "Delete" button should not be visible
 
   Scenario: Users should be able to delete added experience fields using the "delete" button at the top right of the Experience module
     Given  The user on the "Experience" module
-    When  The user fills up the Experience fields
+    When   The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","12.2000",and "13.2005"
+    And    The user clicks to the "<Please choose all the skill sets you used while working in this experience module.>" module and select an option
     And   The user clicks the "Delete" button at the top right of the Experience module
     Then  Verify that the experience fields should be deleted
 
   @workplacePositive
-  Scenario: Users should be able to select one option of the workplace among "Hybrid, Remote, Onsite" options from the "Workplace" dropdown
+  Scenario: Users should be able to select one option of the workplace among "Hybrid, Remote, Onsite" options from the "Workplace" dropdown and verify them
     Given  The user on the "Experience" module
-    When The user selects the one option randomly from the Workplace dropdown
     Then Verify that user sees all the Workplace dropdown options
-      | None   |
       | Hybrid |
       | Remote |
       | Onsite |
+    And The user selects the one option randomly from the Workplace dropdown
+
 
 
   @workplaceNegative

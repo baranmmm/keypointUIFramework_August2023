@@ -27,46 +27,44 @@ public class ExperiencePage extends CommonPageElements {
     @FindBy(xpath = "(//label[text()='Title*'])")
     public List<WebElement> titleTextElements;
 
-    public void clickandSendInPutBox(String title, String company, String startDate, String endDate) {
-
-        int amountOfTitle = 0;
-
-        for (WebElement titleTextElement : titleTextElements) {
-
-            amountOfTitle++;
-            System.out.println(" TitleElements= " + titleTextElement.getText());
-
-        }
-        System.out.println("amountOfTitle = " + amountOfTitle);
-
-        actions.scrollToElement(experienceText).keyDown(Keys.PAGE_DOWN).perform();
-        if (deleteButton.isDisplayed()) {
-            waitFor(2);
-
-            for (int i = 0; i < amountOfTitle; i++) {
-                deleteButton.click();
-            }
-            driver.findElement(By.xpath("//*[contains(.,'" + title + "')]//..//input")).click();
-            waitFor(2);
-            driver.findElement(By.xpath("//*[contains(.,'" + title + "')]//..//input")).sendKeys(title);
-
-            driver.findElement(By.xpath("//*[contains(.,'" + company + "')]//..//input")).click();
-            waitFor(2);
-            driver.findElement(By.xpath("//*[contains(.,'" + company + "')]//..//input")).sendKeys(company);
-
-            driver.findElement(By.xpath("//*[contains(.,'" + startDate + "')]//..//input")).click();
-            waitFor(2);
-            driver.findElement(By.xpath("//*[contains(.,'" + startDate + "')]//..//input")).sendKeys(startDate);
-
-            driver.findElement(By.xpath("//*[contains(.,'" + endDate + "')]//..//input")).click();
-            waitFor(2);
-            driver.findElement(By.xpath("//*[contains(.,'" + endDate + "')]//..//input")).sendKeys(endDate);
-
-
-        }
-
-
-    }
+//    public void clickAndSendInputBox(String title, String company, String startDate, String endDate) {
+//
+//        int amountOfTitle = 0;
+//
+//        for (WebElement titleTextElement : titleTextElements) {
+//
+//            amountOfTitle++;
+//            System.out.println(" TitleElements= " + titleTextElement.getText());
+//
+//        }
+//        System.out.println("amountOfTitle = " + amountOfTitle);
+//
+//        actions.scrollToElement(experienceText).keyDown(Keys.PAGE_DOWN).perform();
+//        if (deleteButton.isDisplayed()) {
+//            waitFor(2);
+//
+//            for (int i = 0; i < amountOfTitle; i++) {
+//                deleteButton.click();
+//            }
+//            driver.findElement(By.xpath("//*[contains(.,'" + title + "')]//..//input")).click();
+//            waitFor(2);
+//            driver.findElement(By.xpath("//*[contains(.,'" + title + "')]//..//input")).sendKeys(title);
+//
+//            driver.findElement(By.xpath("//*[contains(.,'" + company + "')]//..//input")).click();
+//            waitFor(2);
+//            driver.findElement(By.xpath("//*[contains(.,'" + company + "')]//..//input")).sendKeys(company);
+//
+//            driver.findElement(By.xpath("//*[contains(.,'" + startDate + "')]//..//input")).click();
+//            waitFor(2);
+//            driver.findElement(By.xpath("//*[contains(.,'" + startDate + "')]//..//input")).sendKeys(startDate);
+//
+//            driver.findElement(By.xpath("//*[contains(.,'" + endDate + "')]//..//input")).click();
+//            waitFor(2);
+//            driver.findElement(By.xpath("//*[contains(.,'" + endDate + "')]//..//input")).sendKeys(endDate);
+//
+//
+//        }
+//    }
 
     @FindBy(xpath = "//input[@id='title']")
     public WebElement titleInputBox;
@@ -84,9 +82,6 @@ public class ExperiencePage extends CommonPageElements {
 
     @FindBy(xpath = "//span[text()='I am currently working in this position.']")
     public WebElement ICWINTPText;
-
-    @FindBy(xpath = "//button[@class='sc-aXZVg iknXIt sc-lbJcrp iqeAXK btn-add']")
-    public WebElement addMoreExperienceBtn;
     @FindBy(xpath = "//li[@role='option']")
     public List<WebElement> contractTypeList;
     @FindBy(xpath = "//div[@id='experiences[0].contractTypeId-select-input-id']")
@@ -97,6 +92,8 @@ public class ExperiencePage extends CommonPageElements {
     public List<WebElement> workplaceList;
     @FindBy(xpath = "(//div[@class='MuiSelect-select MuiSelect-outlined MuiSelect-multiple MuiInputBase-input MuiOutlinedInput-input css-qiwgdb'])[1]")
     public WebElement skillSetDropDown;
+    @FindBy(xpath = "(//input[@class='MuiSelect-nativeInput css-1k3x8v3'])[9]")
+    public WebElement skillSetDropDown1;
     @FindBy(xpath = "//span[text()='Please choose all the skill sets you used while working in this position.*']")
     public WebElement skillSetDropDownText;
 
@@ -104,14 +101,6 @@ public class ExperiencePage extends CommonPageElements {
     public WebElement skillSetOption;
     @FindBy(xpath = "//li[@class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-11oatdh']")
     public List<WebElement> skillSetList;
-
-    public WebElement getRandomSkill() {
-        Random random = new Random();
-        int randomIndex = random.nextInt(skillSetList.size());
-
-        return skillSetList.get(randomIndex);
-    }
-
     @FindBy(xpath = "(//button[@label='save'])[7]")
     public WebElement experienceSaveButton;
     @FindBy(xpath = "//div[text()='Your experience info has been submitted successfully.']")
@@ -132,4 +121,18 @@ public class ExperiencePage extends CommonPageElements {
 
     @FindBy(xpath = "//li[@class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-11oatdh']")
     public List<WebElement> noticePeriodList;
+
+    @FindBy(xpath = "//span[.='ADD MORE EXPERIENCE']")
+    public WebElement addMoreExpBtn;
+
+    @FindBy(xpath = "(//button[text()='Cancel'])[7]")
+    public WebElement cancelBtn;
+
+    @FindBy(xpath = "(//button[text()='SAVE'])[7]")
+    public WebElement saveBtn;
+
+
+
+
+
 }
