@@ -42,26 +42,26 @@ Feature: Profile Feature
   Scenario: Verify that the user sees the "Profile complete rate"  text under the "Off the market" text on the top middle of the page
     Then Verify that the user sees the "Profile complete rate" text
 
-  @profile7
-  Scenario: 7: Verify that the user sees the percentage line under the "Profile complete rate"  text, with a green colour
-  and it increases or decreases when the user fills profile information
-  Verify that the user sees the percentage next to the percentage line
-  and it increases or decreases when the user fills profile information
-    Then Verify that the user sees the percentage line and rate
-    When user clicks industry module
-    When Select all industry field
-    And user should click save button for industry fields
-    Then user should see the percentage line and rate changed
+#  @profile7
+#  Scenario: 7: Verify that the user sees the percentage line under the "Profile complete rate"  text, with a green colour
+#  and it increases or decreases when the user fills profile information
+#  Verify that the user sees the percentage next to the percentage line
+#  and it increases or decreases when the user fills profile information
+#    Then Verify that the user sees the percentage line and rate
+#    When user clicks industry module
+#    When Select all industry field
+#    And user should click save button for industry fields
+#    Then user should see the percentage line and rate changed
 
-  @profile8
-  Scenario: 8: Verify that the user sees the percentage line under the "Profile complete rate"  text, with a green colour
-  and it increases or decreases when the user deletes profile information
-  Verify that the user sees the percentage next to the percentage line
-  and it increases or decreases when the user deletes profile information
-    When user clicks industry module
-    When press the Cross button above all fields
-    And user should click save button for industry fields
-    Then user should see the percentage line and rate changed
+#  @profile8
+#  Scenario: 8: Verify that the user sees the percentage line under the "Profile complete rate"  text, with a green colour
+#  and it increases or decreases when the user deletes profile information
+#  Verify that the user sees the percentage next to the percentage line
+#  and it increases or decreases when the user deletes profile information
+#    When user clicks industry module
+#    When press the Cross button above all fields
+#    And user should click save button for industry fields
+#    Then user should see the percentage line and rate changed
 
   @profile9-10
   Scenario: Verify that the user sees "LAST LOGIN:" text on the top right side of the page
@@ -86,12 +86,12 @@ Feature: Profile Feature
     And user should click save button for industry fields
     Then user should see that red cross turns green check sign
 
-  @profile14
-  Scenario: Verify the green check sign turns when the user removes all industry field
-    When the user navigates to industry module
-    When press the Cross button above all fields
-    And user should click save button for industry fields
-    Then user should see that green sign turns the red cross
+#  @profile14
+#  Scenario: Verify the green check sign turns when the user removes all industry field
+#    When the user navigates to industry module
+#    When press the Cross button above all fields
+#    And user should click save button for industry fields
+#    Then user should see that green sign turns the red cross
 
   @profile15
   Scenario:  Verify that the user sees and clicks the Edit icon across

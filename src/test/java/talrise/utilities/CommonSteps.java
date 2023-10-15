@@ -3,6 +3,7 @@ package talrise.utilities;
 import org.apache.commons.io.FileUtils;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.*;
 import org.sikuli.script.FindFailed;
@@ -20,10 +21,8 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Date;
+import java.util.*;
 import java.util.List;
-import java.util.Set;
 
 public class CommonSteps extends PageInitializer {
 
@@ -557,6 +556,12 @@ public class CommonSteps extends PageInitializer {
     public static String getPlease_fill_in_this_field_Message(WebElement inputBox) {
         String message = inputBox.getAttribute("validationMessage");
         return message;
+    }
+    public static WebElement getRandomId(List<WebElement> listofElement) {
+        Random random = new Random();
+        int randomIndex = random.nextInt(listofElement.size());
+
+        return listofElement.get(randomIndex);
     }
 
 }

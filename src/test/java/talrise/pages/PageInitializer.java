@@ -9,8 +9,12 @@ public class PageInitializer extends Driver {
     public static ProfilePage profilePage;
     public static RegisterPage registerPage;
     public static PersonalInfoPage personalInfoPage;
+    public static OverviewPage overviewPage;
+    public static PreferencesPage preferencesPage;
     public static EducationPage educationPage;
 
+
+    public static ExperiencePage experiencePage;
 
 
     public static void initialize(){
@@ -19,6 +23,9 @@ public class PageInitializer extends Driver {
         profilePage = new ProfilePage();
         registerPage=new RegisterPage();
         personalInfoPage=new PersonalInfoPage();
+        preferencesPage=new PreferencesPage();
+        overviewPage = new OverviewPage();
+        experiencePage=new ExperiencePage();
         educationPage = new EducationPage();
     }
 }
