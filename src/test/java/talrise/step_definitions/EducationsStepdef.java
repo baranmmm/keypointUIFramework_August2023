@@ -17,8 +17,8 @@ import static org.junit.Assert.assertTrue;
 public class EducationsStepdef extends CommonSteps {
     String certificate="";
 
-    @When("Test that {string} module is visible.")
-    public void testThatModuleIsVisible(String modules) {
+    @When("Verify that {string} module is visible.")
+    public void verifyThatModuleIsVisible(String modules) {
 
         waitFor(2);
         clickWithJS(profilePage.moduls(modules));

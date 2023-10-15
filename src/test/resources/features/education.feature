@@ -5,7 +5,7 @@ Feature: Education
     And the user navigates "Profile" left menu option
 #    When The user should be login
 #    And the user on the homepage and user clicks to Profile button
-    And Test that "Education" module is visible.
+    And Verify that "Education" module is visible.
 
 
   Scenario: User should see all of the modules as collapsed. Education module should be visible among other Profile modules and when it's clicked, it should be expanded.
