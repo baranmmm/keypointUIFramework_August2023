@@ -3,8 +3,6 @@ Feature: Education
   Background:
     Given the "candidate" logs in successfully
     And the user navigates "Profile" left menu option
-#    When The user should be login
-#    And the user on the homepage and user clicks to Profile button
     And Verify that "Education" module is visible.
 
 
@@ -86,7 +84,6 @@ Feature: Education
     When user enters "University", "Degree", "Department", "Start Year","End Year" fields
     When user should click one of the suggested certificates
     When user clicks SAVE button
- #   And user clicks + ADD EDUCATION button
     When user enters "University", "Degree", "Department", "Start Year","End Year" fields
     And user click CANCEL button
     Then Test that CANCEL button is clickable

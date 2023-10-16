@@ -46,9 +46,6 @@ public class EducationsStepdef extends CommonSteps {
         }
         else if(degree.equals("")) {
             educationPage.UniversityButton.sendKeys(uni,Keys.ENTER);
-            //   educationPage.DegreeButton.click();
-            //   waitFor(1);
-            //   educationPage.DropDownContext(degree);
             waitFor(1);
             educationPage.DepartmentButton.click();
             waitFor(1);
@@ -64,9 +61,6 @@ public class EducationsStepdef extends CommonSteps {
             waitFor(1);
             educationPage.DropDownContext(degree);
             waitFor(1);
-            // educationPage.DepartmentButton.click();
-            // waitFor(1);
-            // educationPage.DropDownContext(dep);
             educationPage.StartYearButton.click();
             waitFor(1);
             educationPage.DropDownContext(start);
