@@ -11,8 +11,7 @@ public class PageInitializer extends Driver {
     public static PersonalInfoPage personalInfoPage;
     public static OverviewPage overviewPage;
     public static PreferencesPage preferencesPage;
-
-
+    public static LanguagePage languagePage;
     public static ExperiencePage experiencePage;
 
 
@@ -25,5 +24,7 @@ public class PageInitializer extends Driver {
         preferencesPage=new PreferencesPage();
         overviewPage = new OverviewPage();
         experiencePage=new ExperiencePage();
+        languagePage=new LanguagePage();
+
     }
 }
