@@ -29,6 +29,8 @@ public class ProfileStepDefs extends CommonSteps {
         }
         loginPage.passwordTxtbox.sendKeys(ConfigurationReader.get("password"));
         loginPage.loginBtn.click();
+
+        dashboardPage.dismissPopUpMessage();
     }
 
     @And("the user navigates {string} left menu option")
