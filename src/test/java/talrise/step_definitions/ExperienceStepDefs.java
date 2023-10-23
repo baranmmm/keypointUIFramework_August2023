@@ -1,5 +1,6 @@
 package talrise.step_definitions;
 
+import com.github.javafaker.Faker;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,12 +11,18 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import talrise.utilities.CommonSteps;
+import talrise.utilities.ConfigurationReader;
+
 import java.util.List;
+import java.util.Random;
 
 
 public class ExperienceStepDefs extends CommonSteps {
 
     int amountOfTitle;
+    String text;
+    Faker faker;
+    String text2;
 
     @And("the ExperienceS module should be visible among other Profile modules")
     public void theExperienceSModuleShouldBeVisibleAmongOtherProfileModules() {
@@ -23,51 +30,25 @@ public class ExperienceStepDefs extends CommonSteps {
         waitFor(5);
         CommonSteps.verifyElementDisplayed(experiencePage.moduleEditIconList.get(6));
 
-    }
-
-    @When("the userS clicks on the Experience module")
-    public void theUsersClicksOnTheExperienceModule() {
-        experiencePage.moduleEditIconList.get(6).click();
-    }
-
-    @Then("the ExperienceS module should be expanded")
-    public void theExperiencesModuleShouldBeExpanded() {
-        int profileModuleListSize = experiencePage.profileModuleList.size();
-        int pencilIconListSize = experiencePage.moduleEditIconList.size();
-        Assert.assertEquals(profileModuleListSize - 1, pencilIconListSize);
-    }
-
-
-
-    @Then("verifyS that all module items are collapsed when the page first opened")
-    public void verifySThatAllModuleItemsAreCollapsedWhenThePageFirstOpened() {
-        int profileModuleListSize = experiencePage.profileModuleList.size();
-        int pencilIconListSize = experiencePage.moduleEditIconList.size();
-
-        Assert.assertEquals(profileModuleListSize, pencilIconListSize);
-
 
     }
 
     @Given("The user on the {string} module")
     public void theUserOnTheModule(String experience) {
-
-        experiencePage.moduleEditIconList.get(6).click();
         waitFor(2);
-        assert experiencePage.isExperienceFieldsContainsText(experience);
+        experiencePage.experienceSection.click();
+        waitFor(2);
+
 
     }
 
     @And("The user clicks to the {string} and type text")
-    public void theUserClicksToTheAndTypeText(String title){
-
-
+    public void theUserClicksToTheAndTypeText(String title) {
         amountOfTitle = 0;
 
         for (WebElement titleTextElement : experiencePage.titleTextElements) {
 
             amountOfTitle++;
-
         }
 
         actions.scrollToElement(experiencePage.experienceText).keyDown(Keys.PAGE_DOWN).perform();
@@ -84,12 +65,12 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @When("The user verifies that should see the {string} input box")
     public void theUserVerifiesThatShouldSeeTheInputBox(String title) {
-        assert experiencePage.isExperienceFieldsContainsText(title);
+        Assert.assertTrue(experiencePage.isExperienceFieldsContainsText(title));
 
     }
 
     @And("The user clicks to the {string} and type company")
-    public void theUserClicksToTheAndTypeCompany(String company)  {
+    public void theUserClicksToTheAndTypeCompany(String company) {
 
         experiencePage.companyInputBox.sendKeys(company);
 
@@ -104,7 +85,7 @@ public class ExperienceStepDefs extends CommonSteps {
     }
 
     @And("The user clicks to the {string} and type endDate")
-    public void theUserClicksToTheAndTypeEndDate(String endDate)  {
+    public void theUserClicksToTheAndTypeEndDate(String endDate) {
 
         experiencePage.endDateInputBox.sendKeys(endDate);
         waitFor(2);
@@ -113,7 +94,7 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @And("The user verifies that should see the {string} dropdown")
     public void theUserVerifiesThatShouldSeeTheDropdown(String dropdownText) {
-        assert experiencePage.isExperienceFieldsContainsText(dropdownText);
+        Assert.assertTrue(experiencePage.isExperienceFieldsContainsText(dropdownText));
 
     }
 
@@ -123,24 +104,26 @@ public class ExperienceStepDefs extends CommonSteps {
         experiencePage.contractTypeList.get(1).click();
 
     }
+
     @And("The user clicks to {string} and select an option")
     public void theUserClicksToAndSelectAnOption(String str) {
         experiencePage.workplaceDropDown.click();
         experiencePage.workplaceList.get(2).click();
+
     }
 
     @And("The user verifies should see {string} dropdown")
     public void theUserVerifiesShouldSeeDropdown(String str) {
-        assert experiencePage.skillSetDropDownText.getText().contains(str);
+        waitFor(5);
+        CommonSteps.verifyElementDisplayed(experiencePage.skillSetDropDownText);
+
     }
 
     @And("The user clicks to the {string} module and select an option")
     public void theUserClicksToTheModuleAndSelectAnOption(String skillSet) {
-
-        experiencePage.skillSetDropDown.click();
-        getRandomId( experiencePage.skillSetList).click();
-        getRandomId( experiencePage.skillSetList).click();
         waitFor(3);
+        experiencePage.skillSetDropDown.click();
+        experiencePage.skillSetList.get(0).click();
         actions.sendKeys(Keys.PAGE_DOWN).doubleClick().perform();
 
     }
@@ -159,22 +142,21 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @Then("The user verifies the success message is displayed")
     public void theUserVerifiesTheSuccessMessageIsDisplayed() {
-        assert experiencePage.successMessage.getText().contains("Your experience info has been submitted successfully.");
+        Assert.assertTrue(experiencePage.successMessage.getText().contains("Your experience info has been submitted successfully."));
     }
 
     @Then("The user verifies the {string} is displayed")
     public void theUserVerifiesTheIsDisplayed(String message) {
-        waitFor(5);
-        assert experiencePage.skillSetWarningMsg.isDisplayed();
-        assert experiencePage.skillSetWarningMsg.getText().contains(message);
+        waitFor(3);
+        Assert.assertEquals(message, experiencePage.skillSetWarningMsg.getText());
+
 
     }
 
 
-
     @When("The user clicks to the Title,Company,StartDate,and EndDate input boxes and types {string},{string},{string},and {string}")
-    public void theUserClicksToTheTitleCompanyStartDateAndEndDateInputBoxesAndTypesAnd(String title, String company, String startDate, String endDate)  {
-         amountOfTitle = 0;
+    public void theUserClicksToTheTitleCompanyStartDateAndEndDateInputBoxesAndTypesAnd(String title, String company, String startDate, String endDate) {
+        amountOfTitle = 0;
 
         for (WebElement titleTextElement : experiencePage.titleTextElements) {
 
@@ -199,8 +181,6 @@ public class ExperienceStepDefs extends CommonSteps {
             experiencePage.endDateInputBox.sendKeys(endDate);
         }
     }
-
-
 
 
     @When("The user clicks and types to the {string} in the experience module.")
@@ -248,10 +228,10 @@ public class ExperienceStepDefs extends CommonSteps {
     @When("The user clicks {string} checkbox")
     public void theUserClicksCheckbox(String arg0) {
 
-        if(!experiencePage.ICWITPCheckBox.isSelected()){
+        if (!experiencePage.ICWITPCheckBox.isSelected()) {
             waitFor(2);
             experiencePage.ICWITPCheckBox.click();
-        }else{
+        } else {
             System.out.println("Notice Period dropdown menuden secim yapiniz!");
         }
 
@@ -259,7 +239,7 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @And("The user verifies that should see the {string} checkbox.")
     public void theUserVerifiesThatShouldSeeTheCheckbox(String str) {
-        assert experiencePage.ICWINTPText.getText().contains(str);
+        Assert.assertTrue(experiencePage.ICWINTPText.getText().contains(str));
     }
 
     @And("The user should see {string} dropdown  menu")
@@ -288,28 +268,28 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @Then("The user should not see the {string} input box")
     public void theUserShouldNotSeeTheInputBox(String arg0) {
-        assert (!experiencePage.endDateInputBox.isEnabled());
+        Assert.assertFalse(experiencePage.endDateInputBox.isEnabled());
         System.out.println("!experiencePage.endDateInputBox.isEnabled() = " + !experiencePage.endDateInputBox.isEnabled());
     }
 
     @And("The user should not be able to select the {string} input box")
     public void theUserShouldNotBeAbleToSelectTheInputBox(String arg0) {
-        assert (!experiencePage.endDateInputBox.isSelected());
+        Assert.assertFalse(experiencePage.endDateInputBox.isSelected());
         System.out.println("!experiencePage.endDateInputBox.isSelected() = " + !experiencePage.endDateInputBox.isSelected());
     }
 
     @Then("the ADD MORE EXPERIENCE, CANCEL and SAVE buttons should be visible")
     public void theADDMOREEXPERIENCECANCELAndSAVEButtonsShouldBeVisible() {
-        assert experiencePage.addMoreExpBtn.isDisplayed();
-        assert experiencePage.cancelBtn.isDisplayed();
-        assert experiencePage.saveBtn.isDisplayed();
+        Assert.assertTrue(experiencePage.addMoreExpBtn.isDisplayed());
+        Assert.assertTrue(experiencePage.cancelBtn.isDisplayed());
+        Assert.assertTrue(experiencePage.saveBtn.isDisplayed());
     }
 
     @And("the ADD MORE EXPERIENCE, CANCEL and SAVE buttons should be clickable")
     public void theADDMOREEXPERIENCECANCELAndSAVEButtonsShouldBeClickable() {
-        assert experiencePage.addMoreExpBtn.isEnabled();
-        assert experiencePage.cancelBtn.isEnabled();
-        assert experiencePage.saveBtn.isEnabled();
+        Assert.assertTrue(experiencePage.addMoreExpBtn.isEnabled());
+        Assert.assertTrue(experiencePage.cancelBtn.isEnabled());
+        Assert.assertTrue(experiencePage.saveBtn.isEnabled());
     }
 
     @When("The user clicks the ADD MORE EXPERIENCE button")
@@ -320,16 +300,17 @@ public class ExperienceStepDefs extends CommonSteps {
         waitFor(5);
 
     }
+
     @Then("Verify that user should add more experiences")
     public void verifyThatUserShouldAddMoreExperiences() {
-        amountOfTitle=0;
+        amountOfTitle = 0;
         for (WebElement titleTextElement : experiencePage.titleTextElements) {
             amountOfTitle++;
         }
 
-        if(amountOfTitle>0){
+        if (amountOfTitle > 0) {
             Assert.assertTrue(experiencePage.addMoreExpBtn.isDisplayed());
-        }else{
+        } else {
             System.out.println("Add more button could not been added!");
         }
 
@@ -339,12 +320,12 @@ public class ExperienceStepDefs extends CommonSteps {
     public void theUserSelectsItemsFromTheDropdownsAndTypedTextIntoTheInputBoxes() {
 
     }
+
     @Then("Verify that Delete button should be visible")
     public void verifyThatDeleteButtonShouldBeVisible() {
-        assert experiencePage.deleteButton.isDisplayed();
+        Assert.assertTrue(experiencePage.deleteButton.isDisplayed());
 
     }
-
 
 
     @And("The user clicks {string} button")
@@ -352,15 +333,13 @@ public class ExperienceStepDefs extends CommonSteps {
         experiencePage.deleteButton.click();
         waitFor(4);
     }
+
     @Then("Verify that Delete button should be clickable")
     public void verifyThatDeleteButtonShouldBeClickable() {
 
-        assert experiencePage.deleteButton.isEnabled();
+        Assert.assertTrue(experiencePage.deleteButton.isEnabled());
 
     }
-
-
-
 
 
     @When("The user has not selected any items from the dropdowns or typed any text into the input boxes")
@@ -387,7 +366,7 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @Then("Verify that {string} button should not be visible")
     public void verifyThatButtonShouldNotBeVisible(String arg0) {
-        assert !experiencePage.deleteButton.isDisplayed();
+        Assert.assertFalse(experiencePage.deleteButton.isDisplayed());
 
 
     }
@@ -411,33 +390,29 @@ public class ExperienceStepDefs extends CommonSteps {
         assert experiencePage.companyInputBox.getAttribute("value").isEmpty();
         assert experiencePage.startDateInputBox.getAttribute("value").isEmpty();
         assert experiencePage.endDateInputBox.getAttribute("value").isEmpty();
-        assert !experiencePage.skillSetDropDown.isSelected();
+        Assert.assertFalse(experiencePage.skillSetDropDown.isSelected());
 
     }
 
     @When("The user selects the one option randomly from the Workplace dropdown")
     public void theUserSelectsTheOneOptionRandomlyFromTheWorkplaceDropdown() {
 
-        waitFor(3);
+        waitFor(2);
         getRandomId(experiencePage.workplaceList).click();
-        waitFor(3);
-
-
-
+        waitFor(2);
     }
 
     @Then("Verify that user sees all the Workplace dropdown options")
     public void verifyThatUserSeesAllTheWorkplaceDropdownOptions(DataTable dataTable) {
-
         experiencePage.workplaceDropDown.click();
         waitFor(2);
-       List<String> workPlaceList = dataTable.column(0);
-       waitFor(2);
-        for (int i = 0; i <workPlaceList.size() ; i++) {
+        List<String> workPlaceList = dataTable.column(0);
+        waitFor(2);
+        for (int i = 0; i < workPlaceList.size(); i++) {
 
-            WebElement element= driver.findElement(By.xpath("//li[text()='"+workPlaceList.get(i)+"']"));
+            WebElement element = driver.findElement(By.xpath("//li[text()='" + workPlaceList.get(i) + "']"));
             waitFor(3);
-            assert element.isDisplayed();
+            Assert.assertTrue(element.isDisplayed());
 
         }
 
@@ -454,7 +429,7 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @Then("Verify that the Workplace dropdown should be empty")
     public void verifyThatTheWorkplaceDropdownShouldBeEmpty() {
-        assert experiencePage.workplaceDropDown.getText().isEmpty();
+        Assert.assertTrue(experiencePage.workplaceDropDown.getText().isEmpty());
     }
 
     @When("The user clicks to the Contract Type dropdown menu")
@@ -470,14 +445,14 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @Then("Verify that user sees all the Contract Type dropdown menu")
     public void verifyThatUserSeesAllTheContractTypeDropdownMenu(DataTable contractType) {
-        actions.sendKeys(Keys.PAGE_DOWN).click().perform();
+
         experiencePage.contractTypeDropDown.click();
         List<String> contractTypeDataTable = contractType.column(0);
-        for (int i = 0; i <contractTypeDataTable.size() ; i++) {
-            waitFor(2);
-            WebElement contractTypeElement= driver.findElement(By.xpath("//li[text()='"+contractTypeDataTable.get(i)+"']"));
-            waitFor(2);
-            assert contractTypeElement.isDisplayed();
+        for (int i = 0; i < contractTypeDataTable.size(); i++) {
+
+            WebElement contractTypeElement = driver.findElement(By.xpath("//li[text()='" + contractTypeDataTable.get(i) + "']"));
+            waitFor(1);
+            Assert.assertTrue(contractTypeElement.isDisplayed());
 
         }
 
@@ -485,44 +460,32 @@ public class ExperienceStepDefs extends CommonSteps {
 
     @When("The user clicks to the Notice Period dropdown menu")
     public void theUserClicksToTheNoticePeriodDropdownMenu() {
+        actions.sendKeys(Keys.PAGE_DOWN).click().perform();
+        waitFor(2);
+        experiencePage.ICWITPCheckBox.click();
+        waitFor(3);
+        experiencePage.noticePeriodDropDown.click();
     }
 
     @And("The user clicks on one option randomly from the Notice Period dropdown menu")
     public void theUserClicksOnOneOptionRandomlyFromTheNoticePeriodDropdownMenu() {
+        waitFor(3);
+        getRandomId(experiencePage.noticePeriodList).click();
     }
 
     @Then("Verify that user sees all the Notice Period dropdown menu")
-    public void verifyThatUserSeesAllTheNoticePeriodDropdownMenu() {
+    public void verifyThatUserSeesAllTheNoticePeriodDropdownMenu(DataTable noticePeriod) {
+        experiencePage.noticePeriodDropDown.click();
+        waitFor(2);
+        List<String> noticePeriodMenu = noticePeriod.column(0);
+        for (int i = 0; i < noticePeriodMenu.size(); i++) {
+            WebElement noticePeriodElement = driver.findElement(By.xpath("//li[text()='" + noticePeriodMenu.get(i) + "']"));
+            Assert.assertTrue(noticePeriodElement.isDisplayed());
+
+
+        }
     }
 
-    @When("The user cliks the {string} textbox")
-    public void theUserCliksTheTextbox(String arg0) {
-    }
-
-    @And("The user types {string} in the Type to add more information textbox")
-    public void theUserTypesInTheTypeToAddMoreInformationTextbox(String arg0) {
-    }
-
-    @And("The user press the Enter key")
-    public void theUserPressTheEnterKey() {
-    }
-
-    @Then("Verify that user should see the {string} text in the Type to add more information textbox")
-    public void verifyThatUserShouldSeeTheTextInTheTypeToAddMoreInformationTextbox(String arg0) {
-
-    }
-
-    @And("The user enters {int} characters in the text box")
-    public void theUserEntersCharactersInTheTextBox(int arg0) {
-    }
-
-    @Then("Verify that user sees to type Max {int} characters")
-    public void verifyThatUserSeesToTypeMaxCharacters(int arg0) {
-    }
-
-    @Then("Verify that user sees not to type {int} characters")
-    public void verifyThatUserSeesNotToTypeCharacters(int arg0) {
-    }
 
     @When("The user clicks to the {string},{string},{string},{string},{string},and {string} input boxes,dropdowns and types")
     public void theUserClicksToTheAndInputBoxesDropdownsAndTypes(String Title, String Company, String ContractType, String Workplace, String StartDate, String EndDate) {
@@ -542,7 +505,7 @@ public class ExperienceStepDefs extends CommonSteps {
             }
         }
 
-        experiencePage.titleInputBox.sendKeys(Title,Keys.TAB,Company);
+        experiencePage.titleInputBox.sendKeys(Title, Keys.TAB, Company);
     }
 
     @When("The user clicks to the {string},{string},{string},{string},{string},{string},{string} input boxes,dropdowns and types")
@@ -563,8 +526,120 @@ public class ExperienceStepDefs extends CommonSteps {
             }
         }
 
-        experiencePage.titleInputBox.sendKeys(Title,Keys.TAB,Company,Keys.ENTER,ContractType,Keys.ENTER,Workplace,Keys.ENTER,StartDate,Keys.ENTER,
-                EndDate,Keys.ENTER,SkillSet,Keys.ENTER);
+        experiencePage.titleInputBox.sendKeys(Title, Keys.TAB, Company, Keys.ENTER, ContractType, Keys.ENTER, Workplace, Keys.ENTER, StartDate, Keys.ENTER,
+                EndDate, Keys.ENTER, SkillSet, Keys.ENTER);
     }
 
+    @When("The user clicks the {string} textbox")
+    public void theUserClicksTheTextbox(String arg0) {
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
+        waitFor(5);
+        experiencePage.experienceTextBox.clear();
+
+
+    }
+
+    @And("The user types {string} in the Type to add more information textbox")
+    public void theUserTypesInTheTypeToAddMoreInformationTextbox(String arg0) {
+        String text1 = "This is a test string.";
+
+        experiencePage.experienceTextBox.sendKeys(text1);
+        waitFor(3);
+
+    }
+
+
+    @Then("Verify that user should see the {string} text in the Type to add more information textbox")
+    public void verifyThatUserShouldSeeTheTextInTheTypeToAddMoreInformationTextbox(String str) {
+        Assert.assertEquals(str, experiencePage.experienceTextBox.getText());
+        System.out.println("Text : " + experiencePage.experienceTextBox.getText());
+
+
+    }
+
+
+    @When("The user clicks to the Workplace dropdown menu")
+    public void theUserClicksToTheWorkplaceDropdownMenu() {
+        actions.sendKeys(Keys.PAGE_DOWN).click().perform();
+        waitFor(2);
+        experiencePage.workplaceDropDown.click();
+    }
+
+
+    @And("The user enters {int} characters in the text box")
+    public void theUserEntersCharactersInTheTextBox(int maxCharacterCount) {
+
+        waitFor(3);
+        faker = new Faker();
+        text = faker.lorem().characters(maxCharacterCount);
+        System.out.println("lengthOfText = " + text.length());
+        experiencePage.experienceTextBox.sendKeys(text, Keys.ENTER);
+
+    }
+
+    @Then("Verify that user sees to type Max {int} characters")
+    public void verifyThatUserSeesToTypeMaxCharacters(int maxCharacterCount) {
+        waitFor(2);
+        System.out.println("maxCharacterCount= " + experiencePage.experienceTextBox.getText().length());
+        Assert.assertEquals(maxCharacterCount, experiencePage.experienceTextBox.getText().length());
+
+    }
+
+
+    @And("The userS enters {int} characters in the text box")
+    public void theUserSEntersCharactersInTheTextBox(int maxNumber) {
+        faker = new Faker();
+        text2 = faker.lorem().characters(maxNumber);
+        experiencePage.experienceTextBox.sendKeys(text2, Keys.ENTER);
+
+    }
+
+    @Then("Verifys that user sees not to type {int} characters")
+    public void verifysThatUserSeesNotToTypeCharacters(int maxNumber) {
+        waitFor(2);
+        Assert.assertNotEquals(maxNumber, experiencePage.experienceTextBox.getText().length());
+        System.out.println("ExperienceTextBoxlength  = " + experiencePage.experienceTextBox.getText().length());
+
+
+    }
+
+
+    @Given("the user {string} logs in successfully")
+    public void theUserLogsInSuccessfully(String role) throws Exception {
+
+        driver.get(ConfigurationReader.get("environmentUrl"));
+        if (role.equalsIgnoreCase("candidate") || role.equalsIgnoreCase("superadmin")) {
+            role = role + "_email";
+            loginPage.emailTxtbox.sendKeys(ConfigurationReader.get(role));
+        } else {
+            throw new Exception("Role should be either candidate or superadmin");
+        }
+        loginPage.passwordTxtbox.sendKeys(ConfigurationReader.get("password"));
+        loginPage.loginBtn.click();
+        experiencePage.completeNowButton.click();
+
+    }
+
+    @Then("The user verifies the {string} popup message is displayed on the experience page")
+    public void theUserVerifiesThePopupMessageIsDisplayedOnTheExperiencePage(String popupMsg) {
+        //   Assert.assertTrue(popupMsg.contains("Request failed with status code 406"));
+        Assert.assertEquals(popupMsg, experiencePage.popupMsg.getText());
+
+    }
+
+    @And("The user clicks to the selected options to remove the skills from the skillset dropdown")
+    public void theUserClicksToTheSelectedOptionsToRemoveTheSkillsFromTheSkillsetDropdown() {
+        int selectedToolsSize = experiencePage.selectedToolsList.size();
+        System.out.println("selectedToolsSize = " + selectedToolsSize);
+        while (selectedToolsSize > 0) {
+            for (int i = 0; i < selectedToolsSize; i++) {
+                waitFor(2);
+                clickWithJS(experiencePage.crossBtnList.get(i));
+                selectedToolsSize--;
+
+            }
+        }
+
+    }
 }
