@@ -93,7 +93,6 @@ public class EducationsStepdef extends CommonSteps {
     public void userSeesUnderRelatedFields(String message) {
         scrollToElement(educationPage.UniversityButton);
         waitFor(1);
-        // educationPage.warningMessages(message);
         Assert.assertTrue(educationPage.warningMessages(message));
     }
 
@@ -199,7 +198,7 @@ public class EducationsStepdef extends CommonSteps {
 
     @And("user should delete selected fields using the x button")
     public void userShouldDeleteSelectedFieldsUsingTheXButton() {
-clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
+        clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
     }
 
     @Then("Test that selected certificates are deleted clicking the button.")
@@ -281,10 +280,6 @@ clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
         Assert.assertTrue(educationPage.DepartmentLabel.isDisplayed());
     }
 
-
-
-
-
     @When("user clicks SAVE button")
     public void userClicksSAVEButton() {
         clickWithJS(educationPage.educationSave);
@@ -299,10 +294,9 @@ clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
 
     @When("user enters {string}, {string}, {string}, {string},{string} fields")
     public void userEntersFields(String university, String degree, String department, String startYear, String endYear){
-        if(educationPage.deleteButton.size()>0){
-            waitFor(2);
+
+        while (educationPage.deleteButton.size()>0)
             clickWithJS(educationPage.deleteButton.get(0));
-        }
         educationPage.UniversityButton.sendKeys(university,Keys.ENTER);
         educationPage.DegreeButton.click();
         waitFor(1);
