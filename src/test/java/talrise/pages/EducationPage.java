@@ -19,11 +19,11 @@ public class EducationPage extends CommonPageElements{
     public WebElement StartYearLabel;
     @FindBy(xpath = "//label[.='End Year']")
     public WebElement EndYearLabel;
-    @FindBy(xpath = "//button[@class='sc-aXZVg dNFTfU sc-eXsaLi hcnwRs addEdu']")
+    @FindBy(xpath = "//span[.='+ ADD EDUCATION']")
     public WebElement AddEducationButton;
 
     @FindBy(xpath = "(//span[text()='Delete'])[1]")
-    public WebElement deleteButton;
+    public List<WebElement> deleteButton;
 
     @FindBy(xpath = "(//input[@id='university'])[1]")
     public WebElement UniversityButton;

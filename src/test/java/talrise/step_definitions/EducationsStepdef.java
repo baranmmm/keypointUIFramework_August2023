@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import talrise.utilities.CommonSteps;
 
 import java.util.List;
@@ -46,7 +47,7 @@ public class EducationsStepdef extends CommonSteps {
         }
         else if(degree.equals("")) {
             educationPage.UniversityButton.sendKeys(uni,Keys.ENTER);
-            waitFor(1);
+            waitFor(3);
             educationPage.DepartmentButton.click();
             waitFor(1);
             educationPage.DropDownContext(dep);
@@ -82,7 +83,7 @@ public class EducationsStepdef extends CommonSteps {
     @And("user clicks the  delete icon")
     public void userClicksTheDeleteIcon() {
         waitFor(2);
-        clickWithJS(educationPage.deleteButton);
+        clickWithJS(educationPage.deleteButton.get(0));
     }
 
 
@@ -292,18 +293,15 @@ clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
 
     @And("user clicks the  delete icon if delete icon is seen")
     public void userClicksTheDeleteIconIfDeleteIconIsSeen() {
-
-        if(educationPage.deleteButton.isEnabled()){
-            waitFor(2);
-            clickWithJS(educationPage.deleteButton);
-        }
+        while (educationPage.deleteButton.size()>0)
+            clickWithJS(educationPage.deleteButton.get(0));
     }
 
     @When("user enters {string}, {string}, {string}, {string},{string} fields")
     public void userEntersFields(String university, String degree, String department, String startYear, String endYear){
-        if(educationPage.deleteButton.isEnabled()){
+        if(educationPage.deleteButton.size()>0){
             waitFor(2);
-            clickWithJS(educationPage.deleteButton);
+            clickWithJS(educationPage.deleteButton.get(0));
         }
         educationPage.UniversityButton.sendKeys(university,Keys.ENTER);
         educationPage.DegreeButton.click();
@@ -319,7 +317,6 @@ clickWithJS(educationPage.xButton.get(educationPage.xButton.size()-1));
         educationPage.EndYearButton.click();
         waitFor(1);
         educationPage.DropDownContext(endYear);
-      //  clickWithJS(educationPage.AddEducationButton);
 }
 
 
