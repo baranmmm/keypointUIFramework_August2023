@@ -61,8 +61,7 @@ Feature: Register
       | yyy        | 1_        | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!      | Not a valid lastname! (Only letters)                                                                     |
       | yyy        | mr.adem   | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!      | Not a valid lastname! (Only letters)                                                                     |
       | yyy        | as  aa    | www.linkedin.com/in/uo           | f1@yopmais.col  | Test123456!  | Test123456!      | Not a valid lastname! (Only letters)                                                                     |
-#      | yyy        | as        | linkedin.com/in/usa | f1@yopmais.col | Test123456! | Test123456!      | LinkedIn URL must be a valid LinkedIn URL (https://linkedin.com/in/brucelee/) |
-      # There is a bug for the test above. The error message that is received for this test is about linkedin email which should have been about linkedin url.
+      | yyy        | as        | linkedin.com/in/usa              | f1@yopmais.col  | Test123456!  | Test123456!      | LinkedIn URL must be a valid LinkedIn URL (https://linkedin.com/in/brucelee/)                            |
       | yyy        | as        | l                                | f1@yopmais.col  | Test123456!  | Test123456!      | LinkedIn URL must be a valid LinkedIn URL (https://linkedin.com/in/brucelee/)                            |
       | yyy        | as        | www.linkedin.com/in/             | f1@yopmais.col  | Test123456!  | Test123456!      | LinkedIn URL must be a valid LinkedIn URL (https://linkedin.com/in/brucelee/)                            |
       | yyy        | as        | www.linkedin.com/in/uo&          | f1@yopmais.col  | Test123456!  | Test123456!      | LinkedIn URL must be a valid LinkedIn URL (https://linkedin.com/in/brucelee/)                            |
