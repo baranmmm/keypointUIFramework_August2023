@@ -96,8 +96,6 @@ public class EducationsStepdef extends CommonSteps {
         Assert.assertTrue(educationPage.warningMessages(message));
     }
 
-
-
     @And("user clicks + ADD EDUCATION button")
     public void userClicksADDEDUCATIONButton() {
         waitFor(2);
@@ -123,8 +121,6 @@ public class EducationsStepdef extends CommonSteps {
         // we can use enable instead of clickable
         Assert.assertTrue(educationPage.AddEducationButton.isEnabled());
     }
-
-
 
     @Then("Test that user can add more education info")
     public void testThatUserCanAddMoreEducationInfo() {

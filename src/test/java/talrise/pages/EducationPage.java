@@ -82,13 +82,13 @@ public class EducationPage extends CommonPageElements{
     @FindBy(xpath = "//span[.='See More >']")
     public WebElement seeMoreText;
 
-    @FindBy(xpath = "//button[@class='sc-aXZVg kFhKFl sc-bOhtcR bLUAmt seeMoreLess']")
+    @FindBy(xpath = "//span[.='See Less >']")
     public WebElement seeLessText;
 
     @FindBy(xpath = "//div[@class='sc-jdkBTo bGMLBu cert']")
     public List<WebElement> educationCertificates;
 
-    @FindBy(xpath = "//span[.='Suggested certificates']/../div[3]/div")
+    @FindBy(xpath = "//div[@class='sc-jdkBTo bGMLBu containerAddedList']/div")
     public List<WebElement> educationSelectedCertificates;
 
     @FindBy(xpath = "//span[.='X']")
