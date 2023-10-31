@@ -1,3 +1,4 @@
+@education
 Feature: Education
 
   Background:
@@ -80,11 +81,14 @@ Feature: Education
       | University       | Degree | Department  | Start Year | End Year |
       | Aston University | Master | Advertising | 2019       | 2023     |
 
-  Scenario: User should be able to click "CANCEL" button and cancel the last changes before the saving.
-    When user enters "University", "Degree", "Department", "Start Year","End Year" fields
+  Scenario Outline: User should be able to click "CANCEL" button and cancel the last changes before the saving.
+    And user enters "<University>", "<Degree>", "<Department>", "<Start Year>","<End Year>" fields
     When user should click one of the suggested certificates
     When user clicks SAVE button
-    When user enters "University", "Degree", "Department", "Start Year","End Year" fields
+    And user enters "<University>", "<Degree>", "<Department>", "<Start Year>","<End Year>" fields
     And user click CANCEL button
     Then Test that CANCEL button is clickable
     Then Test that user cancel the last changes before the saving
+    Examples:
+      | University       | Degree | Department  | Start Year | End Year |
+      | Aston University | Master | Advertising | 2019       | 2023     |
