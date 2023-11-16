@@ -165,6 +165,8 @@ public class PersonalInfoPage extends CommonPageElements{
     }
 
 
+    @FindBy(xpath = "(//button[@label='cancel'])[1]")
+    public WebElement canselButton;
 
 
 //    @FindBy(xpath = "(//button[@label='cancel'])[1]")
