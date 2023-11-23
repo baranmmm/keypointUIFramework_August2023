@@ -23,9 +23,14 @@ public class PersonalInfoStepDef extends CommonSteps {
     public void user_on_the_page_sees_menu_available(String profile, String PersonalInformation) {
      personalInfoPage.profileSideMenu.click();
      waitForPageToLoad(3);
+
+//     Assert.assertEquals("http://20.108.75.9/profile",driver.getCurrentUrl());
+//     Assert.assertEquals(PersonalInformation,personalInfoPage.personalInfoDropdown.getText());
+
+
      for (WebElement menu : personalInfoPage.menus) {
-            if(menu.getText().equals("Personal Information")){
-                Assert.assertEquals(menu.getText(),"Personal Information");
+            if(menu.getText().equals(PersonalInformation)){
+                Assert.assertEquals(PersonalInformation,menu.getText());
             }
         }
    }
@@ -127,7 +132,7 @@ public class PersonalInfoStepDef extends CommonSteps {
             Assert.assertEquals(countryDropdownsExpected.get(i),personalInfoPage.countryDropdowns.get(i).getText());
             String text=personalInfoPage.countryDropdowns.get(i).getText();
             waitFor(1);
-            System.out.println("text = " + text);
+
 
         }
     }
@@ -250,7 +255,7 @@ public void userSeesAndOptions(String none, String ukCode) {
         personalInfoPage.mobileInputBox.sendKeys(invalidCredential);
         waitFor(1);
         String actualWarningMessage=personalInfoPage.warningMessage.getAttribute("textContent");
-        System.out.println("actualWarningMessage = " +actualWarningMessage);
+
         String expectedWarningMessage=warningMessage;
         assert expectedWarningMessage.equals(actualWarningMessage);
 
@@ -297,6 +302,8 @@ public void userSeesAndOptions(String none, String ukCode) {
 
 
     }
+    String cityAndCountryOnPersonalInfo;
+    String phoneNumberOnPersonalInfPage;
 
     @And("User sees saved information on the personal information page and validates")
     public void userSeesSavedInformationOnThePersonalInformationPageAndValidates() {
@@ -304,11 +311,11 @@ public void userSeesAndOptions(String none, String ukCode) {
         String fullNameOnPersonalInfo=personalInfoPage.firstName.getAttribute("value")+" "+
                 personalInfoPage.lastName.getAttribute("value");
         String linkedinOnPersonalInfo=personalInfoPage.linkedIn.getAttribute("value");
-        String cityAndCountryOnPersonalInfo= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
+          cityAndCountryOnPersonalInfo= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
                         .getAttribute("innerText");
         String emailOnPersonalInfo=personalInfoPage.email.getAttribute("value");
 
-        String phoneNumberOnPersonalInfPage = personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
+          phoneNumberOnPersonalInfPage = personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
                  +"  "+personalInfoPage.mobileInputBox.getAttribute("value").trim();
 
 
@@ -400,6 +407,39 @@ public void userSeesAndOptions(String none, String ukCode) {
         driver.navigate().refresh();
         personalInfoPage.personalInfoDropdown.click();
     }
+
+    @And("User click on cancel button")
+    public void userClickOnCancelButton() {
+        personalInfoPage.canselButton.click();
+
+
+
+    }
+
+
+    @And("User sees and validate that country,city,country code and mobile information changes turns to last saved version")
+    public void userSeesAndValidateThatCountryCityCountryCodeAndMobileInformationChangesTurnsToLastSavedVersion() {
+        String cityAndCountryOnPersonalInfoAfterClickingCancel= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
+                .getAttribute("innerText");
+        String phoneNumberOnPersonalInfPageAfterClickingCancel=personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
+                +"  "+personalInfoPage.mobileInputBox.getAttribute("value").trim();
+//        System.out.println("............................");
+//        System.out.println("phoneNumberOnPersonalInfPage = " + phoneNumberOnPersonalInfPage);
+//        System.out.println("phoneNumberOnPersonalInfPageAfterClickingCancel = " + phoneNumberOnPersonalInfPageAfterClickingCancel);
+//        System.out.println("cityAndCountryOnPersonalInfo = " + cityAndCountryOnPersonalInfo);
+//        System.out.println("cityAndCountryOnPersonalInfoAfterClickingCancel = " + cityAndCountryOnPersonalInfoAfterClickingCancel);
+//
+
+
+        Assert.assertEquals(cityAndCountryOnPersonalInfoAfterClickingCancel,cityAndCountryOnPersonalInfo);
+
+        Assert.assertEquals(phoneNumberOnPersonalInfPageAfterClickingCancel,phoneNumberOnPersonalInfPage);
+
+
+
+    }
+
+
 
 
 
