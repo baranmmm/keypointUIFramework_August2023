@@ -1,4 +1,4 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -7,9 +7,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import talrise.pages.LoginPage;
-import talrise.pages.ProfilePage;
-import talrise.pages.RegisterPage;
+import talrise.pages.candidate.LoginPage;
+import talrise.pages.candidate.ProfilePage;
+import talrise.pages.candidate.RegisterPage;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.ConfigurationReader;
 
@@ -30,13 +30,13 @@ public class ProfileStepDefs extends CommonSteps {
         loginPage.passwordTxtbox.sendKeys(ConfigurationReader.get("password"));
         loginPage.loginBtn.click();
 
-        dashboardPage.dismissPopUpMessage();
+        candidateDashboardPage.dismissPopUpMessage();
     }
 
     @And("the user navigates {string} left menu option")
     public void theUserNavigatesLeftMenuOption(String leftMenuOption) {
         waitFor(2);
-        dashboardPage.goToLeftMenuOption(leftMenuOption);
+        candidateDashboardPage.goToLeftMenuOption(leftMenuOption);
     }
 
     @Then("{string} module is visible and collapsed")
@@ -73,7 +73,7 @@ public class ProfileStepDefs extends CommonSteps {
 
         String actualFullName = profilePage.profilePageFullname.getText();
         String actualJobTitle = profilePage.profileJobTitle.getText();
-        ProfilePage.clickOnButton("OVERVIEW");
+        profilePage.clickOnButton("OVERVIEW");
         String expectedFullName = overviewPage.fullName.getText();
         String expectedJobTitle = overviewPage.occupation.getText();
         Assert.assertEquals(expectedFullName, actualFullName);

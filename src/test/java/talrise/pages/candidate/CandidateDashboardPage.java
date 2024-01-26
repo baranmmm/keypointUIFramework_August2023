@@ -1,16 +1,9 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+import talrise.pages.CommonPageElements;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.*;
-
-public class DashboardPage extends CommonPageElements{
-
-
-
-
+public class CandidateDashboardPage extends CommonPageElements {
     public void dismissPopUpMessage() {
 
         try {
@@ -21,6 +14,4 @@ public class DashboardPage extends CommonPageElements{
 
 
     }
-
-
 }

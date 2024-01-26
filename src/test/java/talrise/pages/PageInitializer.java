@@ -1,32 +1,32 @@
 package talrise.pages;
 
+import talrise.pages.candidate.*;
+import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 
 public class PageInitializer extends Driver {
 
     public static LoginPage loginPage;
-    public static DashboardPage dashboardPage;
+    public static CandidateDashboardPage candidateDashboardPage;
     public static ProfilePage profilePage;
     public static RegisterPage registerPage;
     public static PersonalInfoPage personalInfoPage;
-    public static OverviewPage overviewPage;
+    public static SuperadminDashboardPage superadminDashboardPage;
     public static PreferencesPage preferencesPage;
-    public static EducationPage educationPage;
-    public static LanguagePage languagePage;
+    public static OverviewPage overviewPage;
     public static ExperiencePage experiencePage;
+
 
 
     public static void initialize(){
         loginPage = new LoginPage();
-        dashboardPage = new DashboardPage();
+        candidateDashboardPage = new CandidateDashboardPage();
         profilePage = new ProfilePage();
         registerPage=new RegisterPage();
         personalInfoPage=new PersonalInfoPage();
-        preferencesPage=new PreferencesPage();
+        superadminDashboardPage = new SuperadminDashboardPage();
+        preferencesPage = new PreferencesPage();
         overviewPage = new OverviewPage();
-        experiencePage=new ExperiencePage();
-        educationPage = new EducationPage();
-        languagePage=new LanguagePage();
-
+        experiencePage = new ExperiencePage();
     }
 }

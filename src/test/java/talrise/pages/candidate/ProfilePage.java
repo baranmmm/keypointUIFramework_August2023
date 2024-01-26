@@ -1,12 +1,13 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.List;
 
-public class ProfilePage extends CommonPageElements{
+public class ProfilePage extends CommonPageElements {
 
     public void clickOnProfileSectionPencilIcon(String profileSection){
         driver.findElement(By.xpath("//span[.='"+profileSection+"']//..//../div//div[@class=\"expandIconWrapper\"]")).click();

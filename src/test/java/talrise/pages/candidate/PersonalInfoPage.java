@@ -1,14 +1,15 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class PersonalInfoPage extends CommonPageElements{
+public class PersonalInfoPage extends CommonPageElements {
 
     Random random = new Random();
 

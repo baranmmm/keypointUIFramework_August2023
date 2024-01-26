@@ -1,4 +1,4 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
