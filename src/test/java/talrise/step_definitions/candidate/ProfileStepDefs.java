@@ -7,6 +7,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import talrise.pages.LoginPage;
+import talrise.pages.ProfilePage;
+import talrise.pages.RegisterPage;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.ConfigurationReader;
 
@@ -65,8 +68,14 @@ public class ProfileStepDefs extends CommonSteps {
 
     @Then("verify that the user sees the candidate's first name, last name, job title")
     public void verifyThatTheUserSeesTheCandidateSFirstNameLastNameJobTitle() {      // 3
-        Assert.assertEquals(profilePage.profilePageNameLastName.getText(), "Maizie Garza");
-        Assert.assertEquals(profilePage.profileJobTitle.getText(), "Engineering Schmengineering");
+
+        String actualFullName = profilePage.profilePageFullname.getText();
+        String actualJobTitle = profilePage.profileJobTitle.getText();
+        ProfilePage.clickOnButton("OVERVIEW");
+        String expectedFullName = overviewPage.fullName.getText();
+        String expectedJobTitle = overviewPage.occupation.getText();
+        Assert.assertEquals(expectedFullName, actualFullName);
+        Assert.assertEquals(expectedJobTitle, actualJobTitle);
     }
 
     @Then("Verify that the user sees the location icon and city name of the country on the top left side of the page under the first name and last name")

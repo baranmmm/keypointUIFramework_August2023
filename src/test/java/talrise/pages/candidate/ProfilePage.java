@@ -43,7 +43,7 @@ public class ProfilePage extends CommonPageElements {
     public List<WebElement> initialOfName;
 
     @FindBy(xpath = "//span[@style='text-transform: capitalize;']")
-    public WebElement profilePageNameLastName;
+    public WebElement profilePageFullname;
 
     @FindBy(xpath = "//span[@class='sc-jXbUNg eQSfg'][2]")
     public WebElement profileJobTitle;
