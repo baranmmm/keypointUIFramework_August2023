@@ -1,4 +1,4 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -31,7 +31,7 @@ public class ProfileStepDefs extends CommonSteps {
     @And("the user navigates {string} left menu option")
     public void theUserNavigatesLeftMenuOption(String leftMenuOption) {
         waitFor(2);
-        dashboardPage.goToLeftMenuOption(leftMenuOption);
+        candidateDashboardPage.goToLeftMenuOption(leftMenuOption);
     }
 
     @Then("{string} module is visible and collapsed")

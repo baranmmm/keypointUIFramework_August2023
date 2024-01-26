@@ -1,11 +1,10 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
-import org.sikuli.script.FindFailed;
 import talrise.utilities.CommonSteps;
 
 import java.util.ArrayList;

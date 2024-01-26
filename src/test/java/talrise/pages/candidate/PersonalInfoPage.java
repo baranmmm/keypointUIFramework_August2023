@@ -1,12 +1,13 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class PersonalInfoPage extends CommonPageElements{
+public class PersonalInfoPage extends CommonPageElements {
 
     @FindBy(xpath ="//span[.=\"Profile\"]" )
     public WebElement profileSideMenu;

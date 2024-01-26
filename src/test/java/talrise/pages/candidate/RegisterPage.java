@@ -1,9 +1,10 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
-public class RegisterPage extends CommonPageElements{
+public class RegisterPage extends CommonPageElements {
 
 
     @FindBy(xpath = "//button[text()='SIGN UP']")
