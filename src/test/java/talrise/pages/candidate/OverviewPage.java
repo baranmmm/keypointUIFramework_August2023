@@ -12,5 +12,19 @@ public class OverviewPage extends CommonPageElements {
     @FindBy(xpath = "//h2[1]")
     public WebElement occupation;
 
+    @FindBy(xpath = "(//*[@class=\"contact-item\"]//span)[1]")
+    public WebElement email;
+
+    @FindBy(xpath = "(//*[@class=\"contact-item\"]//span)[2]")
+    public WebElement linkedin;
+
+    @FindBy(xpath = "(//*[@class=\"contact-item\"]//span)[3]")
+    public WebElement phoneNumber;
+
+    @FindBy(xpath = "(//*[@class=\"contact-item\"]//span)[4]")
+    public WebElement cityAndCountry;
+
+
+
 
 }

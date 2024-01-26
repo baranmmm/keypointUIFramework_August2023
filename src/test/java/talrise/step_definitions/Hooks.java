@@ -22,7 +22,7 @@ public class Hooks {
             picture = CommonSteps.takeScreenshot("failed/" + scenario.getName()); // notes
             scenario.attach(picture, "image/png", scenario.getName());
         }
-//        Driver.closeDriver();
+       Driver.closeDriver();
     }
 
 
