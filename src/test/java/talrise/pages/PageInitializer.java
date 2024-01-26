@@ -12,6 +12,9 @@ public class PageInitializer extends Driver {
     public static RegisterPage registerPage;
     public static PersonalInfoPage personalInfoPage;
     public static SuperadminDashboardPage superadminDashboardPage;
+    public static PreferencesPage preferencesPage;
+    public static OverviewPage overviewPage;
+    public static ExperiencePage experiencePage;
 
 
 
@@ -22,5 +25,8 @@ public class PageInitializer extends Driver {
         registerPage=new RegisterPage();
         personalInfoPage=new PersonalInfoPage();
         superadminDashboardPage = new SuperadminDashboardPage();
+        preferencesPage = new PreferencesPage();
+        overviewPage = new OverviewPage();
+        experiencePage = new ExperiencePage();
     }
 }

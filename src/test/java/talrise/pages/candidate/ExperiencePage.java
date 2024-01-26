@@ -1,9 +1,10 @@
-package talrise.pages;
+package talrise.pages.candidate;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.List;
 import java.util.Random;
