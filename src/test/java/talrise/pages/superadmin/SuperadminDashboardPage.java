@@ -22,10 +22,14 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement dashboardLabel;
     @FindBy(xpath = "//h1[contains(text(),'Job Details')]")
     public WebElement jobDetailsPage;
+    @FindBy(xpath = "//h2[contains(text(),'Contact Details')]")
+    public WebElement contactDetailsPage;
     @FindBy(xpath = "(//tr[@index='0']//td)[7]")
     public WebElement plusforCreatingJob;
     @FindBy(xpath = "(//tr[@index='0']//td)[6]")
     public WebElement threeDotUnderJobDetails;
+    @FindBy(xpath = "((//tr[@index='0']//td)[1]//div//div)[2]")
+    public WebElement threeDotUnderCandidateInfo;
     @FindBy(xpath = "//span[text()='NEXT']")
     public WebElement nextButtonForJobCreate;
     @FindBy(xpath = "//h3[contains(text(),'Browse applicants list')]")

@@ -95,6 +95,16 @@ public class SuperadminDashboardStepDefsF extends CommonSteps {
 
     @When("user clicks on the three dots \\(under the candidate info)")
     public void user_clicks_on_the_three_dots_under_the_candidate_info() {
+        superadminDashboardPage.threeDotUnderCandidateInfo.click();
+        waitFor(4);
+    }
+    @Then("user verifies that the relevant {string} page opened")
+    public void user_verifies_that_the_relevant_page_opened(String candidateInfo) {
+        Assert.assertEquals(candidateInfo, superadminDashboardPage.contactDetailsPage.getText());
+    }
+
+    @When("user clicks on the three dots \\(under the job details)")
+    public void user_clicks_on_the_three_dots_under_the_job_details() {
         superadminDashboardPage.threeDotUnderJobDetails.click();
     }
 

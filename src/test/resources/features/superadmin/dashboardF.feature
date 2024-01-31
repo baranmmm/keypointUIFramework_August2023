@@ -40,6 +40,10 @@ Feature: Dashboard Profile Feature
     Then Verify the "JOB DETAILS" is visible
     Then Verify the "STATUS" is visible
 
-    Scenario: As Super Admin user, I should be able to verify that when the three dots (: under the candidate info) is clicked,relative page should be open.
-      When user clicks on the three dots (under the candidate info)
-      Then user verifies that the relevant "Job Details" page has been opened
+  Scenario: TC-9 As Super Admin user, I should be able to verify that when the three dots (: under the candidate info) is clicked,relative page should be open.
+    When user clicks on the three dots (under the candidate info)
+    Then user verifies that the relevant "Contact Details" page opened
+
+  Scenario: TC-10 As Super Admin user, I should be able to verify that when the three dots (: under the job details) is clicked,relative page should be open.
+    When user clicks on the three dots (under the job details)
+    Then user verifies that the relevant "Job Details" page has been opened
