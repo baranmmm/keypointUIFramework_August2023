@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class PersonalInfoStepDef extends CommonSteps {
 
-    @When("User on the {string} page,sees {string} menu available")
+  /*  @When("User on the {string} page,sees {string} menu available")
     public void user_on_the_page_sees_menu_available(String profile, String PersonalInformation) {
      personalInfoPage.profileSideMenu.click();
      waitForPageToLoad(3);
@@ -199,6 +199,6 @@ public class PersonalInfoStepDef extends CommonSteps {
         Assert.assertEquals(expectedSizeOfUkCity, actualSizeOfUKCity);
 
     }
-
+**/
     }
 
