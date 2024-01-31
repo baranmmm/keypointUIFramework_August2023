@@ -3,6 +3,7 @@ package talrise.step_definitions.superadmin;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import talrise.utilities.CommonSteps;
 
@@ -11,12 +12,12 @@ public class SuperadminDashboardStepDefsF extends CommonSteps {
 
     @Then("verify the Status Role is visible")
     public void verifyTheStatusRoleIsVisible() {
-        superadminDashboardPage.profileStatusRole.isDisplayed();
+        Assert.assertTrue(superadminDashboardPage.profileStatusRole.isDisplayed());
     }
 
     @And("verify the Profile Name is visible")
     public void verifyTheProfileNameIsVisible() {
-        superadminDashboardPage.profileNameBtn.isDisplayed();
+        Assert.assertTrue(superadminDashboardPage.profileNameBtn.isDisplayed());
     }
 
     @Given("the user clicks on the profile name")
@@ -26,17 +27,17 @@ public class SuperadminDashboardStepDefsF extends CommonSteps {
 
     @Then("verify the Log Out is visible")
     public void verifyTheLogOutIsVisible() {
-        superadminDashboardPage.logoutBtn.isDisplayed();
+        Assert.assertTrue(superadminDashboardPage.logoutBtn.isDisplayed());
     }
 
     @And("verify the Log Out items is clickable")
     public void verifyTheLogOutItemsIsClickable() {
-        superadminDashboardPage.logoutBtn.isEnabled();
+        Assert.assertTrue(superadminDashboardPage.logoutBtn.isEnabled());
     }
 
     @Then("verify the {string} is visible")
     public void verifyTheIsVisible(String title) {
-        superadminDashboardPage.dashboardLabel.isDisplayed();
+        Assert.assertTrue(superadminDashboardPage.dashboardLabel.isDisplayed());
     }
 
     @Then("verify the {string} title is visible")
@@ -76,8 +77,31 @@ public class SuperadminDashboardStepDefsF extends CommonSteps {
     public void click_on_the_create_button() {
 
     }
+
     @Then("verify that {string} increased by {int}")
     public void verify_that_increased_by(String string, Integer int1) {
 
     }
+
+    @Then("verify the Browse applicants list is visible")
+    public void verify_the_browse_applicants_list_is_visible() {
+        Assert.assertTrue(superadminDashboardPage.browseApplicationListLabel.isDisplayed());
+    }
+
+    @Then("Verify the {string} is visible")
+    public void VerifyTheIsVisible(String columnName) {
+        Assert.assertEquals(columnName, superadminDashboardPage.getDashboardPageBrowseApplicationListColumnName(columnName));
+    }
+
+    @When("user clicks on the three dots \\(under the candidate info)")
+    public void user_clicks_on_the_three_dots_under_the_candidate_info() {
+        superadminDashboardPage.threeDotUnderJobDetails.click();
+    }
+
+    @Then("user verifies that the relevant {string} page has been opened")
+    public void user_verifies_that_the_relevant_job_details_page_has_been_opened(String jobDetails) {
+        Assert.assertEquals(jobDetails, superadminDashboardPage.jobDetailsPage.getText());
+    }
+
+
 }
