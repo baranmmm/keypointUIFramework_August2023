@@ -17,6 +17,5 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
         waitFor(1);
         String totalApplicationsString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(topMenuItem);
         totalApplications = Integer.parseInt(totalApplicationsString);
-        System.out.println("totalApplicationsString = " + totalApplicationsString);
     }
 }
