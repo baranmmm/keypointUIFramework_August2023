@@ -88,6 +88,7 @@ Feature: Dashboard Profile Feature
     * user clicks on the "Next Page"
     * user clicks on the "Previous Page"
     Then user verify the page size is "1-5"
-    Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional
-      Given user clicks on the "CREATE A NEW JOB" button
-      Then user verify that relevant page open
+
+  Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional
+    Given user clicks on the "CREATE A NEW JOB" button
+    Then user verify that relevant page open
