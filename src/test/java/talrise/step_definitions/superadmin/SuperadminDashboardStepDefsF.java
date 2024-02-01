@@ -1,5 +1,6 @@
 package talrise.step_definitions.superadmin;
 
+import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -166,5 +167,25 @@ public class SuperadminDashboardStepDefsF extends CommonSteps {
     @Then("user verify that relevant page open")
     public void user_verify_that_relevant_page_open() {
         Assert.assertEquals("http://20.108.75.9/jobs", driver.getCurrentUrl());
+    }
+
+    @Given("the user clicks {string} link")
+    public void the_user_clicks_link(String signUp) {
+        registerPage.signUp.click();
+    }
+    @Given("the user get the {string}")
+    public void the_user_get_the(String title) {
+        waitFor(1);
+        String totalPostedJobsString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
+        System.out.println("totalPostedJobs = " + totalPostedJobsString);
+    }
+    @Given("the User enters valid {string},{string},{string},{string}")
+    public void the_user_enters_valid(String firstName, String lastName, String password, String confirmPassword) {
+        registerPage.firstNameBox.sendKeys(firstName);
+        registerPage.lastNameBox.sendKeys(lastName);
+        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/"+ Faker.instance().name().firstName()+Faker.instance().name().lastName());
+        registerPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
+        registerPage.passwordBox.sendKeys(password);
+        registerPage.confirmPasswordBox.sendKeys(confirmPassword);
     }
 }

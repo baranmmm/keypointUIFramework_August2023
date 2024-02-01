@@ -17,6 +17,25 @@ Feature: Dashboard Profile Feature
     Then verify the "Total Applications" title is visible
     Then verify the "Total Posted Jobs" title is visible
 
+  Scenario Outline: TC-3 As Super admin User, I should be able to verify when a new Candidate is creted, the total number of "Candidate Registered" should automatically update
+    Given the user get the "Registered Candidates"
+    And the user logs out from talrise
+    * the user clicks "SIGN UP" link
+    And the User enters valid "<First Name>","<Last Name>","<Password>","<Confirm Password>"
+    And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
+    And the clicks on button that CREATE MY ACCOUNT button
+    Then the user should be able to see Registered successfully! message
+    Examples:
+      | First Name | Last Name | Password    | Confirm Password |
+      | Meltem     | CG        | Test123456! | Test123456!      |
+  #  * Enter the first name to the "First Name" button
+   # * Enter the last name to the "Last Name" button
+   # * Enter the Email to the "Email" button
+   # * Enter the password to the "Password" button
+   # * Enter the password to the "Confird Password" button
+   # * Click on the "privacy policy and GDPR"
+   # * Click on the "CREATE MY ACCOUNT"
+
   Scenario: TC-5 As Super admin User, I should be able to verify when a new job is created , "Total Posted Jobs" should be updated automatically.
     Given get the "Total Posted Jobs"
     And click on the "Activity"
