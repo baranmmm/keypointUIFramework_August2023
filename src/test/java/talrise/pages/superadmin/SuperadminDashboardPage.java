@@ -16,6 +16,15 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public String getDashboardPageBrowseApplicationListColumnName(String columnName){
         return driver.findElement(By.xpath("//div[contains(text(),'"+columnName+"')]")).getText();
     }
+    public void getRowsValue(Integer rowsValue){
+         driver.findElement(By.xpath("//li[@data-value='"+rowsValue+"']")).click();
+    }
+    public void getChangePage(String pageName){
+        driver.findElement(By.xpath("//span[@title='"+pageName+"']")).click();
+    }
+    public void clickButton(String buttonName){
+        driver.findElement(By.xpath("//span[text()='"+buttonName+"']")).click();
+    }
     @FindBy(xpath = "//p[contains(@class,'MuiTypography')]")
     public WebElement profileStatusRole;
     @FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
@@ -30,9 +39,15 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement threeDotUnderJobDetails;
     @FindBy(xpath = "((//tr[@index='0']//td)[1]//div//div)[2]")
     public WebElement threeDotUnderCandidateInfo;
-    @FindBy(xpath = "//span[text()='NEXT']")
-    public WebElement nextButtonForJobCreate;
     @FindBy(xpath = "//h3[contains(text(),'Browse applicants list')]")
     public WebElement browseApplicationListLabel;
+    @FindBy(xpath = "(//div[contains(@class,'MuiInputBase-root')])[2]")
+    public WebElement rowsDropDown;
+    @FindBy(xpath = "(//div[contains(@class,'MuiInputBase-root')])[2]//div//div")
+    public WebElement rowsDropDownGetText;
+    @FindBy(xpath = "(//span[contains(@class,'MuiTypography')])[3]")
+    public WebElement currentPage;
+    @FindBy(xpath = "//span[@title='Next Page']")
+    public WebElement nextPageButton;
 
 }
