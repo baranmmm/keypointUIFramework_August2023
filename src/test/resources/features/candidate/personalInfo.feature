@@ -59,7 +59,7 @@ Feature:As a user, I should be able to update "Country", "City",
 
   @mobile1
   Scenario Outline:As a user,should not be able to enter less than 7 digits and more than 14 digits or anything
-    but numbers in mobile input box.Otherwise warning message seen below it.
+  but numbers in mobile input box.Otherwise warning message seen below it.
     When User clicks on "Personal Information" menu expands again
     When User enter "<invalid Credentials>"digits less than seven and more than fourteen or Mobile number must include only digits.non-numeric  sees "<warning message>"
 
