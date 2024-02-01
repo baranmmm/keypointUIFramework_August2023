@@ -1,6 +1,7 @@
 package talrise.pages;
 
 import talrise.pages.candidate.*;
+import talrise.pages.candidate2.ProfileSectionPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 
@@ -17,6 +18,7 @@ public class PageInitializer extends Driver {
     public static ExperiencePage experiencePage;
     public static EducationPage educationPage;
     public static LanguagePage languagePage;
+    public static ProfileSectionPage profileSectionPage;
 
 
 
@@ -32,5 +34,6 @@ public class PageInitializer extends Driver {
         experiencePage = new ExperiencePage();
         educationPage = new EducationPage();
         languagePage = new LanguagePage();
+        profileSectionPage =new ProfileSectionPage();
     }
 }
