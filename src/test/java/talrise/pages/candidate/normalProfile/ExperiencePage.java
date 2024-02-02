@@ -1,15 +1,11 @@
-package talrise.pages.candidate;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
 import java.util.List;
-import java.util.Random;
-
-import static talrise.utilities.CommonSteps.waitFor;
 
 public class ExperiencePage extends CommonPageElements {
 

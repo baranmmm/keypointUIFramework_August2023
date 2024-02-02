@@ -1,4 +1,4 @@
-package talrise.step_definitions.candidate;
+package talrise.step_definitions.candidate.normalProfile;
 
 import com.github.javafaker.Faker;
 import io.cucumber.datatable.DataTable;
@@ -18,7 +18,7 @@ import java.util.Random;
 
 
 public class ExperienceStepDefs extends CommonSteps {
-/*
+
     int amountOfTitle;
     String text;
     Faker faker;
@@ -641,5 +641,5 @@ public class ExperienceStepDefs extends CommonSteps {
             }
         }
 
-    }*/
+    }
 }

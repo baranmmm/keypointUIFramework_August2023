@@ -7,24 +7,6 @@ import talrise.pages.CommonPageElements;
 
 public class SuperadminDashboardPage extends CommonPageElements {
 
-    public String getDashboardPageTopMenuItemInfo(String topMenuItem){
-        return driver.findElement(By.xpath("(//*[.=\""+topMenuItem+"\"]//..//div)[2]")).getText();
-    }
-    public String getDashboardPageTopMenuItemName(String topMenuItemName){
-        return driver.findElement(By.xpath("//*[text()='"+topMenuItemName+"']")).getText();
-    }
-    public String getDashboardPageBrowseApplicationListColumnName(String columnName){
-        return driver.findElement(By.xpath("//div[contains(text(),'"+columnName+"')]")).getText();
-    }
-    public void getRowsValue(Integer rowsValue){
-         driver.findElement(By.xpath("//li[@data-value='"+rowsValue+"']")).click();
-    }
-    public void getChangePage(String pageName){
-        driver.findElement(By.xpath("//span[@title='"+pageName+"']")).click();
-    }
-    public void clickButton(String buttonName){
-        driver.findElement(By.xpath("//span[text()='"+buttonName+"']")).click();
-    }
     @FindBy(xpath = "//p[contains(@class,'MuiTypography')]")
     public WebElement profileStatusRole;
     @FindBy(xpath = "//h1[contains(text(),'Dashboard')]")
@@ -49,5 +31,25 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement currentPage;
     @FindBy(xpath = "//span[@title='Next Page']")
     public WebElement nextPageButton;
+
+    public String getDashboardPageTopMenuItemInfo(String topMenuItem){
+        return driver.findElement(By.xpath("(//*[.=\""+topMenuItem+"\"]//..//div)[2]")).getText();
+    }
+    public String getDashboardPageTopMenuItemName(String topMenuItemName){
+        return driver.findElement(By.xpath("//*[text()='"+topMenuItemName+"']")).getText();
+    }
+    public String getDashboardPageBrowseApplicationListColumnName(String columnName){
+        return driver.findElement(By.xpath("//div[contains(text(),'"+columnName+"')]")).getText();
+    }
+    public void getRowsValue(Integer rowsValue){
+         driver.findElement(By.xpath("//li[@data-value='"+rowsValue+"']")).click();
+    }
+    public void getChangePage(String pageName){
+        driver.findElement(By.xpath("//span[@title='"+pageName+"']")).click();
+    }
+    public void clickButton(String buttonName){
+        driver.findElement(By.xpath("//span[text()='"+buttonName+"']")).click();
+    }
+
 
 }
