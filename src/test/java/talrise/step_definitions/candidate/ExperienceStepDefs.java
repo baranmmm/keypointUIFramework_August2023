@@ -18,7 +18,7 @@ import java.util.Random;
 
 
 public class ExperienceStepDefs extends CommonSteps {
-
+/*
     int amountOfTitle;
     String text;
     Faker faker;
@@ -641,5 +641,5 @@ public class ExperienceStepDefs extends CommonSteps {
             }
         }
 
-    }
+    }*/
 }
