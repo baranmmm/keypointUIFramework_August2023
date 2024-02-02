@@ -25,6 +25,10 @@ public abstract class CommonPageElements extends Driver {
         driver.findElement(By.xpath("//span[.='"+leftMenuOption+"']")).click();
     }
 
+    public WebElement getLeftMenuOptionElement(String option){
+        return driver.findElement(By.xpath("//span[text()='"+option+"']"));
+    }
+
     public static void clickOnButton(String buttonText){
         try{
             driver.findElement(By.xpath("//button[.='"+buttonText+"']".toUpperCase())).click();
@@ -40,6 +44,7 @@ public abstract class CommonPageElements extends Driver {
         }
 
     }
+
 
 
 }

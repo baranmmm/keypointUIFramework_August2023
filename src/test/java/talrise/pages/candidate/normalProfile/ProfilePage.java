@@ -1,4 +1,4 @@
-package talrise.pages.candidate;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
