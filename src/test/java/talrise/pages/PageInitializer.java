@@ -1,5 +1,7 @@
 package talrise.pages;
 
+import talrise.pages.candidate.firstLoginProfile.FirstLoginPersonalInfoPage;
+import talrise.pages.candidate.firstLoginProfile.PositionPage;
 import talrise.pages.candidate.normalProfile.*;
 import talrise.pages.candidate.firstLoginProfile.ProfileSectionPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
@@ -19,6 +21,8 @@ public class PageInitializer extends Driver {
     public static EducationPage educationPage;
     public static LanguagePage languagePage;
     public static ProfileSectionPage profileSectionPage;
+    public static FirstLoginPersonalInfoPage firstLoginPersonalInfoPage;
+    public static PositionPage positionPage;
 
 
 
@@ -35,5 +39,7 @@ public class PageInitializer extends Driver {
         educationPage = new EducationPage();
         languagePage = new LanguagePage();
         profileSectionPage =new ProfileSectionPage();
+        firstLoginPersonalInfoPage = new FirstLoginPersonalInfoPage();
+        positionPage = new PositionPage();
     }
 }
