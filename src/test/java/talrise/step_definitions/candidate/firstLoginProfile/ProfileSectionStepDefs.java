@@ -17,42 +17,40 @@ public class ProfileSectionStepDefs extends CommonSteps {
     @And("clicks on {string} button")
     public void clicksOnButton(String button) {
         profileSectionPage.clickOnButton(button);
-//        switch (button){
-//            case("NEXT"):
-//                profileSectionPage.nextButton.click();
-//                break;
-//            case("BACK"):
-//                profileSectionPage.backButton.click();
-//                break;
-//            case("EXIT"):
-//                profileSectionPage.exitButton.click();
-//                break;
-//    }
+        waitFor(2);
 }
 
     @Then("verifies landing on {string} page")
     public void verifiesLandingOnPage(String page) {
-        String url = driver.getCurrentUrl();
-        assertTrue(url.contains(page.toLowerCase()));
+        page = page.toLowerCase().replace(" ","-");
+        assertTrue(driver.getCurrentUrl().contains(page));
 
     }
 
     @Then("verifies {string} alert is seen")
     public void verifiesAlertIsSeen(String message) {
-        if(message.contains("successfully")){
-            assertTrue(profileSectionPage.successAlert.getText().contains(message));
-        }else{
-            assertTrue(profileSectionPage.warningChooseAlert.getText().contains(message));
-        }
+        assertTrue(profileSectionPage.alertMessage.getText().contains(message));
+        waitFor(4);
+
     }
 
     @And("navigates to Profile Sections page")
     public void navigatesToProfileSectionsPage() {
         driver.get(ConfigurationReader.get("firstLoginUrl"));
+        waitFor(2);
     }
 
     @Given("user goes to Home Page")
     public void userGoesToHomePage() {
         driver.get(ConfigurationReader.get("firstLoginUrl"));
     }
+
+    @And("navigates to {string} page")
+    public void navigatesToPage(String page) {
+        page = page.toLowerCase().replace(" ","-");
+        driver.get(ConfigurationReader.get("firstLoginUrl")+page);
+    }
+
+
+
 }

@@ -8,3 +8,4 @@ Feature: Personal Info
 #    Then verifies 'Complete My Profile Now' button is visible
 #    And clicks on 'Complete My Profile Now' button
 #    Then verifies landing on Personal Info page
+# Talrise Logosu
