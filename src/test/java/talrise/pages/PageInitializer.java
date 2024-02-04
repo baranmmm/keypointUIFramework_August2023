@@ -1,7 +1,7 @@
 package talrise.pages;
 
-import talrise.pages.candidate.*;
-import talrise.pages.candidate2.ProfileSectionPage;
+import talrise.pages.candidate.normalProfile.*;
+import talrise.pages.candidate.firstLoginProfile.ProfileSectionPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 

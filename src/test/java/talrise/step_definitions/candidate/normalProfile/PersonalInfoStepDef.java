@@ -1,4 +1,4 @@
-package talrise.step_definitions.candidate;
+package talrise.step_definitions.candidate.normalProfile;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -352,7 +352,7 @@ public class PersonalInfoStepDef extends CommonSteps {
     @And("User is back to the personal information page")
     public void userIsBackToThePersonalInformationPage() {
 
-        CommonPageElements.clickOnButton("BACK");
+        personalInfoPage.clickOnButton("BACK");
         personalInfoPage.personalInfoDropdown.click();
 
 
