@@ -111,3 +111,13 @@ Feature: Dashboard Profile Feature
   Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional
     Given user clicks on the "CREATE A NEW JOB" button
     Then user verify that relevant page open
+
+  #Scenario Outline: TC-20 As Super admin User, I should be able to verify Company Name, Applied Position,Applied Date ,Closing Job Date and Job Details should be functional
+   # When the user clicks on the "Column Name"
+    #Then verify that the company name column is sorted in ascending order
+   # Examples:
+     # | Column Name  |
+      #| Company Name |
+  Scenario: TC-11 As Super admin User, I should be able to verify the drop down button (under the status ) should be functional.
+    When the user clicks the drop down button (under the status ) and select "Home Task"
+    Then user verify that "Home Task" is selected

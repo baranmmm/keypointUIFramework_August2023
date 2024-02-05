@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.Driver;
 
+import java.util.List;
 import java.util.Locale;
 
 public abstract class CommonPageElements extends Driver {
@@ -30,17 +31,23 @@ public abstract class CommonPageElements extends Driver {
     }
 
     public static void clickOnButton(String buttonText){
-        try{
-            driver.findElement(By.xpath("//button[.='"+buttonText+"']".toUpperCase())).click();
-        }catch (Exception e){
-            String buttonTextInitial = buttonText.charAt(0)+"";
-            buttonTextInitial = buttonTextInitial.toUpperCase();
-            String buttonTextRemaining = buttonText.substring(1).toLowerCase();
-            buttonText = buttonTextInitial+buttonTextRemaining;
-            String buttonLocator = "//button[text()='"+buttonText+"']";
-            CommonSteps.scrollToElement(driver.findElement(By.xpath(buttonLocator)));
-            driver.findElement(By.xpath(buttonLocator)).click();
+        List<WebElement> buttonList=driver.findElements(By.xpath("//button[.='"+buttonText+"']"));
+        List<WebElement> spanList=driver.findElements(By.xpath("//span[.='"+buttonText+"']"));
+        if (buttonList.size()>0) {
+            try {
+                driver.findElement(By.xpath("//button[.='" + buttonText + "']".toUpperCase())).click();
+            } catch (Exception e) {
+                String buttonTextInitial = buttonText.charAt(0) + "";
+                buttonTextInitial = buttonTextInitial.toUpperCase();
+                String buttonTextRemaining = buttonText.substring(1).toLowerCase();
+                buttonText = buttonTextInitial + buttonTextRemaining;
+                String buttonLocator = "//button[text()='" + buttonText + "']";
+                CommonSteps.scrollToElement(driver.findElement(By.xpath(buttonLocator)));
+                driver.findElement(By.xpath(buttonLocator)).click();
 
+            }
+        }else if(spanList.size()>0){
+            driver.findElement(By.xpath("//span[.='"+buttonText+"']"));
         }
 
     }

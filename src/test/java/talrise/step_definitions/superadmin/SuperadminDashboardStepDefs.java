@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.Select;
 import talrise.utilities.CommonSteps;
 
 import javax.swing.text.Utilities;
@@ -173,7 +174,8 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
 
     @Given("user clicks on the {string} button")
     public void user_clicks_on_the_button(String buttonName) {
-        superadminDashboardPage.clickButton(buttonName);
+        // superadminDashboardPage.clickButton(buttonName);
+        superadminDashboardPage.clickOnButton(buttonName);
     }
 
     @Then("user verify that relevant page open")
@@ -185,19 +187,35 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     public void the_user_clicks_link(String signUp) {
         registerPage.signUp.click();
     }
+
     @Given("the user get the {string}")
     public void the_user_get_the(String title) {
         waitFor(1);
         String totalPostedJobsString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
         System.out.println("totalPostedJobs = " + totalPostedJobsString);
     }
+
     @Given("the User enters valid {string},{string},{string},{string}")
     public void the_user_enters_valid(String firstName, String lastName, String password, String confirmPassword) {
         registerPage.firstNameBox.sendKeys(firstName);
         registerPage.lastNameBox.sendKeys(lastName);
-        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/"+ Faker.instance().name().firstName()+Faker.instance().name().lastName());
+        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/" + Faker.instance().name().firstName() + Faker.instance().name().lastName());
         registerPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
         registerPage.passwordBox.sendKeys(password);
         registerPage.confirmPasswordBox.sendKeys(confirmPassword);
     }
+
+    @When("the user clicks the drop down button \\(under the status ) and select {string}")
+    public void the_user_clicks_the_drop_down_button_under_the_status_and_select(String selectStatus) {
+        selectDropdownByText(superadminDashboardPage.dropDownButton, selectStatus);
+        waitFor(5);
+    }
+
+    @Then("user verify that {string} is selected")
+    public void user_verify_that_is_selected(String status) {
+        Select selectedStatus=new Select(superadminDashboardPage.dropDownButton);
+        System.out.println("selectedStatus = " + selectedStatus.getFirstSelectedOption().getText());
+        Assert.assertEquals(status,selectedStatus.getFirstSelectedOption().getText());
+    }
+
 }
