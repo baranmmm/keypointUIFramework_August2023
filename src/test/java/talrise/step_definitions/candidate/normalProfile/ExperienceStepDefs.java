@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import talrise.pages.ExperiencePage;
+import talrise.pages.candidate.normalProfile.ExperiencePage;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.ConfigurationReader;
 
@@ -40,7 +40,7 @@ public class ExperienceStepDefs extends CommonSteps {
     public void theUserOnTheModule(String leftMenuOption) {
 
         waitFor(2);
-        dashboardPage.goToLeftMenuOption(leftMenuOption);
+        candidateDashboardPage.goToLeftMenuOption(leftMenuOption);
 
     }
 
