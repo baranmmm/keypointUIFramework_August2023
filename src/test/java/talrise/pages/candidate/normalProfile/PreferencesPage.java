@@ -1,12 +1,13 @@
-package talrise.pages;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.List;
 
-public class PreferencesPage extends CommonPageElements{
+public class PreferencesPage extends CommonPageElements {
     @FindBy(xpath = "//div[@id='locations[0].countryId-select-input-id']")
     public WebElement preferencesCountry;
     @FindBy(xpath = "//div[@id='locations[1].countryId-select-input-id']")

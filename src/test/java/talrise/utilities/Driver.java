@@ -31,7 +31,6 @@ public class Driver {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--remote-allow-origins=*");
                 driver = new ChromeDriver(options);
-//                driver = new ChromeDriver();
                 break;
             case "chrome-headless":
                 driver = new ChromeDriver(new ChromeOptions().setHeadless(true));

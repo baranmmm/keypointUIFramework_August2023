@@ -17,7 +17,7 @@ Feature:As a user, I should be able to update "Country", "City",
   @personalMenuPageElements
   Scenario: .When user opens "Personal Information" page "First Name", "Last Name", "LinkedIn",
   "Country", "City", "E-mail" , "Country Code" and "Mobile" input boxes(titles) should be seen.
-    When User on the "Personal Information" page,sees "Personal Information" menu available
+#    When User on the "Personal Information" page,sees "Personal Information" menu available
     And User click on the pen icon,the menu expends
     Then User sees "First Name*", "Last Name*", "LinkedIn*","E-mail*","Mobile"  elements
     Then User sees "Country","City"and "Country Code" elements dropdowns
@@ -59,7 +59,7 @@ Feature:As a user, I should be able to update "Country", "City",
 
   @mobile1
   Scenario Outline:As a user,should not be able to enter less than 7 digits and more than 14 digits or anything
-    but numbers in mobile input box.Otherwise warning message seen below it.
+  but numbers in mobile input box.Otherwise warning message seen below it.
     When User clicks on "Personal Information" menu expands again
     When User enter "<invalid Credentials>"digits less than seven and more than fourteen or Mobile number must include only digits.non-numeric  sees "<warning message>"
 
@@ -102,22 +102,15 @@ Feature:As a user, I should be able to update "Country", "City",
     Then User sees saved information on the personal information page and validates
 
 
+  @cancelButton
+  Scenario:
+    When User clicks on "Personal Information" menu expands again
+    And User sees saved information on the personal information page and validates
+    And User is back to the personal information page
+    And User change country,city,country code and mobile information
+    And User click on cancel button
+    And User sees and validate that country,city,country code and mobile information changes turns to last saved version
 
-
-#  @cancelButton
-#  Scenario:
-#    When User clicks on "Personal Information" menu expands again
-#    And User sees saved information on the personal information page
-#    And User change "country","city","country code" and "mobile"information
-#      | Country      | Wales      |
-#      | city         | Cardiff    |
-#      | country Code | +44        |
-#      | mobile       | 1010101010 |
-#    And User  click cancel button
-#    Then User sees  all information returned last saves version on the overview page
-#
-
-#   - wip .......
 
 
 

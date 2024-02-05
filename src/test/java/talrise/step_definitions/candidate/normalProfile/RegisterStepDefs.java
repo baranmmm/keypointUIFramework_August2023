@@ -1,4 +1,4 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate.normalProfile;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;

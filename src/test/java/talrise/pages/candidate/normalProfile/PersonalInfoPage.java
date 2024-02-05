@@ -1,14 +1,15 @@
-package talrise.pages;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class PersonalInfoPage extends CommonPageElements{
+public class PersonalInfoPage extends CommonPageElements {
 
     Random random = new Random();
 
@@ -131,19 +132,19 @@ public class PersonalInfoPage extends CommonPageElements{
 
 
     @FindBy(name = "mobile")
-  public WebElement mobileInputBox;
+    public WebElement mobileInputBox;
 
-  @FindBy(id =":r7:-helper-text")
+    @FindBy(id =":r7:-helper-text")
     public WebElement warningMessage;
 
     @FindBy(xpath = "(//button[@label='save'])[1]")
     public WebElement saveButton;
 
-  @FindBy(xpath ="//*[contains(@class,'Toastify__toast-body')]")
+    @FindBy(xpath ="//*[contains(@class,'Toastify__toast-body')]")
     public WebElement successMessage;
 
 
-  @FindBy(xpath ="//button[.='OVERVIEW']")
+    @FindBy(xpath ="//button[.='OVERVIEW']")
     public WebElement overviewButton;
 
     @FindBy(css="[data-value=\"+44\"]")
@@ -165,6 +166,8 @@ public class PersonalInfoPage extends CommonPageElements{
     }
 
 
+    @FindBy(xpath = "(//button[@label='cancel'])[1]")
+    public WebElement canselButton;
 
 
 //    @FindBy(xpath = "(//button[@label='cancel'])[1]")
@@ -177,14 +180,3 @@ public class PersonalInfoPage extends CommonPageElements{
 
 
 }
-
-
-
-
-
-
-
-
-
-
-

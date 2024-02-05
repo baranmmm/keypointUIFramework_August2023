@@ -1,4 +1,4 @@
-package talrise.step_definitions;
+package talrise.step_definitions.candidate.normalProfile;
 
 import com.github.javafaker.Faker;
 import io.cucumber.java.en.And;
@@ -21,14 +21,19 @@ public class PersonalInfoStepDef extends CommonSteps {
 
     @When("User on the {string} page,sees {string} menu available")
     public void user_on_the_page_sees_menu_available(String profile, String PersonalInformation) {
-     personalInfoPage.profileSideMenu.click();
-     waitForPageToLoad(3);
-     for (WebElement menu : personalInfoPage.menus) {
-            if(menu.getText().equals("Personal Information")){
-                Assert.assertEquals(menu.getText(),"Personal Information");
+        personalInfoPage.profileSideMenu.click();
+        waitForPageToLoad(3);
+
+//     Assert.assertEquals("http://20.108.75.9/profile",driver.getCurrentUrl());
+//     Assert.assertEquals(PersonalInformation,personalInfoPage.personalInfoDropdown.getText());
+
+
+        for (WebElement menu : personalInfoPage.menus) {
+            if(menu.getText().equals(PersonalInformation)){
+                Assert.assertEquals(PersonalInformation,menu.getText());
             }
         }
-   }
+    }
 
     @When("User click on the pen icon,the menu expends")
     public void user_click_on_the_pen_icon_the_menu_expends() {
@@ -36,8 +41,8 @@ public class PersonalInfoStepDef extends CommonSteps {
         int size1 = personalInfoPage.profileMenuPenIcons.size();
         waitFor(3);
         personalInfoPage.personalInfoPenIcon.click();
-       int size2 = personalInfoPage.profileMenuPenIcons.size();
-       Assert.assertTrue(size1==(size2+1));
+        int size2 = personalInfoPage.profileMenuPenIcons.size();
+        Assert.assertTrue(size1==(size2+1));
     }
 
     @When("User clicks on arrow,the menu collapse")
@@ -51,7 +56,7 @@ public class PersonalInfoStepDef extends CommonSteps {
     @Then("User clicks on {string} menu expands again")
     public void user_clicks_on_menu_expands_again(String PersonalInformation) {
         personalInfoPage.personalInfoDropdown.click();
-         waitFor(1);
+        waitFor(1);
         Assert.assertEquals(PersonalInformation, personalInfoPage.personalInfoText.getText());
     }
 
@@ -76,9 +81,9 @@ public class PersonalInfoStepDef extends CommonSteps {
             String actualElement=personalInfoDropdowns.get(i);
             waitFor(1);
             String expectedElement=parameters.get(i);
-           Assert.assertEquals(expectedElement,actualElement);
+            Assert.assertEquals(expectedElement,actualElement);
         }
-   }
+    }
 
     @And("User sees firstName,lastName,LinkedIn and E_mail information already given")
     public void userSeesFirstNameLastNameLinkedInAndEMailInformationAlreadyGiven(Map<String, String> userDatas) {
@@ -112,8 +117,8 @@ public class PersonalInfoStepDef extends CommonSteps {
 
     @When("User clicks {string} input box")
     public void userClicksInputBox(String Country) {
-    scrollToElement(personalInfoPage.countryInputBox);
-       personalInfoPage.countryInputBox.click();
+        scrollToElement(personalInfoPage.countryInputBox);
+        personalInfoPage.countryInputBox.click();
 
     }
 
@@ -127,27 +132,27 @@ public class PersonalInfoStepDef extends CommonSteps {
             Assert.assertEquals(countryDropdownsExpected.get(i),personalInfoPage.countryDropdowns.get(i).getText());
             String text=personalInfoPage.countryDropdowns.get(i).getText();
             waitFor(1);
-            System.out.println("text = " + text);
+
 
         }
     }
 
     @And("User selects None option,City input box is not clickable")
     public void userSelectsNoneOptionCityInputBoxIsNotClickable() {
-         personalInfoPage.noneOption.click();
-         waitFor(1);
-         Assert.assertTrue(personalInfoPage.cityInput.getAttribute("disabled"),true);
+        personalInfoPage.noneOption.click();
+        waitFor(1);
+        Assert.assertTrue(personalInfoPage.cityInput.getAttribute("disabled"),true);
 
-        }
+    }
 
     @And("User  leaves Country input box  empty City input box is not clickable")
     public void userLeavesCountryInputBoxEmptyCityInputBoxIsNotClickable() {
 
-         personalInfoPage.countryInputBox.click();
-         personalInfoPage.noneOption.click();
+        personalInfoPage.countryInputBox.click();
+        personalInfoPage.noneOption.click();
 
         Assert.assertTrue(personalInfoPage.cityInput.getAttribute("disabled"),true);
-        }
+    }
 
     @And("User clicks the England option {string} and {int} cities should be available to select in City dropdown.")
     public void userClicksTheEnglandOptionAndCitiesShouldBeAvailableToSelectInCityDropdown(String none, int cityAmount) {
@@ -158,7 +163,7 @@ public class PersonalInfoStepDef extends CommonSteps {
         int actualCitySize=personalInfoPage.cityDropdowns.size();
         int expectedCitySize=cityAmount+1;
         Assert.assertEquals(expectedCitySize,actualCitySize);
-        }
+    }
 
     @And("User clicks the Wales option {string} and {int} cities should be available to select in City dropdown.")
     public void userClicksTheWalesOptionAndCitiesShouldBeAvailableToSelectInCityDropdown(String none, int cityAmount){
@@ -172,7 +177,7 @@ public class PersonalInfoStepDef extends CommonSteps {
         int expectedSizeOfWalesCity=cityAmount+1;
 
         Assert.assertEquals(expectedSizeOfWalesCity,actualSizeOfWalesCity);
-        }
+    }
 
     @And("User clicks the Northern Ireland option {string} and {int} cities should be available to select in City dropdown.")
     public void userClicksTheNorthernIrelandOptionAndCitiesShouldBeAvailableToSelectInCityDropdown(String none, int numberOfCity) {
@@ -183,24 +188,24 @@ public class PersonalInfoStepDef extends CommonSteps {
         waitFor(1);
         personalInfoPage.northernIrelandOption.click();
         personalInfoPage.cityInput.click();
-       int actualSizeOfNorthernIrelandCity = personalInfoPage.cityDropdowns.size();
-       int expectedSizeOfNorthernIcelandCity=numberOfCity+1;
-       Assert.assertEquals(expectedSizeOfNorthernIcelandCity,actualSizeOfNorthernIrelandCity);
+        int actualSizeOfNorthernIrelandCity = personalInfoPage.cityDropdowns.size();
+        int expectedSizeOfNorthernIcelandCity=numberOfCity+1;
+        Assert.assertEquals(expectedSizeOfNorthernIcelandCity,actualSizeOfNorthernIrelandCity);
     }
 
     @And("User clicks the Scotland option {string} and {int} cities should be available to select in City dropdown.")
     public void userClicksTheScotlandOptionAndCitiesShouldBeAvailableToSelectInCityDropdown(String none, int numberOfCity) {
 
-            personalInfoPage.noneOption.click();
-            waitFor(1);
-            personalInfoPage.countryInputBox.click();
-            waitFor(1);
-            personalInfoPage.scotlandOption.click();
-            personalInfoPage.cityInput.click();
-            int actualSizeOfScotlandCity = personalInfoPage.cityDropdowns.size();
-            int expectedSizeOfScotlandCity =numberOfCity+1;
-            Assert.assertEquals(expectedSizeOfScotlandCity,actualSizeOfScotlandCity);
-        }
+        personalInfoPage.noneOption.click();
+        waitFor(1);
+        personalInfoPage.countryInputBox.click();
+        waitFor(1);
+        personalInfoPage.scotlandOption.click();
+        personalInfoPage.cityInput.click();
+        int actualSizeOfScotlandCity = personalInfoPage.cityDropdowns.size();
+        int expectedSizeOfScotlandCity =numberOfCity+1;
+        Assert.assertEquals(expectedSizeOfScotlandCity,actualSizeOfScotlandCity);
+    }
 
 
     @And("User  clicks the UK option {string} and {int} city should be available to select in City dropdown.")
@@ -222,12 +227,12 @@ public class PersonalInfoStepDef extends CommonSteps {
     @When("user clicks on Country Code input box")
     public void userClicksOnCountryCodeInputBox() {
 
-       personalInfoPage.countryCode.click();
+        personalInfoPage.countryCode.click();
 
     }
 
-@And("user sees {string} and {string} options")
-public void userSeesAndOptions(String none, String ukCode) {
+    @And("user sees {string} and {string} options")
+    public void userSeesAndOptions(String none, String ukCode) {
 
         List<String> parameters=Arrays.asList(none,ukCode);
         for (int i = 0; i < personalInfoPage.countryCodeDropdownOptions.size(); i++) {
@@ -250,7 +255,7 @@ public void userSeesAndOptions(String none, String ukCode) {
         personalInfoPage.mobileInputBox.sendKeys(invalidCredential);
         waitFor(1);
         String actualWarningMessage=personalInfoPage.warningMessage.getAttribute("textContent");
-        System.out.println("actualWarningMessage = " +actualWarningMessage);
+
         String expectedWarningMessage=warningMessage;
         assert expectedWarningMessage.equals(actualWarningMessage);
 
@@ -297,6 +302,8 @@ public void userSeesAndOptions(String none, String ukCode) {
 
 
     }
+    String cityAndCountryOnPersonalInfo;
+    String phoneNumberOnPersonalInfPage;
 
     @And("User sees saved information on the personal information page and validates")
     public void userSeesSavedInformationOnThePersonalInformationPageAndValidates() {
@@ -304,12 +311,12 @@ public void userSeesAndOptions(String none, String ukCode) {
         String fullNameOnPersonalInfo=personalInfoPage.firstName.getAttribute("value")+" "+
                 personalInfoPage.lastName.getAttribute("value");
         String linkedinOnPersonalInfo=personalInfoPage.linkedIn.getAttribute("value");
-        String cityAndCountryOnPersonalInfo= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
-                        .getAttribute("innerText");
+        cityAndCountryOnPersonalInfo= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
+                .getAttribute("innerText");
         String emailOnPersonalInfo=personalInfoPage.email.getAttribute("value");
 
-        String phoneNumberOnPersonalInfPage = personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
-                 +"  "+personalInfoPage.mobileInputBox.getAttribute("value").trim();
+        phoneNumberOnPersonalInfPage = personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
+                +"  "+personalInfoPage.mobileInputBox.getAttribute("value").trim();
 
 
 //        System.out.println("fullNameOnPersonalInfo = " + fullNameOnPersonalInfo);
@@ -334,7 +341,7 @@ public void userSeesAndOptions(String none, String ukCode) {
         Assert.assertEquals(linkedinOnPersonalInfo,linkedinOnOverviewPage);
         Assert.assertEquals(cityAndCountryOnPersonalInfo,cityAndCountryOnOverviewPage);
         Assert.assertEquals(emailOnPersonalInfo,emailOnOnOverviewPage);
-         Assert.assertEquals(phoneNumberOnPersonalInfPage,phoneNumberOnOverviewPage);
+        Assert.assertEquals(phoneNumberOnPersonalInfPage,phoneNumberOnOverviewPage);
 
 
 
@@ -345,7 +352,7 @@ public void userSeesAndOptions(String none, String ukCode) {
     @And("User is back to the personal information page")
     public void userIsBackToThePersonalInformationPage() {
 
-        CommonPageElements.clickOnButton("BACK");
+        personalInfoPage.clickOnButton("BACK");
         personalInfoPage.personalInfoDropdown.click();
 
 
@@ -363,7 +370,7 @@ public void userSeesAndOptions(String none, String ukCode) {
         waitFor(1);
 
         personalInfoPage.cityInput.click();
-         waitFor(1);
+        waitFor(1);
 
         List<WebElement> cityDropdownsWithoutNone = personalInfoPage.getCityDropdownsWithoutNone(personalInfoPage.cityDropdowns);
         personalInfoPage.getRandomData(cityDropdownsWithoutNone).click();
@@ -401,16 +408,39 @@ public void userSeesAndOptions(String none, String ukCode) {
         personalInfoPage.personalInfoDropdown.click();
     }
 
+    @And("User click on cancel button")
+    public void userClickOnCancelButton() {
+        personalInfoPage.canselButton.click();
+
+
+
+    }
+
+
+    @And("User sees and validate that country,city,country code and mobile information changes turns to last saved version")
+    public void userSeesAndValidateThatCountryCityCountryCodeAndMobileInformationChangesTurnsToLastSavedVersion() {
+        String cityAndCountryOnPersonalInfoAfterClickingCancel= personalInfoPage.cityInput.getAttribute("innerText")+"/"+personalInfoPage.countryInputBox
+                .getAttribute("innerText");
+        String phoneNumberOnPersonalInfPageAfterClickingCancel=personalInfoPage.countryCodeDropdown.getAttribute("textContent").trim()
+                +"  "+personalInfoPage.mobileInputBox.getAttribute("value").trim();
+//        System.out.println("............................");
+//        System.out.println("phoneNumberOnPersonalInfPage = " + phoneNumberOnPersonalInfPage);
+//        System.out.println("phoneNumberOnPersonalInfPageAfterClickingCancel = " + phoneNumberOnPersonalInfPageAfterClickingCancel);
+//        System.out.println("cityAndCountryOnPersonalInfo = " + cityAndCountryOnPersonalInfo);
+//        System.out.println("cityAndCountryOnPersonalInfoAfterClickingCancel = " + cityAndCountryOnPersonalInfoAfterClickingCancel);
+//
+
+
+        Assert.assertEquals(cityAndCountryOnPersonalInfoAfterClickingCancel,cityAndCountryOnPersonalInfo);
+
+        Assert.assertEquals(phoneNumberOnPersonalInfPageAfterClickingCancel,phoneNumberOnPersonalInfPage);
+
+
+
+    }
+
+
+
 
 
 }
-
-
-
-
-
-
-
-
-
-

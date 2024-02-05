@@ -1,20 +1,17 @@
-package talrise.pages;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
+import talrise.pages.CommonPageElements;
 
-public class DashboardPage extends CommonPageElements{
-
+public class CandidateDashboardPage extends CommonPageElements {
     public void dismissPopUpMessage() {
 
         try {
             driver.findElement(By.xpath("//*[contains(@class,'sc-cmaqmh')]")).click();
-        }catch (NoSuchElementException e){
+        }catch (Exception e){
             System.out.println("profile completed");
         }
 
 
     }
-
-
 }

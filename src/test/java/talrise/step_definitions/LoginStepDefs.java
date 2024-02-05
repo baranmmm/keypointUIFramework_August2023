@@ -8,6 +8,7 @@ import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.ConfigurationReader;
+import talrise.utilities.Log;
 
 public class LoginStepDefs extends CommonSteps {
 
@@ -137,4 +138,30 @@ public class LoginStepDefs extends CommonSteps {
         Assert.assertEquals(sifre, loginPage.passwordTxtbox.getAttribute("value") );
     }
 
+    @Given("the user logs in as {string}")
+    public void theUserLogsInAs(String role) throws Exception {
+        driver.get(ConfigurationReader.get("environmentUrl"));
+        if(role.equalsIgnoreCase("candidate")){
+            loginPage.emailTxtbox.sendKeys(ConfigurationReader.get("candidateEmail"));
+        }else if(role.equalsIgnoreCase("superadmin") || role.equalsIgnoreCase("super admin")){
+            loginPage.emailTxtbox.sendKeys(ConfigurationReader.get("superadminEmail"));
+        }else if(role.equalsIgnoreCase("client")){
+            loginPage.emailTxtbox.sendKeys(ConfigurationReader.get("clientEmail"));
+        }else if(role.equalsIgnoreCase("partner")){
+            loginPage.emailTxtbox.sendKeys(ConfigurationReader.get("partnerEmail"));
+        }else{
+            Log.error("Incorrect username is used.");
+            throw new Exception("Incorrect username is used.");
+        }
+        loginPage.passwordTxtbox.sendKeys(ConfigurationReader.get("password"));
+        loginPage.loginBtn.click();
+    }
+
+
+    @And("the user logs out from talrise")
+    public void theUserLogsOutFromTalrise() {
+        superadminDashboardPage.profileNameBtn.click();
+        waitForClickability(superadminDashboardPage.logoutBtn, 5);
+        superadminDashboardPage.logoutBtn.click();
+    }
 }

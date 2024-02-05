@@ -1,12 +1,13 @@
-package talrise.pages;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 
 import java.util.List;
 
-public class LanguagePage extends CommonPageElements{
+public class LanguagePage extends CommonPageElements {
 
     @FindBy(xpath="//div[@class='sc-satoz goHDTn']/div/div[2]/button")
     public List<WebElement> languageSuggestedFields;

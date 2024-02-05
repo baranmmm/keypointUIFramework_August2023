@@ -1,11 +1,12 @@
-package talrise.pages;
+package talrise.pages.candidate.normalProfile;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import talrise.pages.CommonPageElements;
 import talrise.utilities.ConfigurationReader;
 
-public class LoginPage extends CommonPageElements{
+public class LoginPage extends CommonPageElements {
 
     @FindBy(id = "email")
     public WebElement emailTxtbox;
