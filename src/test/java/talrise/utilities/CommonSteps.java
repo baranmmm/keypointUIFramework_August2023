@@ -564,4 +564,22 @@ public class CommonSteps extends PageInitializer {
         return listofElement.get(randomIndex);
     }
 
+    public void clickOnDeleteBtnExperiencePage() {
+       int amountOfTitle = 0;
+
+        for (WebElement titleTextElement : experiencePage.titleTextElements) {
+
+            amountOfTitle++;
+
+        }
+
+        actions.scrollToElement(experiencePage.experienceText).keyDown(Keys.PAGE_DOWN).perform();
+        if (experiencePage.deleteButton.isDisplayed()) {
+            waitFor(2);
+
+            for (int i = 0; i < amountOfTitle; i++) {
+                experiencePage.deleteButton.click();
+            }
+        }}
+
 }

@@ -9,9 +9,11 @@ import talrise.utilities.Driver;
 import java.util.List;
 import java.util.Random;
 
+import static talrise.pages.PageInitializer.experiencePage;
 import static talrise.utilities.CommonSteps.waitFor;
 
 public class ExperiencePage extends CommonPageElements {
+
     @FindBy(xpath = "//span[text()='complete now']")
     public WebElement completeNowButton;
     @FindBy(css = "[class='MuiButtonBase-root MuiAccordionSummary-root css-1uaukoe']")
@@ -26,6 +28,7 @@ public class ExperiencePage extends CommonPageElements {
     public boolean isExperienceFieldsContainsText(String fieldText) {
         return driver.findElement(By.xpath("(//*[text()='" + fieldText + "'])[1]")).getText().contains(fieldText);
     }
+
     @FindBy(xpath = "(//label[text()='Title*'])")
     public List<WebElement> titleTextElements;
     @FindBy(xpath = "//input[@id='title']")
@@ -64,15 +67,17 @@ public class ExperiencePage extends CommonPageElements {
     public WebElement skillSetWarningMsg;
 
     public Boolean experienceWarningMessage(String message) {
-       return driver.findElement(By.xpath("//*[text()='"+message+"']")).isDisplayed();
+        return driver.findElement(By.xpath("//*[text()='" + message + "']")).isDisplayed();
     }
+
     @FindBy(xpath = "//div[text()='Request failed with status code 406']")
     public WebElement popupMsg;
 
+    ////div[@role='alert']//div[text()='Request failed with status code 406']
     @FindBy(xpath = "//div[@id='experiences[0].noticePeriodId-select-input-id']")
     public WebElement noticePeriodDropDown;
 
-    @FindBy(xpath="(//ul[@role='listbox'])//li")
+    @FindBy(xpath = "(//ul[@role='listbox'])//li")
     public List<WebElement> noticePeriodList;
 
     @FindBy(xpath = "//span[.='ADD MORE EXPERIENCE']")
@@ -85,9 +90,9 @@ public class ExperiencePage extends CommonPageElements {
     public WebElement saveBtn;
     @FindBy(id = "explanationText")
     public WebElement experienceTextBox;
-    @FindBy(xpath= "(//div[contains(@class,'toolsSelected')])")
-    public List<WebElement>selectedToolsList;
-    @FindBy(xpath ="((//div[contains(@class,'toolsSelected')])//span)")
+    @FindBy(xpath = "(//div[contains(@class,'toolsSelected')])")
+    public List<WebElement> selectedToolsList;
+    @FindBy(xpath = "((//div[contains(@class,'toolsSelected')])//span)")
     public List<WebElement> crossBtnList;
 
 
