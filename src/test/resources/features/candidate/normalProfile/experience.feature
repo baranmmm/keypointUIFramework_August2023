@@ -6,6 +6,7 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
     And the user navigates "Profile" left menu option
     And The user on the "Experience" module
 
+
   @exp
   Scenario Outline: Verify Input Box Titles and Dropdowns on Experience Module
     When The user clicks to the "<Title>" and type text
@@ -62,21 +63,22 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 #      | Backend Developer      | KeyPoint |            |          |                                                                                    | Please enter the start date.                 |
       | Backend Developer      | KeyPoint | 10.2001    | 10/2002  |                                                                                    | Please enter a valid date (e.g. 01.1990)     |
       | Backend Developer      | KeyPoint | 10.2001    | 13.2002  |                                                                                    | Please enter a valid date (e.g. 01.1990)     |
+      | Software Tester        | Yahoo    | 01.1980    | 11.2023  |                                                                                    |                                              |
 # Uyari mesaji yerine "Request failed with status code 406" popup mesaji aldigimdan sinir degerleri alltaki gibi ayri senaryolarla test ettim,dolayisiyla warning messajlar test edilemiyor.
-#      | Software Test Engineer | ABC      | 10.1980    | 10.2023  |                                                                                    |"startYear cannot before 1960"|
-#      | Software Test Engineer | ABC      | 11.1980    | 11.2023  |                                                                                    |"endYear  cannot after now"|
+#      | Software Test Engineer | ABC      | 12.1979    | currentDate |                                                                                    |"startYear cannot before 01.01.1980"|
+#      | Software Test Engineer | ABC      | 01.1980    | currentDate+1Month  |                                                                                    |"endYear  cannot after now"|
 
   @NegativeStartYear
-  Scenario: Verify Input Boxes and Dropdowns are mandatory fields to fill on the Experience Module and Warning Messages-Negative
-    When The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","10.1980",and "10.2023"
+  Scenario: Verify Input Boxes and Dropdowns are mandatory fields to fill on the Experience Module and Warning Messages-Negative2
+    When The user clicks to the Title, Company, negativeStartDate, and EndDate input boxes and inputs necessary informations
     And The user clicks to the "<Please choose all the skill sets you used while working in this experience module.>" module and select an option
     And The user clicks to the save button
     Then The user verifies the "Request failed with status code 406" popup message is displayed on the experience page
 
   @NegativeEndYear
-  Scenario: Verify Input Boxes and Dropdowns are mandatory fields to fill on the Experience Module and Warning Messages-Negative
-    When The user clicks to the Title,Company,StartDate,and EndDate input boxes and types "Software Test Engineer","ABC","11.1980",and "11.2023"
-    And The user clicks to the "<Please choose all the skill sets you used while working in this experience module.>" module and select an option
+  Scenario: Verify Input Boxes and Dropdowns are mandatory fields to fill on the Experience Module and Warning Messages-Negative3
+    When The user clicks to the Title, Company, StartDate, and negativeEndDate input boxes and inputs necessary informations
+    And The user clicks to the "Please choose all the skill sets you used while working in this experience module." module and select an option
     And The user clicks to the save button
     Then The user verifies the "Request failed with status code 406" popup message is displayed on the experience page
 
@@ -176,11 +178,11 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
     And The user clicks on one option randomly from the Notice Period dropdown menu
     Then Verify that user sees all the Notice Period dropdown menu
       | 1 week    |
-      | 2 week    |
-      | 3 week    |
-      | 4 week    |
-      | 5 week    |
-      | 6 week    |
+      | 2 weeks   |
+      | 3 weeks   |
+      | 4 weeks   |
+      | 5 weeks   |
+      | 6 weeks   |
       | 2 months  |
       | 3+ months |
 
@@ -202,7 +204,7 @@ Feature:Verify visibility and click ability of "Experience" module subtitles on 
 
     When The user clicks the "Type to add more information." textbox
     And The userS enters 501 characters in the text box
-    Then Verifys that user sees not to type 501 characters
+    Then Verify that user sees not to type 501 characters
 
 
 
