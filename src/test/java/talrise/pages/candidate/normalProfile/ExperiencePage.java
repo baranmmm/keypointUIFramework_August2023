@@ -6,9 +6,15 @@ import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
 import java.util.List;
+import java.util.Random;
+
+import static talrise.pages.PageInitializer.experiencePage;
+import static talrise.utilities.CommonSteps.waitFor;
 
 public class ExperiencePage extends CommonPageElements {
 
+    @FindBy(xpath = "//span[text()='complete now']")
+    public WebElement completeNowButton;
     @FindBy(css = "[class='sc-jXbUNg esKOjA text-example']")
     public List<WebElement> profileModuleList;
     @FindBy(css = "[class='MuiButtonBase-root MuiAccordionSummary-root css-1uaukoe']")
@@ -57,6 +63,9 @@ public class ExperiencePage extends CommonPageElements {
     public WebElement skillSetArrow;
     @FindBy(xpath = "(//p[@class='MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-v7esy'])[2]")
     public WebElement skillSetWarningMsg;
+    @FindBy(xpath = "//div[text()='Request failed with status code 406']")
+    public WebElement popupMsg;
+    ////div[@role='alert']//div[text()='Request failed with status code 406']
     @FindBy(xpath = "//div[@id='experiences[0].noticePeriodId-select-input-id']")
     public WebElement noticePeriodDropDown;
     @FindBy(xpath = "//li[@class='MuiButtonBase-root MuiMenuItem-root MuiMenuItem-gutters MuiMenuItem-root MuiMenuItem-gutters css-11oatdh']")
@@ -67,28 +76,21 @@ public class ExperiencePage extends CommonPageElements {
     public WebElement cancelBtn;
     @FindBy(xpath = "(//button[text()='SAVE'])[7]")
     public WebElement saveBtn;
-    @FindBy(xpath = "//span[text()='complete now']")
-    public WebElement completeNowButton;
     @FindBy(xpath = "//span[text()='Experience']")
     public WebElement experienceSection;
-    @FindBy(xpath = "//div[text()='Request failed with status code 406']")
-    public WebElement popupMsg;
     @FindBy(id = "explanationText")
     public WebElement experienceTextBox;
-    @FindBy(xpath= "(//div[contains(@class,'toolsSelected')])")
-    public List<WebElement>selectedToolsList;
-    @FindBy(xpath ="((//div[contains(@class,'toolsSelected')])//span)")
+    @FindBy(xpath = "(//div[contains(@class,'toolsSelected')])")
+    public List<WebElement> selectedToolsList;
+    @FindBy(xpath = "((//div[contains(@class,'toolsSelected')])//span)")
     public List<WebElement> crossBtnList;
-
-    public void experienceWarningMessage(String message) {
-        driver.findElement(By.xpath("//*[contains(.,'" + message + "')]//..//p")).isDisplayed();
+    public Boolean experienceWarningMessage(String message) {
+        return driver.findElement(By.xpath("//*[text()='" + message + "']")).isDisplayed();
     }
-
     //*******************************Generated a method is in order verify that the text of the input boxes in the Experience Module are available**********************************
     public boolean isExperienceFieldsContainsText(String fieldText) {
-        return driver.findElement(By.xpath("//label[contains(text())='Title']")).getText().contains(fieldText);
+        return driver.findElement(By.xpath("(//*[text()='" + fieldText + "'])[1]")).getText().contains(fieldText);
     }
-
 
 //    public void clickAndSendInputBox(String title, String company, String startDate, String endDate) {
 //
