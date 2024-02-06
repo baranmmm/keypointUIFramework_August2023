@@ -1,9 +1,23 @@
-
 Feature: Admin should be able to see and update the jobs list under Activity Section
 
-  Background: :
-    Given The user "superAdmin" logs in succesfully
-    And The user navigates "Activity" left menu option
-    And The user goes to "Jobs" option
-    And The user navigates "Jobs List" option
-  Scenario: TC_05 In list view, columns contents should be sort by asc/desc
+  Background:
+     Given User "superadminEmail" logs in successfully
+     When User navigates to jobList
+
+
+    Scenario:TC_01 Verify to url contains jobList
+      Then Verify the page url contains "jobs-list"
+
+  Scenario:TC_02 Verify the job list column names
+    Then Column names should be displayed
+
+    Scenario: TC_03 Pagination verification
+      And Clicks on the "chevron_right"
+      Then Verify the text contains "6-10 of"
+      When Clicks on the "chevron_left"
+      Then Verify the text contains "1-5 of"
+
+    Scenario: TC_06 Verify the default page size
+    Then Default page size should be 5
+
+
