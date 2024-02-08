@@ -1,7 +1,6 @@
 package talrise.step_definitions.superadmin;
 
 import io.cucumber.java.en.Given;
-import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
 
 import static talrise.pages.PageInitializer.superAdminCandidateProcessPage;
 import static talrise.utilities.CommonSteps.waitFor;
