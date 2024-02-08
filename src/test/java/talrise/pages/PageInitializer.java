@@ -4,6 +4,7 @@ import talrise.pages.candidate.firstLoginProfile.FirstLoginPersonalInfoPage;
 import talrise.pages.candidate.firstLoginProfile.PositionPage;
 import talrise.pages.candidate.normalProfile.*;
 import talrise.pages.candidate.firstLoginProfile.ProfileSectionPage;
+import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 
@@ -23,6 +24,7 @@ public class PageInitializer extends Driver {
     public static ProfileSectionPage profileSectionPage;
     public static FirstLoginPersonalInfoPage firstLoginPersonalInfoPage;
     public static PositionPage positionPage;
+    public static SuperAdminCandidateProcessPage superAdminCandidateProcessPage;
 
 
 
