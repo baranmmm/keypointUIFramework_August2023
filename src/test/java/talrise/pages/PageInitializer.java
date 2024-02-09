@@ -28,12 +28,12 @@ public class PageInitializer extends Driver {
     public static EducationPage educationPage;
     public static LanguagePage languagePage;
     public static ProfileSectionPage profileSectionPage;
-
     public static JobListPage jobListPage;
     public static FirstLoginPersonalInfoPage firstLoginPersonalInfoPage;
     public static PositionPage positionPage;
     public static FirstLoginLanguagePage firstLoginLanguagePage;
     public static FirstLoginExperiencePage firstLoginExperiencePage;
+    public static SuperAdminCandidateProcessPage superAdminCandidateProcessPage;
 
 
 
@@ -55,9 +55,6 @@ public class PageInitializer extends Driver {
         positionPage = new PositionPage();
         firstLoginLanguagePage = new FirstLoginLanguagePage();
         firstLoginExperiencePage = new FirstLoginExperiencePage();
-
-
-
         superAdminCandidateProcessPage = new SuperAdminCandidateProcessPage();
     }
 }
