@@ -43,5 +43,6 @@ public class PageInitializer extends Driver {
         profileSectionPage =new ProfileSectionPage();
         firstLoginPersonalInfoPage = new FirstLoginPersonalInfoPage();
         positionPage = new PositionPage();
+        superAdminCandidateProcessPage = new SuperAdminCandidateProcessPage();
     }
 }
