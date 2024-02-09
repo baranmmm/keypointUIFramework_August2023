@@ -6,10 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import talrise.utilities.CommonSteps;
-
-import javax.swing.text.Utilities;
 
 import static org.junit.Assert.assertTrue;
 
@@ -150,7 +147,7 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
 
     @When("user clicks on the {string}")
     public void clicks_on_the_next_page(String page) {
-        superadminDashboardPage.getChangePage(page);
+        superadminDashboardPage.changeTablePage(page);
         waitFor(4);
     }
 

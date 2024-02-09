@@ -7,7 +7,11 @@
     Scenario: Candidate should be able to add and save Position
       Then verifies * icon is visible upon Position
       And types "Analyst" in the Position Search Box
+<<<<<<< HEAD
       And clicks on a "Analyst" position inside the Suggested Positions list
+=======
+      And clicks on a position inside the Suggested Positions list
+>>>>>>> master
       Then verifies the selected position is no longer visible inside the list
       Then verifies the selected position is visible under the page
       And clicks on "Next" button
@@ -23,6 +27,7 @@
 
     Scenario: Candidate should be able to delete added positions
       When types "Analyst" in the Position Search Box
+<<<<<<< HEAD
       And clicks on a "Analyst" position inside the Suggested Positions list
       Then verifies the selected position is visible under the page
 #      And deletes the added "position"
@@ -30,6 +35,15 @@
 #      And types "Analyst" in the Position Search Box
 #      Then verifies the deleted positions is seen inside the Suggested Position list
 #
+=======
+      And clicks on a position inside the Suggested Positions list
+      Then verifies the selected position is visible under the page
+      And deletes the added position
+#      Then verifies the deleted position is no longer visible under the page
+      And types "Analyst" in the Position Search Box
+      Then verifies the deleted positions is seen inside the Suggested Position list
+
+>>>>>>> master
 #    Scenario: Candidate should not be able to save Position more than 5 or without choosing any  position
 #      And clicks on "See More >" button
 #      Then verifies "more" positions are visible inside the list

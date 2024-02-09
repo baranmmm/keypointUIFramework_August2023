@@ -15,7 +15,6 @@ import org.junit.runner.RunWith;
         tags = "@candidateProcess"
 
 
-
 )
 public class CukesRunner {
 }
