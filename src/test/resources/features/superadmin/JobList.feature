@@ -2,19 +2,24 @@ Feature: Admin should be able to see and update the jobs list under Activity Sec
 
   Background:
      Given User "superadminEmail" logs in successfully
-     When User navigates to jobList
+#     When User navigates to jobList
+    * the user navigates "Activity" left menu option
+    * the user navigates "Jobs" left menu option
+    *  the user navigates "Jobs List" left menu option
 
 
-    Scenario:TC_01 Verify to url contains jobList
+
+    Scenario:TC_01 Verify the url contains jobList
       Then Verify the page url contains "jobs-list"
 
     Scenario:TC_02 Verify the job list column names
       Then Column names should be displayed
 
+  @jobList
     Scenario: TC_03 Pagination verification
-       And Clicks on the "chevron_right"
+       And Clicks on the "Next Page" arrow button
       Then Verify the text contains "6-10 of"
-      When Clicks on the "chevron_left"
+      When Clicks on the "Previous Page" arrow button
       Then Verify the text contains "1-5 of"
 
     Scenario: TC_06 Verify the default page size

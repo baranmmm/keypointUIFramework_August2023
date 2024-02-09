@@ -58,9 +58,9 @@ public class JoblistStepdefs extends CommonSteps {
         jobListPage.VerifyRowCounts(rowCount);
     }
 
-    @And("Clicks on the {string}")
-    public void ClicksOnThe(String chevron) {
-        jobListPage.ClicksOnTheChevron(chevron);
+    @And("Clicks on the {string} arrow button")
+    public void ClicksOnTheArrowButton(String chevron) {
+        jobListPage.changeTablePage(chevron);
         waitFor(1);
     }
 
