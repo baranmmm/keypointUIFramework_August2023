@@ -44,9 +44,7 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public void getRowsValue(Integer rowsValue){
          driver.findElement(By.xpath("//li[@data-value='"+rowsValue+"']")).click();
     }
-    public void getChangePage(String pageName){
-        driver.findElement(By.xpath("//span[@title='"+pageName+"']")).click();
-    }
+
     public void clickButton(String buttonName){
         driver.findElement(By.xpath("//span[text()='"+buttonName+"']")).click();
     }
