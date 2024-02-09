@@ -18,7 +18,7 @@ public class JoblistStepdefs extends CommonSteps {
 
 
     @When("User navigates to jobList")
-    public void userNavigatesToJobList() throws InterruptedException {
+    public void userNavigatesToJobList(){
         jobListPage.activity.click();
         jobListPage.jobs.click();
         jobListPage.jobsList.click();
@@ -59,8 +59,34 @@ public class JoblistStepdefs extends CommonSteps {
     }
 
     @And("Clicks on the {string}")
-    public void clicksOnThe(String chevron) {
+    public void ClicksOnThe(String chevron) {
         jobListPage.ClicksOnTheChevron(chevron);
         waitFor(1);
+    }
+
+
+    @And("clicks on the lastPage")
+    public void clicksOnTheLastPage() {
+        jobListPage.lastPage.click();
+        waitFor(1);
+    }
+
+    @Then("Verify the lastpage text contains {string}")
+    public void verifyTheLastpageTextContains(String lastpage) {
+       String lastPage = jobListPage.lastPage.getText();
+       Assert.assertTrue(lastPage.contains(lastpage));
+    }
+
+    @When("clicks on the firstPage")
+    public void clicksOnTheFirstPage() {
+        jobListPage.firstPage.click();
+    }
+
+    @Then("Verify the firstPage text contains {string}")
+    public void verifyTheFirstPageTextContains(String firstpage) {
+        waitFor(1);
+       String firstPage = jobListPage.firstPage.getText();
+        System.out.println("firstpage =" +firstPage);
+        Assert.assertTrue(firstPage.contains(firstpage));
     }
 }

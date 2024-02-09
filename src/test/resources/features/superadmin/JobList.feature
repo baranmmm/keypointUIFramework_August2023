@@ -8,16 +8,24 @@ Feature: Admin should be able to see and update the jobs list under Activity Sec
     Scenario:TC_01 Verify to url contains jobList
       Then Verify the page url contains "jobs-list"
 
-  Scenario:TC_02 Verify the job list column names
-    Then Column names should be displayed
+    Scenario:TC_02 Verify the job list column names
+      Then Column names should be displayed
 
     Scenario: TC_03 Pagination verification
-      And Clicks on the "chevron_right"
+       And Clicks on the "chevron_right"
       Then Verify the text contains "6-10 of"
       When Clicks on the "chevron_left"
       Then Verify the text contains "1-5 of"
 
     Scenario: TC_06 Verify the default page size
-    Then Default page size should be 5
+      Then Default page size should be 5
+
+    Scenario: TC_07 Verify the firs_Page and last_page work correctly
+      And clicks on the lastPage
+      Then Verify the lastpage text contains "last_page"
+      When clicks on the firstPage
+      Then Verify the firstPage text contains "first_page"
+
+
 
 
