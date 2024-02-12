@@ -17,6 +17,7 @@ Feature: Dashboard Profile Feature
     Then verify the "Total Applications" title is visible
     Then verify the "Total Posted Jobs" title is visible
 
+  @TC-3
   Scenario Outline: TC-3 As Super admin User, I should be able to verify when a new Candidate is creted, the total number of "Candidate Registered" should automatically update
     Given the user get the "Registered Candidates"
     And the user logs out from talrise
@@ -25,16 +26,11 @@ Feature: Dashboard Profile Feature
     And the user clicks on checkbox that I have read and agree to the privacy policy and GDPR.
     And the clicks on button that CREATE MY ACCOUNT button
     Then the user should be able to see Registered successfully! message
+    And the user Confirm Email and registered candidates
+    Then the user verify that "Registered Candidates" increased by 1
     Examples:
       | First Name | Last Name | Password    | Confirm Password |
       | Meltem     | CG        | Test123456! | Test123456!      |
-  #  * Enter the first name to the "First Name" button
-   # * Enter the last name to the "Last Name" button
-   # * Enter the Email to the "Email" button
-   # * Enter the password to the "Password" button
-   # * Enter the password to the "Confird Password" button
-   # * Click on the "privacy policy and GDPR"
-   # * Click on the "CREATE MY ACCOUNT"
 
   Scenario: TC-5 As Super admin User, I should be able to verify when a new job is created , "Total Posted Jobs" should be updated automatically.
     Given get the "Total Posted Jobs"
@@ -85,27 +81,27 @@ Feature: Dashboard Profile Feature
   Scenario: TC-15 As Super Admin user, I should be able to verify that Next Page(>) should be functional
     When user clicks on the rows
     And  user selects 5
-    * user clicks on the "Next Page"
+    * user clicks on the "Next Page" arrow button
     Then user verify page size is bigger than 5 (6-10 )
 
   Scenario: TC-16 As Super Admin user, I should be able to verify that Last Page (>|) should be functional
     When user clicks on the rows
     And  user selects 5
-    * user clicks on the "Last Page"
+    * user clicks on the "Last Page" arrow button
     Then user verify the "Next Page" (>) is not clickable
 
   Scenario: TC-17 As Super Admin user, I should be able to verify that First Page( >) should be functional
     When user clicks on the rows
     And  user selects 5
-    * user clicks on the "Last Page"
-    * user clicks on the "First Page"
+    * user clicks on the "Last Page" arrow button
+    * user clicks on the "First Page" arrow button
     Then user verify the page size is "1-5"
 
   Scenario: TC-18 As Super Admin user, I should be able to verify that Previous Page (<) should be functional
     When user clicks on the rows
     And  user selects 5
-    * user clicks on the "Next Page"
-    * user clicks on the "Previous Page"
+    * user clicks on the "Next Page" arrow button
+    * user clicks on the "Previous Page" arrow button
     Then user verify the page size is "1-5"
 
   Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional

@@ -7,12 +7,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import talrise.utilities.CommonSteps;
+import talrise.utilities.Driver;
+
+import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
 public class SuperadminDashboardStepDefs extends CommonSteps {
     Integer totalApplications;
     Integer totalPostedJobs;
+    String email;
 
 
     @And("{string} number is retrieved")
@@ -145,10 +149,10 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
         Assert.assertEquals(txt, superadminDashboardPage.rowsDropDownGetText.getText());
     }
 
-    @When("user clicks on the {string}")
-    public void clicks_on_the_next_page(String page) {
+    @When("user clicks on the {string} arrow button")
+    public void clicks_on_the_next_page_arrow_button(String page) {
         superadminDashboardPage.changeTablePage(page);
-        waitFor(4);
+        waitFor(1);
     }
 
     @Then("user verify page size is bigger than {int} \\({int}-{int} )")
@@ -182,19 +186,39 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     public void the_user_clicks_link(String signUp) {
         registerPage.signUp.click();
     }
+
     @Given("the user get the {string}")
     public void the_user_get_the(String title) {
         waitFor(1);
-        String totalPostedJobsString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
-        System.out.println("totalPostedJobs = " + totalPostedJobsString);
+        String registeredCandidatesString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
+        System.out.println("registeredCandidatesString = " + registeredCandidatesString);
     }
+
     @Given("the User enters valid {string},{string},{string},{string}")
     public void the_user_enters_valid(String firstName, String lastName, String password, String confirmPassword) {
         registerPage.firstNameBox.sendKeys(firstName);
         registerPage.lastNameBox.sendKeys(lastName);
-        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/"+ Faker.instance().name().firstName()+Faker.instance().name().lastName());
-        registerPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
+        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/" + Faker.instance().name().firstName() + Faker.instance().name().lastName());
+        Random random = new Random();
+        int emailNum = random.nextInt(200);
+        email = firstName + emailNum + "@yopmail.com";
+        registerPage.emailBox.sendKeys(email);
         registerPage.passwordBox.sendKeys(password);
         registerPage.confirmPasswordBox.sendKeys(confirmPassword);
+    }
+
+    @Then("the user Confirm Email and registered candidates")
+    public void the_user_confirm_email_and_registered_candidates() {
+        driver.get("https://yopmail.com/en/");
+        superadminDashboardPage.consentButtonForYopmail.click();
+        superadminDashboardPage.inputYopmailEmail.sendKeys(email);
+        superadminDashboardPage.enterYopmailButton.click();
+        switchToFrame(superadminDashboardPage.iframeYopmailForVerify);
+        superadminDashboardPage.verifyYopmailAddress.click();
+    }
+
+    @Then("the user verify that {string} increased by {int}")
+    public void the_user_verify_that_increased_by(String string, Integer int1) {
+
     }
 }

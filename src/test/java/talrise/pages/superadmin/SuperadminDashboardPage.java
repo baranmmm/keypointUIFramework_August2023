@@ -31,6 +31,16 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement currentPage;
     @FindBy(xpath = "//span[@title='Next Page']")
     public WebElement nextPageButton;
+    @FindBy(xpath = "//input[@id='login']")
+    public WebElement inputYopmailEmail;
+    @FindBy(xpath = "//a[text()='VERIFY E-MAIL ADDRESS']")
+    public WebElement verifyYopmailAddress;
+    @FindBy(xpath = "//p[text()='Consent']")
+    public WebElement consentButtonForYopmail;
+    @FindBy(id="refreshbut")
+    public WebElement enterYopmailButton;
+    @FindBy(xpath = "//iframe[@name='ifmail']")
+    public WebElement iframeYopmailForVerify;
 
     public String getDashboardPageTopMenuItemInfo(String topMenuItem){
         return driver.findElement(By.xpath("(//*[.=\""+topMenuItem+"\"]//..//div)[2]")).getText();
