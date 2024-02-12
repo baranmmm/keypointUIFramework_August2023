@@ -1,16 +1,11 @@
 package talrise.pages;
 
-<<<<<<< HEAD
-import talrise.pages.candidate.firstLoginProfile.FirstLoginPersonalInfoPage;
-import talrise.pages.candidate.firstLoginProfile.PositionPage;
-import talrise.pages.candidate.normalProfile.*;
-import talrise.pages.candidate.firstLoginProfile.ProfileSectionPage;
-import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
-=======
+
 import talrise.pages.candidate.firstLoginProfile.*;
 import talrise.pages.candidate.normalProfile.*;
 import talrise.pages.superadmin.JobListPage;
->>>>>>> master
+
+import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 

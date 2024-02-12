@@ -6,24 +6,20 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.WebElement;
 import talrise.utilities.CommonSteps;
 
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> master
+
 import java.util.Random;
 
 import static org.junit.Assert.*;
 
 public class PositionStepDefs extends CommonSteps {
 
-<<<<<<< HEAD
-    Random random = new Random();
-    public String randomPositionTitle;
-=======
+
     public String randomPositionTitle;
     public String addedOptionTitle;
->>>>>>> master
+
 
     @Then("verifies * icon is visible upon Position")
     public void verifiesIconIsVisibleUponPosition() {
@@ -36,28 +32,19 @@ public class PositionStepDefs extends CommonSteps {
         waitFor(2);
     }
 
-<<<<<<< HEAD
-    @When("clicks on a {string} position inside the Suggested Positions list")
-    public void clicksOnAPositionInsideTheSuggestedPositionsList(String position) {
-       int randomPositionIndex = random.nextInt(positionPage.suggestedList.size());
-       WebElement randomPosition = positionPage.suggestedList.get(randomPositionIndex);
-        randomPositionTitle = randomPosition.getText();
-        randomPosition.click();
-=======
+
     @When("clicks on a position inside the Suggested Positions list")
     public void clicksOnAPositionInsideTheSuggestedPositionsList() {
        randomPositionTitle = profileSectionPage.clickAndGetTitleFromSuggestedList();
->>>>>>> master
+
        waitFor(2);
     }
 
     @Then("verifies the selected position is no longer visible inside the list")
     public void verifiesTheSelectedPositionIsNoLongerVisibleInsideTheList() {
-<<<<<<< HEAD
-        for (WebElement w : positionPage.suggestedList){
-=======
+
         for (WebElement w : profileSectionPage.suggestedList){
->>>>>>> master
+
             assertNotEquals(randomPositionTitle,w.getText());
         }
     }
@@ -66,11 +53,9 @@ public class PositionStepDefs extends CommonSteps {
     public void verifiesTheSelectedPositionIsVisibleUnderThePage() {
         boolean foundMatch = false;
 
-<<<<<<< HEAD
-        for (WebElement w : positionPage.selectedOptionList) {
-=======
+
         for (WebElement w : profileSectionPage.selectedList) {
->>>>>>> master
+
             if (randomPositionTitle.equals(w.getText())) {
                 assertEquals(randomPositionTitle, w.getText());
                 foundMatch = true;
@@ -78,10 +63,7 @@ public class PositionStepDefs extends CommonSteps {
             }
         }
 
-<<<<<<< HEAD
 
-    }
-=======
     }
 
     @And("deletes the added position")
@@ -104,5 +86,5 @@ public class PositionStepDefs extends CommonSteps {
         }
         assertTrue(suggestedPositionTitles.contains(addedOptionTitle));
     }
->>>>>>> master
+
 }
