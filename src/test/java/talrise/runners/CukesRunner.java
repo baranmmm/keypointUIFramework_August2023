@@ -11,8 +11,8 @@ import org.junit.runner.RunWith;
                 "rerun:target/failed.txt"},
         features = "src/test/resources/features",
         glue = "talrise/step_definitions",
-        dryRun = false,
-        tags = "@TC-3"
+        dryRun = true,
+        tags = "@TC-20-Dashboard"
 
 
 

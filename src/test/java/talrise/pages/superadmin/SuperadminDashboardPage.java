@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
+import java.util.List;
+
 public class SuperadminDashboardPage extends CommonPageElements {
 
     @FindBy(xpath = "//p[contains(@class,'MuiTypography')]")
@@ -41,6 +43,12 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement enterYopmailButton;
     @FindBy(xpath = "//iframe[@name='ifmail']")
     public WebElement iframeYopmailForVerify;
+    @FindBy(xpath = "(//tbody[@class='MuiTableBody-root']//tr//td)[2]")
+    public WebElement companyNameFirstCell;
+    @FindBy(xpath = "//button[@title='Apply']")
+    public List<WebElement> plusForApplyJobList;
+    @FindBy(xpath = "(//button[@title='jobDetails'])[1]")
+    public WebElement lastAppliedJob;
 
     public String getDashboardPageTopMenuItemInfo(String topMenuItem){
         return driver.findElement(By.xpath("(//*[.=\""+topMenuItem+"\"]//..//div)[2]")).getText();

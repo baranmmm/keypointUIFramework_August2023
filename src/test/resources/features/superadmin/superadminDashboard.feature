@@ -107,3 +107,25 @@ Feature: Dashboard Profile Feature
   Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional
     Given user clicks on the "CREATE A NEW JOB" button
     Then user verify that relevant page open
+  @TC-20-Dashboard
+  Scenario: TC-20 As a super admin User, I should be able to verify when a new application is added, the "Total Applications" should be updated automatically.
+    Given the user logs in as "superadmin"
+    And "Total Applications" number is retrieved
+    * the user logs out from talrise
+    * the user logs in as "candidate"
+    * the user clicks on the "Activity"
+    * the user clicks on the "Jobs"
+    * the user clicks on the plus item of the second Job under the "VIEW|APPLY"
+    * the user logs out from talrise
+    * the user logs in as "superadmin"
+    Then the user verify the "Total Applications" increased 1
+    And the user logs out from talrise
+    * the user logs in as "candidate"
+    * the user clicks on the "Activity"
+    * the user clicks on the "Applied Jobs"
+    * the user clicks on the three dot item of the first Job under DETAILS
+    * the user clicks on the "WITHDRAW" button
+    And the user logs out from talrise
+    * the user logs in as "superadmin"
+    Then the user verify the "Total Applications" decreased -1
+

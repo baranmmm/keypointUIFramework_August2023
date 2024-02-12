@@ -112,7 +112,7 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     @When("user clicks on the three dots \\(under the candidate info)")
     public void user_clicks_on_the_three_dots_under_the_candidate_info() {
         superadminDashboardPage.threeDotUnderCandidateInfo.click();
-        waitFor(4);
+        waitFor(1);
     }
 
     @Then("user verifies that the relevant {string} page opened")
@@ -219,6 +219,39 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
 
     @Then("the user verify that {string} increased by {int}")
     public void the_user_verify_that_increased_by(String string, Integer int1) {
+
+    }
+
+    @Given("the user clicks on the {string}")
+    public void the_user_clicks_on_the(String leftMenuAct) {
+        superadminDashboardPage.goToLeftMenuOption(leftMenuAct);
+    }
+    @Given("the user clicks on the {string} button")
+    public void the_user_clicks_on_the_button (String buttonName) {
+        superadminDashboardPage.clickButton(buttonName);
+    }
+
+    @Given("the user clicks on the plus item of the second Job under the {string}")
+    public void the_user_clicks_on_the_plus_item_of_the_second_job_under_the(String plusForApplyJob) {
+        Random random=new Random();
+        int selectJob= random.nextInt(superadminDashboardPage.plusForApplyJobList.size());
+        System.out.println("selectJob = " + selectJob);
+        superadminDashboardPage.plusForApplyJobList.get(selectJob).click();
+
+    }
+
+    @Then("the user clicks on the three dot item of the first Job under DETAILS")
+    public void the_user_clicks_on_the_three_dot_item_of_the_first_job_under_DETAILS() {
+        superadminDashboardPage.lastAppliedJob.click();
+    }
+
+    @Then("the user verify the {string} decreased {int}")
+    public void the_user_verify_the_decreased(String string, Integer int1) {
+
+    }
+
+    @Then("the user verify the {string} increased {int}")
+    public void the_user_verify_the_increased(String string, Integer int1) {
 
     }
 }
