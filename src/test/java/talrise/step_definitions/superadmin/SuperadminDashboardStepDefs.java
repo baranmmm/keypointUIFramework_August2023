@@ -17,7 +17,9 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     Integer totalApplications;
     Integer totalPostedJobs;
     String email;
-
+    String cellValue;
+    String cellChangedValue;
+    String cellChangedValue2;
 
     @And("{string} number is retrieved")
     public void numberIsRetrieved(String topMenuItem) {
@@ -226,15 +228,16 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     public void the_user_clicks_on_the(String leftMenuAct) {
         superadminDashboardPage.goToLeftMenuOption(leftMenuAct);
     }
+
     @Given("the user clicks on the {string} button")
-    public void the_user_clicks_on_the_button (String buttonName) {
+    public void the_user_clicks_on_the_button(String buttonName) {
         superadminDashboardPage.clickButton(buttonName);
     }
 
     @Given("the user clicks on the plus item of the second Job under the {string}")
     public void the_user_clicks_on_the_plus_item_of_the_second_job_under_the(String plusForApplyJob) {
-        Random random=new Random();
-        int selectJob= random.nextInt(superadminDashboardPage.plusForApplyJobList.size());
+        Random random = new Random();
+        int selectJob = random.nextInt(superadminDashboardPage.plusForApplyJobList.size());
         System.out.println("selectJob = " + selectJob);
         superadminDashboardPage.plusForApplyJobList.get(selectJob).click();
 
@@ -254,4 +257,37 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     public void the_user_verify_the_increased(String string, Integer int1) {
 
     }
+
+    @When("the user clicks on {string} column")
+    public void the_user_clicks_on_column(String columnName) {
+        waitFor(3);
+        cellValue=superadminDashboardPage.xxxxxx.getText();
+       // cellValue = superadminDashboardPage.getTableColumn(columnName).getText();
+        //superadminDashboardPage.getTableColumn(columnName).click();
+        superadminDashboardPage.xxxxxx.click();
+    }
+
+    @Then("the user verifies that the {string} column is sorted ascending")
+    public void the_user_verifies_that_the_column_is_sorted_ascending(String columnName) {
+        waitFor(3);
+        cellChangedValue = superadminDashboardPage.xxxxxx.getText();    //superadminDashboardPage.getTableColumn(columnName).getText();
+        Assert.assertNotEquals(cellValue, cellChangedValue);
+    }
+
+    @Then("the user verifies that the {string} column is sorted descending")
+    public void the_user_verifies_that_the_column_is_sorted_descending(String columnName) {
+        waitFor(3);
+        cellChangedValue2 = superadminDashboardPage.xxxxxx.getText();
+        System.out.println("cellChangedValue2 = " + cellChangedValue2);
+        //superadminDashboardPage.getTableColumn(columnName).getText();
+        Assert.assertNotEquals(cellValue, cellChangedValue2);
+    }
+
+    @Then("the user verifies that the {string} column is sorted descending by id")
+    public void the_user_verifies_that_the_column_is_sorted_descending_by_id(String columnName) {
+        waitFor(3);
+        cellChangedValue = superadminDashboardPage.xxxxxx.getText();    //superadminDashboardPage.getTableColumn(columnName).getText();
+        Assert.assertNotEquals(cellValue, cellChangedValue);
+    }
+
 }
