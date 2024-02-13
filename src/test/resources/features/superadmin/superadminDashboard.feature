@@ -109,7 +109,7 @@ Feature: Dashboard Profile Feature
     Then user verify that relevant page open
 
   @TC-20-Dashboard
-  Scenario: TC-20 As a super admin User, I should be able to verify when a new application is added, the "Total Applications" should be updated automatically.
+  Scenario: TC-4 As a super admin User, I should be able to verify when a new application is added, the "Total Applications" should be updated automatically.
     And "Total Applications" number is retrieved
     * the user logs out from talrise
     * the user logs in as "candidate"
@@ -129,7 +129,7 @@ Feature: Dashboard Profile Feature
     * the user logs in as "superadmin"
     Then the user verify the "Total Applications" decreased -1
 
-  Scenario Outline:  TC-21 As Super Admin user, I should be able to verify that
+  Scenario Outline:  TC-20 As Super Admin user, I should be able to verify that
     When the user clicks on "<Column Name>" in "<Column>"
     Then the user verifies that the "<Column>" is sorted ascending
     When the user clicks on "<Column Name>" in "<Column>"
