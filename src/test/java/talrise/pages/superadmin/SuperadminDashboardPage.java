@@ -43,12 +43,15 @@ public class SuperadminDashboardPage extends CommonPageElements {
     public WebElement enterYopmailButton;
     @FindBy(xpath = "//iframe[@name='ifmail']")
     public WebElement iframeYopmailForVerify;
-    @FindBy(xpath = "(//tbody[@class='MuiTableBody-root']//tr//td)[2]")
+    @FindBy(xpath = "(//tbody[@class='MuiTableBody-root']//tr//td)[3]")
     public WebElement companyNameFirstCell;
     @FindBy(xpath = "//button[@title='Apply']")
     public List<WebElement> plusForApplyJobList;
     @FindBy(xpath = "(//button[@title='jobDetails'])[1]")
     public WebElement lastAppliedJob;
+   // @FindBy(xpath = "(//span[@tabindex='0'])[2]")
+    @FindBy(xpath = "(//div[text()='APPLIED POSITION'])")
+    public WebElement appliedPossition;
     @FindBy(xpath = "(//span[@tabindex='0'])[1]")
     public WebElement xxxxxx;
 
@@ -72,8 +75,11 @@ public class SuperadminDashboardPage extends CommonPageElements {
         driver.findElement(By.xpath("//span[text()='" + buttonName + "']")).click();
     }
 
-    public WebElement getTableColumn(String columnName) {
+    public WebElement getTableColumnName(String columnName) {
         return driver.findElement(By.xpath("//div[text()='" + columnName + "']"));
+    }
+    public WebElement getTableCellValue(String columnNumber){
+        return driver.findElement(By.xpath("(//tbody[@class='MuiTableBody-root']//tr//td)["+columnNumber+"]"));
     }
 
 }

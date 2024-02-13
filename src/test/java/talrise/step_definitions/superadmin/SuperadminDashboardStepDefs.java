@@ -258,36 +258,33 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
 
     }
 
-    @When("the user clicks on {string} column")
-    public void the_user_clicks_on_column(String columnName) {
-        waitFor(3);
-        cellValue=superadminDashboardPage.xxxxxx.getText();
-       // cellValue = superadminDashboardPage.getTableColumn(columnName).getText();
-        //superadminDashboardPage.getTableColumn(columnName).click();
-        superadminDashboardPage.xxxxxx.click();
+    @When("the user clicks on {string} in {string}")
+    public void the_user_clicks_on_in(String columnName,String columnNumber ) {
+        waitFor(1);
+        cellValue=superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        superadminDashboardPage.getTableColumnName(columnName).click();
     }
-
-    @Then("the user verifies that the {string} column is sorted ascending")
-    public void the_user_verifies_that_the_column_is_sorted_ascending(String columnName) {
-        waitFor(3);
-        cellChangedValue = superadminDashboardPage.xxxxxx.getText();    //superadminDashboardPage.getTableColumn(columnName).getText();
+    @Then("the user verifies that the {string} is sorted ascending")
+    public void the_user_verifies_that_the_is_sorted_ascending(String columnNumber) {
+        waitFor(1);
+        cellChangedValue = superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        System.out.println("cellChangedValue = " + cellChangedValue);
         Assert.assertNotEquals(cellValue, cellChangedValue);
     }
-
-    @Then("the user verifies that the {string} column is sorted descending")
-    public void the_user_verifies_that_the_column_is_sorted_descending(String columnName) {
-        waitFor(3);
-        cellChangedValue2 = superadminDashboardPage.xxxxxx.getText();
+    @Then("the user verifies that the {string} is sorted descending")
+    public void the_user_verifies_that_the_is_sorted_descending(String columnNumber) {
+        waitFor(1);
+        cellChangedValue2 = superadminDashboardPage.getTableCellValue(columnNumber).getText();
         System.out.println("cellChangedValue2 = " + cellChangedValue2);
-        //superadminDashboardPage.getTableColumn(columnName).getText();
         Assert.assertNotEquals(cellValue, cellChangedValue2);
     }
-
-    @Then("the user verifies that the {string} column is sorted descending by id")
-    public void the_user_verifies_that_the_column_is_sorted_descending_by_id(String columnName) {
-        waitFor(3);
-        cellChangedValue = superadminDashboardPage.xxxxxx.getText();    //superadminDashboardPage.getTableColumn(columnName).getText();
+    @Then("the user verifies that the {string} is sorted descending by id")
+    public void the_user_verifies_that_the_is_sorted_descending_by_id(String columnNumber) {
+        waitFor(1);
+        cellChangedValue = superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        System.out.println("cellChangedValue = " + cellChangedValue);
         Assert.assertNotEquals(cellValue, cellChangedValue);
     }
+
 
 }

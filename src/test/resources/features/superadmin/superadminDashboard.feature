@@ -107,6 +107,7 @@ Feature: Dashboard Profile Feature
   Scenario: TC-19 As Super Admin user, I should be able to verify that "CREATE A NEW JOB" button should be functional
     Given user clicks on the "CREATE A NEW JOB" button
     Then user verify that relevant page open
+
   @TC-20-Dashboard
   Scenario: TC-20 As a super admin User, I should be able to verify when a new application is added, the "Total Applications" should be updated automatically.
     And "Total Applications" number is retrieved
@@ -127,10 +128,19 @@ Feature: Dashboard Profile Feature
     And the user logs out from talrise
     * the user logs in as "superadmin"
     Then the user verify the "Total Applications" decreased -1
-    Scenario: TC-21 As Super Admin user, I should be able to verify that
-      When the user clicks on "Company Name" column
-      Then the user verifies that the "Company Name" column is sorted ascending
-      When the user clicks on "Company Name" column
-      Then the user verifies that the "Company Name" column is sorted descending
-      When the user clicks on "Company Name" column
-      Then the user verifies that the "Company Name" column is sorted descending by id
+
+  Scenario Outline:  TC-21 As Super Admin user, I should be able to verify that
+    When the user clicks on "<Column Name>" in "<Column>"
+    Then the user verifies that the "<Column>" is sorted ascending
+    When the user clicks on "<Column Name>" in "<Column>"
+    Then the user verifies that the "<Column>" is sorted descending
+    When the user clicks on "<Column Name>" in "<Column>"
+    Then the user verifies that the "<Column>" is sorted descending by id
+    Examples:
+      | Column Name      | Column |
+      | COMPANY NAME     | 2      |
+      | APPLIED POSITION | 3      |
+   #  | APPLIED DATE     | 4      |
+    # | CLOSING JOB DATE | 5      |
+    #  | JOB DETAILS      | 6      |
+    #  | STATUS           | 7      |
