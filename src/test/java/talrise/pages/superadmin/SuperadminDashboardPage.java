@@ -82,4 +82,5 @@ public class SuperadminDashboardPage extends CommonPageElements {
         return driver.findElement(By.xpath("(//tbody[@class='MuiTableBody-root']//tr//td)["+columnNumber+"]"));
     }
 
+
 }
