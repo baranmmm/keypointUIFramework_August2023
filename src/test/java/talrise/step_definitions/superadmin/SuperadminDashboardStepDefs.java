@@ -82,7 +82,6 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     public void clickOnTheSymbol(String module) {
         waitFor(1);
         superadminDashboardPage.plusforCreatingJob.click();
-        ;
     }
 
     @Given("enter the required information into the form")
