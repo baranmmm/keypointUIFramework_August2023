@@ -2,8 +2,7 @@ Feature: Language Proficiency Section Completion
 
   Background:
     Given the "candidate" logs in successfully
-    And navigates to Profile Sections page
-    And the candidate clicks on "Language" button on the left-hand side menu
+    When navigates to "Language" page
 
   @PositiveLanguage
   Scenario: Candidate successfully completes the Language section with multiple languages and proficiencies
@@ -16,7 +15,7 @@ Feature: Language Proficiency Section Completion
     And the candidate types "English" in the language search bar
     And the candidate selects English from the search results
     Then a proficiency dropdown should be displayed with the selected language
-    And clicks on "NEXT" button
+    And clicks on "Next" button
     Then a success message "has been submitted successfully" should be displayed
     Then verifies landing on "Experience" page
     And the candidate clicks on "Language" button on the left-hand side menu

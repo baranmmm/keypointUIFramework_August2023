@@ -13,8 +13,6 @@ import static org.junit.Assert.assertTrue;
 
 public class LanguageSectionStepDefs extends CommonSteps {
 
-
-
     int firstDropdownNumber;
     @And("the candidate clicks on {string} button on the left-hand side menu")
     public void theCandidateClicksOnButtonOnTheLeftHandSideMenu(String section) {
@@ -98,25 +96,27 @@ public class LanguageSectionStepDefs extends CommonSteps {
 
 //    @And("the candidate clicks on the selected language")
 //    public void theCandidateClicksOnTheSelectedLanguage() {
-//        firstLoginLanguagePage.abletoselectandselectedEnglishOption.click();
+//        firstLoginLanguagePage.abletoselectandselectedEnglishOptionK.click();
 //    }
 //
 //    @Then("verifies the selected language is no longer visible on the page")
 //    public void verifiesTheSelectedLanguageIsNoLongerVisibleOnThePage() {
-//        Assert.assertFalse(firstLoginLanguagePage.selectedGermanLanguageWithProficiency.isDisplayed());
+//        Assert.assertFalse(firstLoginLanguagePage.selectedGermanLanguageWithProficiencyK.isDisplayed());
 //    }
 //
 //    @When("the candidate types {string} in the search bar")
 //    public void theCandidateTypesInTheSearchBar(String otherlanguage) {
-//        firstLoginLanguagePage.languageSearchBar.sendKeys(otherlanguage);
+//        firstLoginLanguagePage.languageSearchBarK.sendKeys(otherlanguage);
 //
 //    }
 //
 //    @Then("verifies that the suggested Languages under the search bar disappear")
 //    public void verifiesThatTheSuggestedLanguagesUnderTheSearchBarDisappear() {
-//        Assert.assertFalse(firstLoginLanguagePage.suggestedLanguagesWord.isDisplayed());
-//        //Assert.assertFalse(firstLoginLanguagePage.allSuggestedLanguages
+//        Assert.assertFalse(firstLoginLanguagePage.suggestedLanguagesWordK.isDisplayed());
+//        //Assert.assertFalse(firstLoginLanguagePage.allSuggestedLanguages);
 //    }
+
+
 }
 
 

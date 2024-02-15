@@ -63,7 +63,7 @@ public class FirstLoginLanguagePage extends CommonPageElements {
     public WebElement abletoselectandselectedEnglishOptionK;
 
     @FindBy(xpath="//div[@class='sc-iHbSHJ ghlOOI']")
-    public List<WebElement> allSelectedLanguagesWithProficiencies;
+    public List<WebElement> allSelectedLanguagesWithProficienciesK;
 
     // @FindBy(xpath="//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']")
     //  public List<WebElement> allProficiencies;
