@@ -6,7 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
 import java.util.List;
+
 import java.util.Random;
+
 
 public class ProfileSectionPage extends CommonPageElements {
 
@@ -15,6 +17,7 @@ public class ProfileSectionPage extends CommonPageElements {
 
     @FindBy(xpath ="//*[contains(@class,'Toastify__toast-body')]")
     public WebElement alertMessage;
+
 
     @FindBy(name = "searchText")
     public WebElement searchBox;
@@ -51,6 +54,7 @@ public class ProfileSectionPage extends CommonPageElements {
         return randomOptionTitle;
 
     }
+
 
 
 
