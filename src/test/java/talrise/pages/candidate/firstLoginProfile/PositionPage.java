@@ -11,4 +11,5 @@ public class PositionPage extends CommonPageElements {
     @FindBy(xpath = "//h2") public WebElement positionHeader;
 
 
+
 }
