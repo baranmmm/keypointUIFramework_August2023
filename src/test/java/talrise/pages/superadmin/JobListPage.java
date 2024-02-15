@@ -94,6 +94,29 @@ public class JobListPage extends CommonPageElements {
     @FindBy(xpath = "//tbody[@class='MuiTableBody-root']")
     public WebElement table;
 
+    @FindBy(xpath = "(//span[text()='Backend Developer'])[1]")
+    public WebElement jobTitleName;
+
+    @FindBy(xpath = "(//div[@class='sc-gmgFlS cmxSaa'])[1]")
+    public WebElement PROPOSAL;
+
+    @FindBy(xpath = "(//div[@class='sc-gmgFlS cmxSaa'])[2]")
+    public WebElement IN_PROGRESS;
+
+    @FindBy(xpath = "(//div[@class='sc-gmgFlS cmxSaa'])[3]")
+    public WebElement HOLD_ON;
+
+    @FindBy(xpath = "(//div[@class='sc-gmgFlS cmxSaa'])[4]")
+    public WebElement CLOSED;
+
+    @FindBy(xpath = "(//div[@class='sc-gmgFlS cmxSaa'])[5]")
+    public WebElement WITHDRAW;
+
+
+
+
+
+
     public void VerifyRowCounts(int expectedRowCount){
         int actualRowCount = table.findElements(By.tagName("tr")).size();
         Assert.assertEquals(expectedRowCount,actualRowCount);

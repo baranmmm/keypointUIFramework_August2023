@@ -12,7 +12,7 @@ Feature: Admin should be able to see and update the jobs list under Activity Sec
       Then Column names should be displayed
 
     Scenario: TC_03 Pagination verification
-       And Clicks on the "chevron_right"
+      And Clicks on the "chevron_right"
       Then Verify the text contains "6-10 of"
       When Clicks on the "chevron_left"
       Then Verify the text contains "1-5 of"
@@ -25,6 +25,15 @@ Feature: Admin should be able to see and update the jobs list under Activity Sec
       Then Verify the lastpage text contains "last_page"
       When clicks on the firstPage
       Then Verify the firstPage text contains "first_page"
+
+    Scenario: TC_08 Verify the search box works correctly
+      And Clicks on the search box
+      When Search a title job
+      Then Verify to search box works correctly
+
+      Scenario: TC_09 Verify the canban button  is clickable
+        And Clicks on the canban button
+        Then Verify headers visibility
 
 
 

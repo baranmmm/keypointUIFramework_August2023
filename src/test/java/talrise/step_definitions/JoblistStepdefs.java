@@ -89,4 +89,36 @@ public class JoblistStepdefs extends CommonSteps {
         System.out.println("firstpage =" +firstPage);
         Assert.assertTrue(firstPage.contains(firstpage));
     }
+
+    @And("Clicks on the search box")
+    public void clicksOnTheSearchBox() {
+        jobListPage.searchBox.click();
+    }
+
+    @When("Search a title job")
+    public void searchATitleJob() {
+        jobListPage.searchBox.sendKeys("Backend Developer");
+        waitFor(2);
+    }
+
+    @Then("Verify to search box works correctly")
+    public void verifyToSearchBoxWorksCorrectly() {
+        String actual = jobListPage.jobTitleName.getText();
+        System.out.println("actual = " + actual);
+        Assert.assertTrue(actual.contains("Backend Developer"));
+    }
+
+    @And("Clicks on the canban button")
+    public void clicksOnTheCanbanButton() {
+        jobListPage.kambanIcon.click();
+        waitFor(2);
+    }
+
+    @Then("Verify headers visibility")
+    public void verifyHeadersVisibility() {
+        jobListPage.PROPOSAL.isDisplayed();
+        jobListPage.IN_PROGRESS.isDisplayed();
+        jobListPage.HOLD_ON.isDisplayed();
+        jobListPage.CLOSED.isDisplayed();
+    }
 }
