@@ -14,8 +14,6 @@ import org.junit.runner.RunWith;
         dryRun = false,
         tags = "@createjbs"
 
-
-
 )
 public class CukesRunner {
 }
