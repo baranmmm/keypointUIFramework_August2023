@@ -1,3 +1,4 @@
+@regression
 Feature: language
 
   Background:
