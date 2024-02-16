@@ -1,4 +1,4 @@
-
+@regression
   Feature: Position
     Background:
       Given the "candidate" logs in successfully
