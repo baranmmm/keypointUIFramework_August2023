@@ -582,7 +582,7 @@ public class CommonSteps extends PageInitializer {
             }
         }
     }
-    public static boolean isElementAvailable(By by){
+    public static boolean isElementAvailableByLocator(By by){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         try {
             if(driver.findElement(by).isDisplayed()){
@@ -597,6 +597,18 @@ public class CommonSteps extends PageInitializer {
         }
 
         return false;
+    }
+    public static void clickElementByLocator(By elementLocator){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        try {
+            if(CommonSteps.isElementAvailableByLocator(elementLocator)){
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                driver.findElement(elementLocator).click();
+            }
+        }catch (Exception e){
+            System.out.println(elementLocator.toString()+ " element not found");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        }
     }
 
 }
