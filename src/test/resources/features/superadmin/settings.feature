@@ -144,7 +144,7 @@ Feature: Super admin should be able to see, sort, filter, update and delete look
 
   Scenario: TC_18 Super admin should see the fail message alert "This look up can not be deleted" when click on delete(bin) button for nondeletable look-up
     And selects "20" from the list size options
-    And user clicks on the "Last Page"
+    And user clicks on the "Last Page" arrow button
     When clicks on delete button for look up which is on the 1 row of the list
     Then verifies that the alert message is "This look up can not be deleted"
 
@@ -236,7 +236,7 @@ Feature: Super admin should be able to see, sort, filter, update and delete look
     And selects "<rowSize>" from the list size options
     And notes the total number of look ups
     And notes the row size selection
-    When user clicks on the "Last Page"
+    When user clicks on the "Last Page" arrow button
     Then verifies that the last page is being viewed by using table information
     And verifies that "Last Page" button is not active anymore
     And verifies that "Next Page" button is not active anymore
@@ -251,8 +251,8 @@ Feature: Super admin should be able to see, sort, filter, update and delete look
     And selects "<rowSize>" from the list size options
     And notes the total number of look ups
     And notes the row size selection
-    And user clicks on the "Last Page"
-    When user clicks on the "First Page"
+    And user clicks on the "Last Page" arrow button
+    When user clicks on the "First Page" arrow button
     Then verifies that the first page is being viewed by using table information
     And verifies that "First Page" button is not active anymore
     And verifies that "Previous Page" button is not active anymore
@@ -267,7 +267,7 @@ Feature: Super admin should be able to see, sort, filter, update and delete look
     And selects "<rowSize>" from the list size options
     And notes the total number of look ups
     And notes the row size selection
-    When user clicks on the "Next Page"
+    When user clicks on the "Next Page" arrow button
     Then verifies that the previous page is being viewed by using table information
     And verifies that "First Page" button is active
     And verifies that "Previous Page" button is active
@@ -282,8 +282,8 @@ Feature: Super admin should be able to see, sort, filter, update and delete look
     And selects "<rowSize>" from the list size options
     And notes the total number of look ups
     And notes the row size selection
-    And user clicks on the "Last Page"
-    When user clicks on the "Previous Page"
+    And user clicks on the "Last Page" arrow button
+    When user clicks on the "Previous Page" arrow button
     Then verifies that the previous page is being viewed by using table information
     And verifies that "Last Page" button is active
     And verifies that "Next Page" button is active
