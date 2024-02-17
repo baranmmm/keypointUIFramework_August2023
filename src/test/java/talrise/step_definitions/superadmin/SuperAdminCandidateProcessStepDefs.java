@@ -3,7 +3,6 @@ package talrise.step_definitions.superadmin;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.By;
 
-import static talrise.pages.PageInitializer.superAdminCandidateProcessPage;
 import static talrise.utilities.CommonSteps.*;
 import static talrise.utilities.Driver.driver;
 
@@ -28,10 +27,10 @@ public class SuperAdminCandidateProcessStepDefs {
         By activityButtonLocator = By.xpath("//span[.='Activity']");
         By processButtonLocator = By.xpath("//span[.='Candidate Process']");
 
-        if(isElementAvailable(activityButtonLocator)){
+        if(isElementAvailableByLocator(activityButtonLocator)){
             driver.findElement(activityButtonLocator).click();
         }
-        if(isElementAvailable(processButtonLocator)){
+        if(isElementAvailableByLocator(processButtonLocator)){
             driver.findElement(processButtonLocator).click();
         }
     }

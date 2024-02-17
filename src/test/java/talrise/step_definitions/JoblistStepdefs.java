@@ -3,6 +3,7 @@ package talrise.step_definitions;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
 import org.openqa.selenium.support.ui.Wait;
+import talrise.pages.superadmin.JobListPage;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.ConfigurationReader;
 
