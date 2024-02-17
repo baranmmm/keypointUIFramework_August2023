@@ -1,3 +1,4 @@
+@regression
 @applications
 Feature: Dashboard Profile Feature
 

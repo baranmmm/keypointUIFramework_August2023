@@ -1,3 +1,4 @@
+@regression
 @candidateProcess
 Feature: Candidate Process Feature
 
@@ -6,6 +7,7 @@ Feature: Candidate Process Feature
 
   Scenario: TC-1 As a super admin User, I should be able to verify that result row number dropdown button is functional
     Given user clicks on Activity then Candidate Process button at sidebar
+
 #    When user clicks on the rows
 #    And verify the Profile Name is visible
 #    Given the user clicks on the profile name

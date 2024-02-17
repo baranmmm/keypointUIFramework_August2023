@@ -4,9 +4,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
+import java.util.List;
+
 public class SuperAdminCandidateProcessPage extends CommonPageElements {
     @FindBy(xpath = "(//span[@class='sc-dNsVcS dmEeqb'])[5]")
-    public WebElement ActivityButton;
+    public List<WebElement> ActivityButtonList;
     @FindBy(xpath = "(//span[@class='sc-dNsVcS dmEeqb'])[8]")
-    public WebElement CandidateProcessButton;
+    public List<WebElement> CandidateProcessButtonList;
 }

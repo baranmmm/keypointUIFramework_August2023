@@ -1,3 +1,4 @@
+@regression
 @profileSectionPage
 Feature: Personal Info
   Scenario: User should be able to see "Complete My Profile Now" after first login

@@ -1,3 +1,4 @@
+@regression
 @settings
 Feature: Super admin should be able to see, sort, filter, update and delete look-ups under Settings
 

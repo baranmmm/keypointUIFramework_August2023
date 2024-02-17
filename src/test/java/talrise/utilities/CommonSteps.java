@@ -580,6 +580,35 @@ public class CommonSteps extends PageInitializer {
             for (int i = 0; i < amountOfTitle; i++) {
                 experiencePage.deleteButton.click();
             }
-        }}
+        }
+    }
+    public static boolean isElementAvailableByLocator(By by){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        try {
+            if(driver.findElement(by).isDisplayed()){
+                System.out.println(by.toString()+ " element found");
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                return true;
+            }
+        }catch (NoSuchElementException e){
+            System.out.println(by.toString()+ " element not found");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return false;
+        }
+
+        return false;
+    }
+    public static void clickElementByLocator(By elementLocator){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        try {
+            if(CommonSteps.isElementAvailableByLocator(elementLocator)){
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                driver.findElement(elementLocator).click();
+            }
+        }catch (Exception e){
+            System.out.println(elementLocator.toString()+ " element not found");
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        }
+    }
 
 }
