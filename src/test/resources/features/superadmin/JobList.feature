@@ -1,3 +1,4 @@
+@regression
 Feature: Admin should be able to see and update the jobs list under Activity Section
 
   Background:

@@ -1,3 +1,4 @@
+@regression
 @createjobs
 Feature: CreateJobs Feature
 @createjbs

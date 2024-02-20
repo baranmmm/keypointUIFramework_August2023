@@ -1,3 +1,4 @@
+@regression
 @ExperienceModule
 Feature:Verify visibility and click ability of "Experience" module subtitles on the "Profile" page
 

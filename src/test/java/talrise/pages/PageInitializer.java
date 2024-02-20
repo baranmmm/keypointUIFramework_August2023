@@ -5,6 +5,7 @@ import talrise.pages.candidate.firstLoginProfile.*;
 import talrise.pages.candidate.normalProfile.*;
 import talrise.pages.superadmin.CreateJobsPages.CreateJobsPage;
 import talrise.pages.superadmin.JobListPage;
+import talrise.pages.superadmin.SettingsPage;
 
 import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
@@ -29,6 +30,7 @@ public class PageInitializer extends Driver {
     public static PositionPage positionPage;
     public static FirstLoginLanguagePage firstLoginLanguagePage;
     public static FirstLoginExperiencePage firstLoginExperiencePage;
+    public static SettingsPage settingsPage;
     public static SuperAdminCandidateProcessPage superAdminCandidateProcessPage;
 
 
@@ -52,6 +54,7 @@ public class PageInitializer extends Driver {
         positionPage = new PositionPage();
         firstLoginLanguagePage = new FirstLoginLanguagePage();
         firstLoginExperiencePage = new FirstLoginExperiencePage();
+        settingsPage=new SettingsPage();
         createJobsPage = new CreateJobsPage();
         superAdminCandidateProcessPage = new SuperAdminCandidateProcessPage();
 
