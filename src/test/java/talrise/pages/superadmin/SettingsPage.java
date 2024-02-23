@@ -5,10 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
+import java.text.Collator;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Locale;
 
 import static talrise.utilities.CommonSteps.getElementsText;
 
@@ -18,7 +18,7 @@ public class SettingsPage extends CommonPageElements {
     int beginningNumber;
     int endNumber;
     int totalNumberOfLookUp;
-    int rowNumberHasLookIpId;
+    int rowNumberHasLookUpId;
 
     // LOOK-UP TABLE
     @FindBy(xpath = "//h3")
@@ -129,15 +129,15 @@ public class SettingsPage extends CommonPageElements {
     public void verifyTableDisplayInfo(int rowSize) {
         beginningNumber=getBeginningDisplayInfo();
         endNumber= getEndDisplayInfo();
-        rowNumberHasLookIpId=countRowHasLookUpId();
-        Assert.assertEquals(endNumber-beginningNumber+1,rowNumberHasLookIpId);
+        rowNumberHasLookUpId =countRowHasLookUpId();
+        Assert.assertEquals(endNumber-beginningNumber+1, rowNumberHasLookUpId);
         if(totalNumberOfLookUp>rowSize)
             Assert.assertEquals(endNumber-beginningNumber+1,rowSize);
     }
     public void verifyTableDisplayInfoForLastPage(int rowSize) {
         verifyTableDisplayInfo(totalNumberOfLookUp);
         Assert.assertEquals(totalNumberOfLookUp,endNumber);
-        Assert.assertEquals(totalNumberOfLookUp%rowSize,rowNumberHasLookIpId%rowSize);
+        Assert.assertEquals(totalNumberOfLookUp%rowSize, rowNumberHasLookUpId %rowSize);
     }
     public WebElement getSortDirectionBtn(String column) {
         return driver.findElement(By.xpath("//div[text()='"+column.toUpperCase()+"']//.."));
@@ -160,11 +160,11 @@ public class SettingsPage extends CommonPageElements {
     public boolean verifySorting(String sortDirection, String column) {
         int columnIndex=getIndexOfColumn(column);
         List<String> columnValues=getValuesOfColumn(columnIndex);
-        columnValues.stream().sorted(Comparator.comparing((String s) -> s.replace(" ", "\0").toUpperCase())
-                            .thenComparing(Comparator.naturalOrder()))
-                            .collect(Collectors.toList());
+        Collections.sort(columnValues, Collator.getInstance(Locale.US));
+        if(sortDirection.equalsIgnoreCase("desc")) {
+            Collections.reverse(columnValues);
+        }
         for (int i = 0; i < columnValues.size(); i++) {
-//            System.out.println(i+" - "+columnValues.get(i)+" - "+driver.findElement(By.xpath("(//tbody/tr/td["+columnIndex+"])["+(i+1)+"]")).getText());
             if(!columnValues.get(i).equals(driver.findElement(By.xpath("(//tbody/tr/td["+columnIndex+"])["+(i+1)+"]")).getText()))
                 return false;
         }
