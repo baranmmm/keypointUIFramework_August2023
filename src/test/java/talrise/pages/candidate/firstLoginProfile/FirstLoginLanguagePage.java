@@ -10,11 +10,7 @@ import java.util.List;
 
 public class FirstLoginLanguagePage extends CommonPageElements {
 
-    @FindBy(xpath = "//h2[text()='Language*']")
-    public WebElement languageHeaderK;
 
-    // @FindBy(xpath = "//span[text()='Please add all the languages you know.']")
-    //  public WebElement languageRequest;
     @FindBy(xpath="//span[@class='sc-imWYAI dvnhrG sc-gFAWRd fwbxvL']")
     public WebElement languageRequestK;
 
@@ -27,18 +23,14 @@ public class FirstLoginLanguagePage extends CommonPageElements {
     @FindBy(xpath="//*[@class='sc-hRJfrW hzBipc']")
     public List<WebElement> suggestedLanguagesListK;
 
-    @FindBy(xpath="(//button[@type='button'])[2]")
-    public WebElement englishButtonK;
+    @FindBy(xpath="//button[text()='French']")
+    public WebElement frenchButtonTextK;
 
-    @FindBy(xpath="(//button[@type='button'])[4]")
-    public WebElement frenchButtonK;
+   @FindBy(xpath="//button[normalize-space()='French']")
+   public WebElement frenchOptionK;
 
-    @FindBy(xpath="(//button[@type='button'])[5]")
-    public WebElement germanButtonK;
-
-    @FindBy(xpath="(//button[@type='button'])[6]")
-    public WebElement tuskishButtonK;
-
+    @FindBy(xpath="//button[normalize-space()='English']")
+    public WebElement englishOptionK;
 
     @FindBy(xpath = "//button[text()='German']")
     public WebElement germanLanguageOptionK;
@@ -52,32 +44,33 @@ public class FirstLoginLanguagePage extends CommonPageElements {
     @FindBy(xpath = "//label[@id='select-label-id']")
     public List<WebElement> proficiencyLabelK;
 
-
     @FindBy(xpath = "//div[text()='Elementary proficiency']")
     public WebElement elementaryProficiencyOptionK;
 
-    @FindBy(xpath="//li[text()=\'Limited working proficiency\']")
-    public WebElement limitedWorkingProficienyK;
+    @FindBy(xpath="//div[text()='Professional working proficiency']")
+    public WebElement professionalProficiency;
 
     @FindBy(xpath="//button[text()='English']")
-    public WebElement abletoselectandselectedEnglishOptionK;
+    public WebElement selectedEnglishOptionK;
+
+    @FindBy(xpath="//button[text()='Turkish']")
+    public WebElement selectedTurkishOptionK;
 
     @FindBy(xpath="//div[@class='sc-iHbSHJ ghlOOI']")
     public List<WebElement> allSelectedLanguagesWithProficienciesK;
 
-    // @FindBy(xpath="//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']")
-    //  public List<WebElement> allProficiencies;
+    @FindBy(xpath="(//div[@label='Proficiency'])")
+    public List<WebElement> allSelectedLanguagesWithProficienciesK2;
+
     @FindBy(xpath="//ul[@role='listbox']//li")
     public List<WebElement> proficiencyListK;
 
+    @FindBy(xpath="//button[text()='Next']")
+    public WebElement nextButtonK;
 
     @FindBy(xpath = "//div[contains(text(),'Please choose at least one language')]")
     public WebElement warningMessageK;
 
-    @FindBy(xpath = "//div[contains(text(),'Your language data has been submitted successfully')]")
-    public WebElement successAlertK;
-
-    @FindBy(xpath="//button[text()='Save & Exit']")
-    public WebElement saveExitButtonK;
-
+   @FindBy(xpath="//*[text()='Exit']")
+    public WebElement ExitButtonK;
 }

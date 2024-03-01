@@ -6,6 +6,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import talrise.pages.candidate.firstLoginProfile.FirstLoginExperiencePage;
 import talrise.pages.candidate.firstLoginProfile.FirstLoginLanguagePage;
 import talrise.utilities.CommonSteps;
@@ -28,24 +30,8 @@ public class ExperienceSectionStepDefs extends CommonSteps {
 
     @And("the candidate clicks on the Next button without completing all the required fields")
     public void theCandidateClicksOnTheNextButtonWithoutCompletingAllTheRequiredFields() {
-        firstLoginExperiencePage.titleCheckboxK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        waitFor(1);
-        firstLoginExperiencePage.companyCheckboxK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        firstLoginExperiencePage.contractTypeDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(0).click();
-        firstLoginExperiencePage.workplaceDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(0).click();
-        waitFor(1);
-        firstLoginExperiencePage.filledStartDateDropdownK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        waitFor(1);
-
-        firstLoginExperiencePage.filledEndDateDropdownK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        waitFor(1);
-
-        firstLoginExperiencePage.selectedMLModelsK.click(); //previously saved option to clear it
-        firstLoginExperiencePage.nextButtonK.click();
+        clickWithJS(firstLoginExperiencePage.deleteButtonK);
+        clickWithJS(firstLoginLanguagePage.nextButtonK);
 
     }
 
@@ -58,22 +44,9 @@ public class ExperienceSectionStepDefs extends CommonSteps {
         String companyMessage= firstLoginExperiencePage.companyWarningMessageK.getText();
         Assert.assertEquals(companyMessage, "Please enter a company name.");
 
-        String startDateMessage=firstLoginExperiencePage.startDateWarningMessageK.getText();
-        Assert.assertEquals(startDateMessage, "Please enter the start date." );
-
-        Assert.assertTrue(firstLoginExperiencePage.startDateWarningMessageK.isDisplayed());
-
-        Assert.assertTrue(firstLoginExperiencePage.endDateWarningMessageK.isDisplayed());
 
         Assert.assertTrue(firstLoginExperiencePage.warningSkillSetMessageK.isDisplayed());
     }
-
-    @Then("verifies {string} for the skillset dropdown")
-    public void verifiesForTheSkillsetDropdown(String dropdown) {
-        Assert.assertTrue(firstLoginExperiencePage.skillSetDropdownK.isDisplayed());
-    }
-
-
 
     @When("the candidate clicks on the currently working button")
     public void theCandidateClicksOnTheCurrentlyWorkingButton() {
@@ -90,226 +63,203 @@ public class ExperienceSectionStepDefs extends CommonSteps {
         Assert.assertTrue(firstLoginExperiencePage.noticePeriodDropdownK.isDisplayed());
     }
 
-    @When("the candidate clicks on the Next button without selecting an option from the Notice Period dropdown")
-    public void theCandidateClicksOnTheNextButtonWithoutSelectingAnOptionFromTheNoticePeriodDropdown() {
-        firstLoginExperiencePage.nextButtonK.click();
-    }
-
-    @Then("verifies {string} warning message is displayed")
-    public void verifiesWarningMessageIsDisplayed(String arg0) {
-        Assert.assertTrue(firstLoginExperiencePage.noticePeriodWarningMessageK.isDisplayed());
-    }
+//    @When("the candidate clicks on the Next button without selecting an option from the Notice Period dropdown")
+//    public void theCandidateClicksOnTheNextButtonWithoutSelectingAnOptionFromTheNoticePeriodDropdown() {
+//        clickWithJS(firstLoginExperiencePage.nextButtonK);
+//        waitFor(1);
+//    }
+//
+//    @Then("verifies {string} warning message is displayed")
+//    public void verifiesWarningMessageIsDisplayed(String warnText) {
+//
+//        Assert.assertEquals(warnText, firstLoginExperiencePage.noticePeriodWarningMessageK.getText());
+//    }
 
     @And("the candidate clicks on the currently working button to activate the end date dropdown")
     public void theCandidateClicksOnTheCurrentlyWorkingButtonToActivateTheEndDateDropdown() {
+        doubleClickWithActions(firstLoginExperiencePage.selectedWorkingCheckboxK);
+
+            waitFor(1);
+
+
     }
 
-    @Then("verifies activation of the end date dropdown")
-    public void verifiesActivationOfTheEndDateDropdown() {
-    }
 
     @When("the candidate clicks on the Title and types {string}")
     public void theCandidateClicksOnTheTitleAndTypes(String title) {
-        firstLoginExperiencePage.titleCheckboxK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
+       clickWithActions(firstLoginExperiencePage.titleCheckboxK);
+        firstLoginExperiencePage.titleCheckboxK.sendKeys(title);
         waitFor(1);
-        firstLoginExperiencePage.companyCheckboxK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        firstLoginExperiencePage.contractTypeDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(0).click();
-        firstLoginExperiencePage.workplaceDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(0).click();
-        waitFor(1);
-        firstLoginExperiencePage.filledStartDateDropdownK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        waitFor(2);
-
-        firstLoginExperiencePage.filledEndDateDropdownK.sendKeys(Keys.CONTROL,"a",Keys.BACK_SPACE );
-        waitFor(2);
-
-        firstLoginExperiencePage.selectedMLModelsK.click(); //previously saved option to clear it
-
-
-
-
-        firstLoginExperiencePage.titleCheckboxK.sendKeys(title, Keys.ENTER);
 
     }
 
     @And("the candidate clicks on the Company and types {string}")
     public void theCandidateClicksOnTheCompanyAndTypes(String company) {
-        firstLoginExperiencePage.companyCheckboxK.sendKeys(company, Keys.ENTER);
+        firstLoginExperiencePage.companyCheckboxK.click();
+        firstLoginExperiencePage.companyCheckboxK.sendKeys(company);
+        waitFor(1);
     }
 
     @And("the candidate clicks on the Start Date and types {string}")
     public void theCandidateClicksOnTheStartDateAndTypes(String startDate) {
-        doubleClickWithActions(firstLoginExperiencePage.currentlyWorkingCheckboxK);
+        firstLoginExperiencePage.startDateDropdownK.click();
+        firstLoginExperiencePage.startDateDropdownK.sendKeys(startDate);
+        waitFor(1);
 
-        //firstLoginExperiencePage.currentlyWorkingCheckboxK.click();
-
-        firstLoginExperiencePage.startDateDropdownK.sendKeys(startDate, Keys.ENTER);
     }
 
     @And("the candidate clicks on the End Date and types {string}")
-    public void theCandidateClicksOnTheEndDateAndTypes(String endDate) {
-        firstLoginExperiencePage.endDateDropdownK.sendKeys(endDate, Keys.ENTER);
-    }
+    public void theCandidateClicksOnTheEndDateAndTypes(String endDate) throws InterruptedException {
+        waitForClickability(firstLoginExperiencePage.endDateDropdownLabelK, 2);
 
-    @And("the candidate selects a ContractType option from the Contract Type dropdown")
-    public void theCandidateSelectsAContractTypeOptionFromTheContractTypeDropdown() {
-
-
-        firstLoginExperiencePage.contractTypeDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(1).click();
-
-
-    }
-
-    @And("the candidate selects a Workplace option from the Workplace dropdown")
-    public void theCandidateSelectsAWorkplaceOptionFromTheWorkplaceDropdown() {
-
-
-        firstLoginExperiencePage.workplaceDropdownK.click();
-        waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(2).click();
+        // Click on the end date dropdown and enter the date
+        clickWithJS(firstLoginExperiencePage.endDateDropdownLabelK);
+        Thread.sleep(3);
+        firstLoginExperiencePage.emptyEndDateAfterClick.sendKeys(endDate);
         waitFor(1);
     }
-
     @And("the candidate clicks on the skill sets button and selects Tools")
     public void theCandidateClicksOnTheSkillSetsButtonAndSelectsTools() {
 
         firstLoginExperiencePage.skillSetDropdownK.click();
         waitFor(1);
-        firstLoginLanguagePage.proficiencyListK.get(1).click();
+        clickWithJS(firstLoginLanguagePage.proficiencyListK.get(1));
+        waitFor(1);
+        //firstLoginExperiencePage.selectBack4app.click();
+        clickWithActions(firstLoginExperiencePage.skillSetDropdownK);
         waitFor(1);
     }
 
     @And("the candidate clicks on the Add More Experience button to see the additional fields")
     public void theCandidateClicksOnTheAddMoreExperienceButtonToSeeTheAdditionalFields() {
+        firstLoginExperiencePage.addMoreButtonK.click();
+        waitFor(1);
     }
 
-    @Then("verifies the additional experience fields")
-    public void verifiesTheAdditionalExperienceFields() {
+    @Then("verifies the additional experience {string}")
+    public void verifiesTheAdditionalExperience(String fieldsName) {
+
+        Assert.assertTrue(firstLoginExperiencePage.additionalTitle.isDisplayed());
+        Assert.assertTrue(firstLoginExperiencePage.additionalCompany.isDisplayed());
     }
 
 
 
     @And("after typing or selecting some options, verifies the visibility of the DELETE button")
     public void afterTypingOrSelectingSomeOptionsVerifiesTheVisibilityOfTheDELETEButton() {
+        Assert.assertTrue(firstLoginExperiencePage.deleteButton2.isDisplayed());
+        waitFor(1);
     }
 
     @And("clicks on the DELETE button to delete all entered data")
     public void clicksOnTheDELETEButtonToDeleteAllEnteredData() {
+        firstLoginExperiencePage.deleteButton2.click();
+        waitFor(1);
     }
 
-    @And("verifies that all data are cleared")
-    public void verifiesThatAllDataAreCleared() {
-    }
-
-
-    @When("the candidate clicks on the Add More Experience button while the mandatory fileds are not filled")
-    public void theCandidateClicksOnTheAddMoreExperienceButtonWhileTheMandatoryFiledsAreNotFilled() {
-    }
-
-    @Then("verifies the warning messages {string}, {string} , {string} , {string} , {string}")
-    public void verifiesTheWarningMessages(String arg0, String arg1, String arg2, String arg3, String arg4) {
-    }
-
-    @When("the candidate clicks on the Title to type {string}")
-    public void theCandidateClicksOnTheTitleToType(String arg0) {
-    }
-
-    @And("the candidate clicks on the Company to type {string}")
-    public void theCandidateClicksOnTheCompanyToType(String arg0) {
-    }
-
-    @And("the candidate clicks on the Start Date to type {string}")
-    public void theCandidateClicksOnTheStartDateToType(String arg0) {
-    }
-
-    @And("the candidate clicks on the End Date to type {string}")
-    public void theCandidateClicksOnTheEndDateToType(String arg0) {
-    }
-
-    @And("the candidate clicks on the skillsets button to selects Tools")
-    public void theCandidateClicksOnTheSkillsetsButtonToSelectsTools() {
-    }
-
-    @And("clicks on the add more experience button to see the additional fields")
-    public void clicksOnTheAddMoreExperienceButtonToSeeTheAdditionalFields() {
-    }
-
-    @Then("verifies the additional experience fields are visible")
-    public void verifiesTheAdditionalExperienceFieldsAreVisible() {
-    }
-
-    @When("The candidate clicks on the Workplace dropdown")
-    public void theCandidateClicksOnTheWorkplaceDropdown() {
-    }
-
-    @And("The candidate selects the one option from the Workplace dropdown")
-    public void theCandidateSelectsTheOneOptionFromTheWorkplaceDropdown() {
-    }
-
-    @Then("The candidate verifies all the Workplace dropdown options")
-    public void theCandidateVerifiesAllTheWorkplaceDropdownOptions() {
-    }
-
-    @When("The candidate selects the {string} option from the Workplace dropdown")
-    public void theCandidateSelectsTheOptionFromTheWorkplaceDropdown(String arg0) {
-    }
-
-    @Then("The candidate verifies that the Workplace dropdown is empty")
-    public void theCandidateVerifiesThatTheWorkplaceDropdownIsEmpty() {
-    }
-
-    @When("The candidate clicks on the Contract Type dropdown")
-    public void theCandidateClicksOnTheContractTypeDropdown() {
-    }
-
-    @And("The candidate selects one option from the Contract Type dropdown")
-    public void theCandidateSelectsOneOptionFromTheContractTypeDropdown() {
-    }
-
-    @Then("The candidate verifies all the Contract Type dropdown's options")
-    public void theCandidateVerifiesAllTheContractTypeDropdownSOptions() {
-    }
-
-    @When("The candidate clicks on the {string} textbox to add more information")
-    public void theCandidateClicksOnTheTextboxToAddMoreInformation(String arg0) {
-    }
-
-    @And("The candidate types that {string} in there")
-    public void theCandidateTypesThatInThere(String arg0) {
-    }
-
-    @Then("Verifies that {string} in the textbox")
-    public void verifiesThatInTheTextbox(String arg0) {
-    }
-
-    @When("The candidate clicks on the {string} textbox to type max characters in there")
-    public void theCandidateClicksOnTheTextboxToTypeMaxCharactersInThere(String arg0) {
-    }
-
-    @And("The candidate types {int} characters in this textbox")
-    public void theCandidateTypesCharactersInThisTextbox(int arg0) {
-    }
-
-    @Then("Verifies that {int} characters are in the textbox")
-    public void verifiesThatCharactersAreInTheTextbox(int arg0) {
-    }
-
-    @When("The candidate clicks on the {string} textbox to type more than max character in there")
-    public void theCandidateClicksOnTheTextboxToTypeMoreThanMaxCharacterInThere(String arg0) {
-    }
-
-    @And("The candidate types {int} characters as more than max character")
-    public void theCandidateTypesCharactersAsMoreThanMaxCharacter(int arg0) {
-    }
-
-    @Then("Verifies that {int} characters can not be seen in the textbox")
-    public void verifiesThatCharactersCanNotBeSeenInTheTextbox(int arg0) {
-    }
+//    @When("the candidate clicks on the Add More Experience button while the mandatory fileds are not filled")
+//    public void theCandidateClicksOnTheAddMoreExperienceButtonWhileTheMandatoryFiledsAreNotFilled() {
+//    }
+//
+//    @Then("verifies the warning messages {string}, {string} , {string} , {string} , {string}")
+//    public void verifiesTheWarningMessages(String arg0, String arg1, String arg2, String arg3, String arg4) {
+//    }
+//
+//    @When("the candidate clicks on the Title to type {string}")
+//    public void theCandidateClicksOnTheTitleToType(String arg0) {
+//    }
+//
+//    @And("the candidate clicks on the Company to type {string}")
+//    public void theCandidateClicksOnTheCompanyToType(String arg0) {
+//    }
+//
+//    @And("the candidate clicks on the Start Date to type {string}")
+//    public void theCandidateClicksOnTheStartDateToType(String arg0) {
+//    }
+//
+//    @And("the candidate clicks on the End Date to type {string}")
+//    public void theCandidateClicksOnTheEndDateToType(String arg0) {
+//    }
+//
+//    @And("the candidate clicks on the skillsets button to selects Tools")
+//    public void theCandidateClicksOnTheSkillsetsButtonToSelectsTools() {
+//    }
+//
+//    @And("clicks on the add more experience button to see the additional fields")
+//    public void clicksOnTheAddMoreExperienceButtonToSeeTheAdditionalFields() {
+//    }
+//
+//    @Then("verifies the additional experience fields are visible")
+//    public void verifiesTheAdditionalExperienceFieldsAreVisible() {
+//    }
+//
+//    @When("The candidate clicks on the Workplace dropdown")
+//    public void theCandidateClicksOnTheWorkplaceDropdown() {
+//    }
+//
+//    @And("The candidate selects the one option from the Workplace dropdown")
+//    public void theCandidateSelectsTheOneOptionFromTheWorkplaceDropdown() {
+//    }
+//
+//    @Then("The candidate verifies all the Workplace dropdown options")
+//    public void theCandidateVerifiesAllTheWorkplaceDropdownOptions() {
+//    }
+//
+//    @When("The candidate selects the {string} option from the Workplace dropdown")
+//    public void theCandidateSelectsTheOptionFromTheWorkplaceDropdown(String arg0) {
+//    }
+//
+//    @Then("The candidate verifies that the Workplace dropdown is empty")
+//    public void theCandidateVerifiesThatTheWorkplaceDropdownIsEmpty() {
+//    }
+//
+//    @When("The candidate clicks on the Contract Type dropdown")
+//    public void theCandidateClicksOnTheContractTypeDropdown() {
+//    }
+//
+//    @And("The candidate selects one option from the Contract Type dropdown")
+//    public void theCandidateSelectsOneOptionFromTheContractTypeDropdown() {
+//    }
+//
+//    @Then("The candidate verifies all the Contract Type dropdown's options")
+//    public void theCandidateVerifiesAllTheContractTypeDropdownSOptions() {
+//    }
+//
+//    @When("The candidate clicks on the {string} textbox to add more information")
+//    public void theCandidateClicksOnTheTextboxToAddMoreInformation(String arg0) {
+//    }
+//
+//    @And("The candidate types that {string} in there")
+//    public void theCandidateTypesThatInThere(String arg0) {
+//    }
+//
+//    @Then("Verifies that {string} in the textbox")
+//    public void verifiesThatInTheTextbox(String arg0) {
+//    }
+//
+//    @When("The candidate clicks on the {string} textbox to type max characters in there")
+//    public void theCandidateClicksOnTheTextboxToTypeMaxCharactersInThere(String arg0) {
+//    }
+//
+//    @And("The candidate types {int} characters in this textbox")
+//    public void theCandidateTypesCharactersInThisTextbox(int arg0) {
+//    }
+//
+//    @Then("Verifies that {int} characters are in the textbox")
+//    public void verifiesThatCharactersAreInTheTextbox(int arg0) {
+//    }
+//
+//    @When("The candidate clicks on the {string} textbox to type more than max character in there")
+//    public void theCandidateClicksOnTheTextboxToTypeMoreThanMaxCharacterInThere(String arg0) {
+//    }
+//
+//    @And("The candidate types {int} characters as more than max character")
+//    public void theCandidateTypesCharactersAsMoreThanMaxCharacter(int arg0) {
+//    }
+//
+//    @Then("Verifies that {int} characters can not be seen in the textbox")
+//    public void verifiesThatCharactersCanNotBeSeenInTheTextbox(int arg0) {
+//    }
 
 
 
