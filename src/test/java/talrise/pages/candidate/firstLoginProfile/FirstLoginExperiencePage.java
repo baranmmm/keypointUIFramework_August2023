@@ -1,22 +1,23 @@
 package talrise.pages.candidate.firstLoginProfile;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import talrise.pages.CommonPageElements;
 
 public class FirstLoginExperiencePage extends CommonPageElements {
-    // Header
     @FindBy(xpath = "//h2[text()='Experience']")
     public WebElement experienceHeaderK;
 
     @FindBy(xpath = "//span[text()='Please add your work experience.']")
     public WebElement experienceRequestK;
 
-    // Delete Button
     @FindBy(xpath = "//span[normalize-space()='Delete']")
     public WebElement deleteButtonK;
 
-    // Title Section
+    @FindBy(xpath="(//span[normalize-space()='Delete'])[2]")
+    public WebElement deleteButton2;
+
     @FindBy(xpath = "//label[text()='Title*']")
     public WebElement titleCheckboxLabelK;
 
@@ -24,9 +25,8 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     public WebElement titleCheckboxK;
 
     @FindBy(xpath = "//input[@value='QA']")
-    public WebElement filledTitleCheckboxK;
+    public WebElement filledTitleCheckbox;
 
-    // Company Section
     @FindBy(xpath = "//label[text()='Company*']")
     public WebElement companyCheckboxLabelK;
 
@@ -36,7 +36,6 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath = "//input[@value='ABC']")
     public WebElement filledCompanyCheckboxK;
 
-    // Dropdown Section
     @FindBy(xpath = "//div[@id='experiences[0].contractTypeId-select-input-id']")
     public WebElement contractTypeDropdownK;
 
@@ -55,7 +54,7 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath = "//div[text()='Hybrid']")
     public WebElement workplaceOptionK;
 
-    @FindBy(xpath = "//label[@id=':r2:-label']")
+    @FindBy(xpath = "//input[@placeholder='mm.yyyy']")
     public WebElement startDateDropdownK;
 
     @FindBy(xpath = "//label[text()='Start Date*']")
@@ -64,13 +63,16 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath = "//input[@value='01.1980']")
     public WebElement filledStartDateDropdownK;
 
-    @FindBy(xpath = "//label[@id=':r3:-label']")
+    @FindBy(xpath = "//button[@tabindex='-1']")
     public WebElement endDateDropdownK;
 
     @FindBy(xpath = "//label[text()='End Date*']")
     public WebElement endDateDropdownLabelK;
 
-    @FindBy(xpath = "//input[@value='11.2023']")
+    @FindBy(xpath="//input[@aria-describedby=':r5:-helper-text']")
+    public WebElement emptyEndDateAfterClick;
+
+    @FindBy(xpath = "//*[@value='11.2023']")
     public WebElement filledEndDateDropdownK;
 
     // Calendar
@@ -86,12 +88,21 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath="//p[text()='Please choose at least one tool you used while working in this position.']")
     public WebElement warningSkillSetMessageK;
 
-    @FindBy(xpath="//div[@value='ML Models']")
+    @FindBy(xpath="(//div[text()='ML Models'])[2]")
     public WebElement selectedMLModelsK;
+
+    @FindBy(xpath="//*[text()='x']")
+    public WebElement mlModelsK;
+
+    @FindBy(xpath="//li[text()='Back4app']")
+    public WebElement selectBack4app;
 
     // Radio Buttons
     @FindBy(xpath = "//input[@type='checkbox']")
     public WebElement currentlyWorkingCheckboxK;
+
+    @FindBy(xpath="//*[@data-testid='CheckBoxIcon']")
+    public WebElement selectedWorkingCheckboxK;
 
     @FindBy(xpath="//span[text()='I am currently working in this position.']")
     public WebElement currentlyWorkingCheckboxWordsK;
@@ -113,6 +124,9 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath = "//div[@id='experiences[0].toolIds-select-input-id']")
     public WebElement skillSetDropdownK;
 
+    @FindBy(xpath="(//input[@class='MuiSelect-nativeInput css-1k3x8v3'])[3]")
+    public WebElement skillSetDropdownPartK;
+
     @FindBy(xpath = "(//div[text()='Entity Developer'])[2]")
     public WebElement skillSetOptionK;
 
@@ -127,26 +141,34 @@ public class FirstLoginExperiencePage extends CommonPageElements {
     @FindBy(xpath = "//*[text()='ADD MORE EXPERIENCE']")
     public WebElement addMoreButtonK;
 
-    // Warning Messages
+    public String getAdditionalFieldsLabel(String fieldsName){
+        return driver.findElement(By.xpath("(//label[contains(text(),'"+fieldsName+"')])[2]")).getText();
+    }
+
+    @FindBy(xpath="(//label[text()='Title*'])[2]")
+    public WebElement additionalTitle;
+    @FindBy(xpath="(//label[text()='Company*'])[2]")
+    public WebElement additionalCompany;
+
     @FindBy(xpath = "//*[text()='Please enter a title.']")
     public WebElement titleWarningMessageK;
 
     @FindBy(xpath = "//*[text()='Please enter a company name.']")
     public WebElement companyWarningMessageK;
 
-    @FindBy(xpath = "//p[text()='Please enter a valid date (e.g. 01.1990)']")
+    @FindBy(xpath="//p[@id=':r59:-helper-text']")
     public WebElement startDateWarningMessageK;
 
-    @FindBy(xpath = "//p[text()='Please enter a valid date (e.g. 01.1990)'][2]")
+    //@FindBy(xpath = "//p[text()='Please enter the end date.']")
+    @FindBy(xpath="//p[@id=':r5a:-helper-text']")
     public WebElement endDateWarningMessageK;
 
-    @FindBy(xpath = "(//p[@class='MuiFormHelperText-root Mui-error MuiFormHelperText-sizeMedium MuiFormHelperText-contained css-v7esy'])[5]")
+    @FindBy(xpath = "//p[text()='Please choose at least one tool you used while working in this position.']")
     public WebElement chooseToolWarnMessageK;
 
     @FindBy(xpath = "//*[text()='Please indicate the notice period.']")
     public WebElement noticePeriodWarningMessageK;
 
-    // After Completion
     @FindBy(xpath = "(//input[@id='title'])[2]")
     public WebElement secondTitleInputK;
 
