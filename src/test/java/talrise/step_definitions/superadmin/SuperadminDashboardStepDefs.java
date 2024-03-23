@@ -6,17 +6,20 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import talrise.utilities.CommonSteps;
+import talrise.utilities.Driver;
 
-import javax.swing.text.Utilities;
+import java.util.Random;
 
 import static org.junit.Assert.assertTrue;
 
 public class SuperadminDashboardStepDefs extends CommonSteps {
     Integer totalApplications;
     Integer totalPostedJobs;
-
+    String email;
+    String cellValue;
+    String cellChangedValue;
+    String cellChangedValue2;
 
     @And("{string} number is retrieved")
     public void numberIsRetrieved(String topMenuItem) {
@@ -111,7 +114,7 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
     @When("user clicks on the three dots \\(under the candidate info)")
     public void user_clicks_on_the_three_dots_under_the_candidate_info() {
         superadminDashboardPage.threeDotUnderCandidateInfo.click();
-        waitFor(4);
+        waitFor(1);
     }
 
     @Then("user verifies that the relevant {string} page opened")
@@ -148,10 +151,10 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
         Assert.assertEquals(txt, superadminDashboardPage.rowsDropDownGetText.getText());
     }
 
-    @When("user clicks on the {string}")
-    public void clicks_on_the_next_page(String page) {
-        superadminDashboardPage.getChangePage(page);
-        waitFor(4);
+    @When("user clicks on the {string} arrow button")
+    public void clicks_on_the_next_page_arrow_button(String page) {
+        superadminDashboardPage.changeTablePage(page);
+        waitFor(1);
     }
 
     @Then("user verify page size is bigger than {int} \\({int}-{int} )")
@@ -178,26 +181,110 @@ public class SuperadminDashboardStepDefs extends CommonSteps {
 
     @Then("user verify that relevant page open")
     public void user_verify_that_relevant_page_open() {
-        Assert.assertEquals("http://20.108.75.9/jobs", driver.getCurrentUrl());
+        Assert.assertEquals("http://dev.talrise.com/jobs", driver.getCurrentUrl());
     }
 
     @Given("the user clicks {string} link")
     public void the_user_clicks_link(String signUp) {
         registerPage.signUp.click();
     }
+
     @Given("the user get the {string}")
     public void the_user_get_the(String title) {
         waitFor(1);
-        String totalPostedJobsString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
-        System.out.println("totalPostedJobs = " + totalPostedJobsString);
+        String registeredCandidatesString = superadminDashboardPage.getDashboardPageTopMenuItemInfo(title);
+        System.out.println("registeredCandidatesString = " + registeredCandidatesString);
     }
+
     @Given("the User enters valid {string},{string},{string},{string}")
     public void the_user_enters_valid(String firstName, String lastName, String password, String confirmPassword) {
         registerPage.firstNameBox.sendKeys(firstName);
         registerPage.lastNameBox.sendKeys(lastName);
-        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/"+ Faker.instance().name().firstName()+Faker.instance().name().lastName());
-        registerPage.emailBox.sendKeys(Faker.instance().internet().emailAddress());
+        registerPage.linkedinBox.sendKeys("https://linkedin.com/in/" + Faker.instance().name().firstName() + Faker.instance().name().lastName());
+        Random random = new Random();
+        int emailNum = random.nextInt(200);
+        email = firstName + emailNum + "@yopmail.com";
+        registerPage.emailBox.sendKeys(email);
         registerPage.passwordBox.sendKeys(password);
         registerPage.confirmPasswordBox.sendKeys(confirmPassword);
     }
+
+    @Then("the user Confirm Email and registered candidates")
+    public void the_user_confirm_email_and_registered_candidates() {
+        driver.get("https://yopmail.com/en/");
+        superadminDashboardPage.consentButtonForYopmail.click();
+        superadminDashboardPage.inputYopmailEmail.sendKeys(email);
+        superadminDashboardPage.enterYopmailButton.click();
+        switchToFrame(superadminDashboardPage.iframeYopmailForVerify);
+        superadminDashboardPage.verifyYopmailAddress.click();
+    }
+
+    @Then("the user verify that {string} increased by {int}")
+    public void the_user_verify_that_increased_by(String string, Integer int1) {
+
+    }
+
+    @Given("the user clicks on the {string}")
+    public void the_user_clicks_on_the(String leftMenuAct) {
+        superadminDashboardPage.goToLeftMenuOption(leftMenuAct);
+    }
+
+    @Given("the user clicks on the {string} button")
+    public void the_user_clicks_on_the_button(String buttonName) {
+        superadminDashboardPage.clickButton(buttonName);
+    }
+
+    @Given("the user clicks on the plus item of the second Job under the {string}")
+    public void the_user_clicks_on_the_plus_item_of_the_second_job_under_the(String plusForApplyJob) {
+        Random random = new Random();
+        int selectJob = random.nextInt(superadminDashboardPage.plusForApplyJobList.size());
+        System.out.println("selectJob = " + selectJob);
+        superadminDashboardPage.plusForApplyJobList.get(selectJob).click();
+
+    }
+
+    @Then("the user clicks on the three dot item of the first Job under DETAILS")
+    public void the_user_clicks_on_the_three_dot_item_of_the_first_job_under_DETAILS() {
+        superadminDashboardPage.lastAppliedJob.click();
+    }
+
+    @Then("the user verify the {string} decreased {int}")
+    public void the_user_verify_the_decreased(String string, Integer int1) {
+
+    }
+
+    @Then("the user verify the {string} increased {int}")
+    public void the_user_verify_the_increased(String string, Integer int1) {
+
+    }
+
+    @When("the user clicks on {string} in {string}")
+    public void the_user_clicks_on_in(String columnName,String columnNumber ) {
+        waitFor(1);
+        cellValue=superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        superadminDashboardPage.getTableColumnName(columnName).click();
+    }
+    @Then("the user verifies that the {string} is sorted ascending")
+    public void the_user_verifies_that_the_is_sorted_ascending(String columnNumber) {
+        waitFor(1);
+        cellChangedValue = superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        System.out.println("cellChangedValue = " + cellChangedValue);
+        Assert.assertNotEquals(cellValue, cellChangedValue);
+    }
+    @Then("the user verifies that the {string} is sorted descending")
+    public void the_user_verifies_that_the_is_sorted_descending(String columnNumber) {
+        waitFor(1);
+        cellChangedValue2 = superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        System.out.println("cellChangedValue2 = " + cellChangedValue2);
+        Assert.assertNotEquals(cellValue, cellChangedValue2);
+    }
+    @Then("the user verifies that the {string} is sorted descending by id")
+    public void the_user_verifies_that_the_is_sorted_descending_by_id(String columnNumber) {
+        waitFor(1);
+        cellChangedValue = superadminDashboardPage.getTableCellValue(columnNumber).getText();
+        System.out.println("cellChangedValue = " + cellChangedValue);
+        Assert.assertNotEquals(cellValue, cellChangedValue);
+    }
+
+
 }

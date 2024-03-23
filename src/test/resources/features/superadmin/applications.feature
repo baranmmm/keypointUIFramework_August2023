@@ -1,3 +1,4 @@
+@regression
 @applications
 Feature: Applications Feature
 

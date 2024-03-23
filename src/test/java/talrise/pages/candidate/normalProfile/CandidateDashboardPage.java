@@ -7,7 +7,7 @@ public class CandidateDashboardPage extends CommonPageElements {
     public void dismissPopUpMessage() {
 
         try {
-            driver.findElement(By.xpath("//*[contains(@class,'sc-cmaqmh')]")).click();
+            driver.findElement(By.xpath("//*[@class='Toastify__toast-icon Toastify--animate-icon Toastify__zoom-enter']")).click();
         }catch (Exception e){
             System.out.println("profile completed");
         }

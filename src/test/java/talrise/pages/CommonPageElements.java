@@ -1,13 +1,14 @@
 package talrise.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import talrise.utilities.CommonSteps;
 import talrise.utilities.Driver;
 
-import java.util.Locale;
+import java.time.Duration;
 
 public abstract class CommonPageElements extends Driver {
     public CommonPageElements(){
@@ -43,6 +44,24 @@ public abstract class CommonPageElements extends Driver {
 
         }
 
+    }
+
+    public void changeTablePage(String pageName){
+        try {
+            WebElement tableNavigationBtn = getTableNavigationBtn(pageName);
+            CommonSteps.scrollToElement(tableNavigationBtn);
+            CommonSteps.waitFor(2);
+            tableNavigationBtn.click();
+        }catch (Exception e){
+            WebElement tableNavigationBtn2 = getTableNavigationBtn(pageName);
+            CommonSteps.scrollToElement(tableNavigationBtn2);
+            CommonSteps.waitFor(2);
+            tableNavigationBtn2.click();
+        }
+    }
+
+    public WebElement getTableNavigationBtn(String buttonName){
+        return driver.findElement(By.xpath("//span[@title='"+buttonName+"']"));
     }
 
 

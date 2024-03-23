@@ -1,9 +1,13 @@
 package talrise.pages;
 
-import talrise.pages.candidate.firstLoginProfile.FirstLoginPersonalInfoPage;
-import talrise.pages.candidate.firstLoginProfile.PositionPage;
+
+import talrise.pages.candidate.firstLoginProfile.*;
 import talrise.pages.candidate.normalProfile.*;
-import talrise.pages.candidate.firstLoginProfile.ProfileSectionPage;
+import talrise.pages.superadmin.CreateJobsPages.CreateJobsPage;
+import talrise.pages.superadmin.JobListPage;
+import talrise.pages.superadmin.SettingsPage;
+
+import talrise.pages.superadmin.SuperAdminCandidateProcessPage;
 import talrise.pages.superadmin.SuperadminDashboardPage;
 import talrise.utilities.Driver;
 
@@ -21,10 +25,16 @@ public class PageInitializer extends Driver {
     public static EducationPage educationPage;
     public static LanguagePage languagePage;
     public static ProfileSectionPage profileSectionPage;
+    public static JobListPage jobListPage;
     public static FirstLoginPersonalInfoPage firstLoginPersonalInfoPage;
     public static PositionPage positionPage;
+    public static FirstLoginLanguagePage firstLoginLanguagePage;
+    public static FirstLoginExperiencePage firstLoginExperiencePage;
+    public static SettingsPage settingsPage;
+    public static SuperAdminCandidateProcessPage superAdminCandidateProcessPage;
 
 
+    public static CreateJobsPage createJobsPage;
 
     public static void initialize(){
         loginPage = new LoginPage();
@@ -39,7 +49,14 @@ public class PageInitializer extends Driver {
         educationPage = new EducationPage();
         languagePage = new LanguagePage();
         profileSectionPage =new ProfileSectionPage();
+        jobListPage = new JobListPage();
         firstLoginPersonalInfoPage = new FirstLoginPersonalInfoPage();
         positionPage = new PositionPage();
+        firstLoginLanguagePage = new FirstLoginLanguagePage();
+        firstLoginExperiencePage = new FirstLoginExperiencePage();
+        settingsPage=new SettingsPage();
+        createJobsPage = new CreateJobsPage();
+        superAdminCandidateProcessPage = new SuperAdminCandidateProcessPage();
+
     }
 }
