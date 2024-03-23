@@ -24,7 +24,7 @@ public class Driver {
      * @return WebDriver driver
      */
     public static WebDriver getDriver() {
-//        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver1.exe");
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver1.exe");
 
         String browser = ConfigurationReader.get("browser");
         switch (browser) {
