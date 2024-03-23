@@ -24,7 +24,7 @@ public class Driver {
      * @return WebDriver driver
      */
     public static WebDriver getDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver1.exe");
+//        System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver1.exe");
 
         String browser = ConfigurationReader.get("browser");
         switch (browser) {
@@ -34,13 +34,13 @@ public class Driver {
                 driver = new ChromeDriver(options);
                 break;
             case "chrome-headless":
-                driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+//                driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
                 break;
             case "firefox":
                 driver = new FirefoxDriver();
                 break;
             case "firefox-headless":
-                driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+//                driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
                 break;
             case "ie":
                 if (!System.getProperty("os.name").toLowerCase().contains("windows"))
