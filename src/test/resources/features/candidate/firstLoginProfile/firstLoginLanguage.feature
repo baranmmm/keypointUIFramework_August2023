@@ -1,3 +1,4 @@
+@regression
 Feature: Language Proficiency Section Completion
 
   Background:

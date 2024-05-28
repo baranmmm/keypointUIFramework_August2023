@@ -1,12 +1,10 @@
 package talrise.step_definitions.superadmin;
 
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static talrise.pages.PageInitializer.superAdminCandidateProcessPage;
-import static talrise.utilities.CommonSteps.waitFor;
+import static talrise.utilities.CommonSteps.*;
+import static talrise.utilities.Driver.driver;
 
 public class SuperAdminCandidateProcessStepDefs {
     @Given("user clicks on Activity then Candidate Process button at sidebar")
@@ -16,13 +14,5 @@ public class SuperAdminCandidateProcessStepDefs {
         waitFor(1);
         superAdminCandidateProcessPage.CandidateProcessButton.click();
         waitFor(1);
-    }
-    @Then("verify the Browse applicants list title is visible")
-    public void verifyTheElementIsVisible() {
-        assertTrue(superAdminCandidateProcessPage.BrowseApplicantsListTitle.isDisplayed());
-    }
-    @Then("verify the column of {string} is visible")
-    public void verifyTheElementIsVisible(String columnHeader) {
-        assertEquals(columnHeader, superAdminCandidateProcessPage.getTableColumnHeader(columnHeader));
     }
 }

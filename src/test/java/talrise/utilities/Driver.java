@@ -29,7 +29,7 @@ public class Driver {
         switch (browser) {
             case "chrome":
                 ChromeOptions options = new ChromeOptions();
-                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--ignore-certificate-errors","--allow-running-insecure-content");
                 driver = new ChromeDriver(options);
                 break;
             case "chrome-headless":

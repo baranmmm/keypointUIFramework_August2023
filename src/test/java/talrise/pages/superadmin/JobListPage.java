@@ -2,11 +2,14 @@ package talrise.pages.superadmin;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Wait;
 import talrise.pages.CommonPageElements;
 import talrise.utilities.ConfigurationReader;
+import talrise.utilities.Driver;
 import talrise.utilities.Log;
 
 public class JobListPage extends CommonPageElements {

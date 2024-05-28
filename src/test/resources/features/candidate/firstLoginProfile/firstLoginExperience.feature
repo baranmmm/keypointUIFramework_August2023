@@ -1,3 +1,4 @@
+@regression
 Feature: Work Experience Section
 
   Background:
